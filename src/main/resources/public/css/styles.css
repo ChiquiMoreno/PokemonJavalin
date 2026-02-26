@@ -1,0 +1,1228 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "FlexoRegular";
+    
+}
+
+@font-face {
+    font-family: "FlexoRegular";
+    src: url("../fonts/flexo-regular.ttf");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #e3282a;
+}
+
+/*Barrra de navegacion*/
+
+/*Se implementa copiando este codigo, la navbar precisa de la clase alinear 
+en el body
+
+<body class="alinear">
+    
+    <footer class="navbar">
+<a href="index.html">
+    <img src="imgs/calendar.png" alt="calendario">
+</a>
+<a href="index.html">
+    <img src="imgs/pokeballred.png" alt="pokeballred">
+</a>
+<a href="index.html">
+    <img src="imgs/persona.png" alt="persona">
+</a>
+    </footer>
+</body>*/
+
+/*Configuración para que quede justamente abajo de la pantalla*/
+.alinear{
+    min-height:80vh;
+    max-height: 100vh;
+}
+
+/*configuracion de la navbar, separacion de la imagen...*/
+.navbar {
+    position: fixed;
+    bottom: 0vw;
+    display:flex;
+    width:100%;
+    justify-content: space-evenly;
+    border-top: red 3px solid; 
+    background-color:white;
+}
+
+/*tamaño imagenes*/
+.navbar img {
+    width:10vw;
+    margin: 5px 0px 5px 0px;
+}
+/* navbar */
+
+/* TORNEOS */
+/* encabezado de las pantallas principales*/
+.encabezado1{
+    width:90%;
+    margin:0 auto;
+    height:15vw;
+    background-color:#e3282a;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:5vw;
+}
+.horizontal h2{
+    color: white;
+}
+
+.encabezado1 .logo-playpokemon{
+    width:8vw;
+}
+
+.horizontal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.encabezado1 {
+    background-color: #b10404;
+    justify-content: center;
+}
+
+.encabezado1 .encabezado1-iconos{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.encabezado1 .horizontal{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+/* img encabezado1 */
+.encabezado1 .logo-playpokemon{
+    height: 5vw;
+}
+
+/* Titulo pag encabezado1 */
+.encabezado1 h1{
+    text-transform: uppercase;
+    color:white;
+    padding: 5px;
+}
+
+/* usuario pag encabezado1 */
+.encabezado1 h2{
+    font-size: italic;
+    color: white;
+    padding: 5px;
+}
+
+/* menu torneos*/
+.menutorneos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+ 
+/* botones del menu torneos*/
+.desptorneo label{
+    display: inline-block;
+    padding: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* desplegables */
+.despAnios, .despCalendario, .despTipo{
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 220px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px;
+  display: none;
+  z-index: 50;
+}
+
+/* fondo principal */
+.pantalla-torneos{
+
+    min-height: 100vh;
+}
+
+/* encabezado */
+.encabezado1{
+    background: #e3282a;
+    position: relative;
+    text-align: center;
+    padding-top: 24px;
+}
+
+.encabezado1-pikachu{
+    width: 160px;
+}
+
+/* principal cuerpo torneos */
+.torneos{
+    padding: 16px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #f4f4f6;
+    position: relative;
+    height: 70vh;
+}
+
+.menutorneos{
+    border-radius: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.desptorneo{
+    margin-left: 8px;
+}
+
+/* eliminar boton checkbox */
+.desptorneo input{
+    display: none;
+}
+
+/* botones menu torneos a cambiar */
+.desptorneo label{
+    background-color: #e7e7e7;
+    border: 1px solid #cfcfcf;
+    padding: 5px 20px;
+    border-radius: 40px;
+}
+
+.boton-anadir{
+    background-color: #046fb1;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 5%;
+}
+
+.boton-anadir img{
+    width: 16px;
+}
+
+/* conjunto de torneos */
+.lista-torneos{
+    margin-top: 16px;
+    display: grid;
+    gap: 25px;
+}
+
+/* tarjeta individual torneos */
+.tarjeta-torneo{
+    background-color: #ededed;
+    border-radius: 16px;
+    padding: 14px 16px 16px;
+    box-shadow: 0 2px 0 #d8d8d8;
+    position: relative;
+}
+
+/* Titulo tipo de torneo */
+.tarjeta-torneo h3{
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+/* boton estado de la partida */
+.tarjeta-torneo-estado{
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 12px;
+    width: 77px;
+    padding: 5px 0;
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    z-index: auto;
+}
+
+.finalizado{
+     background-color: #e3282a;
+}
+
+.en-curso{
+    background-color: #046fb1 ;
+}
+
+.iniciar{
+    background-color: #f3d30c;
+}
+
+/* Texto descriptivo tarjetas */
+.tarjeta-torneo-detalle{
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #333;
+    margin: 2px
+}
+
+/* estilo hipervinculo */
+.tarjeta-torneo-link{
+    color: #e3282a;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* estilo comun botones acciones lateral derecha */
+.tarjeta-torneo-acciones{
+    position: absolute;
+    right: 12px;
+    top: 30%;
+    transform: translateY(-10%);
+    display: grid;
+    gap: 15px;
+}
+
+/* estilo boton/items acciones lateral derecha */
+.tarjeta-torneo-acciones button{
+    border: none;   
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+/* color azul boton agregar */
+.button-agregar{
+    background-color: #046fb1;
+}
+
+/* color rojo boton eliminar */
+.button-eliminar{
+    background-color: #e3282a;
+}
+
+/* tamaño items botones*/
+.tarjeta-torneo-acciones img{
+    width: 16px;
+}
+
+footer{  /* esto podria provocar conflictos (elemento footer)*/
+    position: absolute;
+    bottom: 1px;
+    display:flex;
+    width:100%;
+    justify-content: space-around;
+    border-top: red 3px solid;
+}
+
+footer img{
+    width:30px;
+    margin-top:5px;
+}
+
+
+div.body{
+    background-color:bisque ;
+}
+
+
+
+/*Registro*/
+body.reg{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    justify-content: center;
+    align-content: space-between;
+    gap: 3vh;
+    position: relative;
+    height: 92vh;
+}
+
+.regPanel form{
+    display: flex;
+    flex-direction: column;
+    padding: 2vh;
+    margin-top: 10vh;
+    align-items: center;
+    gap: 1vh;
+}
+.regPanel form label{
+    width: 80vw;
+    text-align: start;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+.regPanel{
+    background-color: #F0EDED;
+    border-radius: 20px 20px 0 0;
+    height: 62vh;
+}
+
+.regSup{
+    height: 30vh;
+    background-color: #e3282a;
+    border-radius: 0 0 20px 20px;
+}
+
+
+.reg img.imgReg{
+    position: absolute;
+    height: 20vh;
+    top: 20vh;
+    left: 30vw;
+    width: 40vw;
+    height: auto;
+}
+
+.regPanel form inputk-{
+    margin-bottom: 1vh;
+    width: 80vw;   
+}
+
+.regPanel a.a-id{
+    width: 80vw;
+    text-align: end;
+    color: #e3282a;
+    font-size: small;
+}
+
+.regPanel input{
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    padding: 1vh;
+    width: 80vw;
+}
+.reg_submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vh;
+    gap: 10vw;
+    width: 80vw;
+    
+}
+
+.reg_submit input{
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+    width: 30vw;
+    padding: 3vw;
+    font-size: 4vw;
+}
+
+.reg_submit input.crear{
+background-color: #e3282a;
+}
+
+
+.registroCan{
+background-color: #B0B0B0;
+border: none;
+outline: none;
+border-radius: 30px;
+color: white;
+width: 30vw;
+padding: 3vw;
+font-size: 4vw;
+text-align: center;
+text-decoration: none;
+}
+
+/* ERROR */
+.error{
+    position: absolute;
+    width: 80vw;
+    height: 15vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 8vh;
+    left: 10vw;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh;
+}
+/* error texto*/
+.error p{
+    text-align: center;
+    color: #962B2B;
+
+}
+/* error imagen*/
+.error img{
+    width: 6vh;
+    height: auto;
+    margin: 0;
+}
+
+/*p32*/
+
+/*header aitor amigot se puede reutilizar con la estructura
+
+<header>
+    <div class="encabezado2">
+        <div class="texto">Aitor Amigot</div>
+        <img class="imagen" src="imgs/logo2.png" alt="logo"></img>
+    </div>
+</header>
+*/
+.encabezado2{
+    width:95%;
+    height:20vw;
+    margin:0 auto;
+    justify-content: space-between;
+    background-image: url(../imgs/fondorojo.png);
+    background-size:121%;
+}
+
+.encabezado2 .imagen{
+    width:12vw;
+}
+
+.encabezado2 .texto{
+    color:white;
+    font-style: italic;
+    font-size: 4vw;
+    font-weight: 900;
+}
+
+/*header aitor amigot se puede reutilizar*/
+/* titulo con subrayado rojo*/
+ .titulo{
+    position:absolute;
+    top:25vw;
+    color: #8c0707;
+    font-weight:900;
+    font-style: italic;
+    font-size:6vw;
+    border-bottom: 0.5vw solid #8c0707;
+    padding-bottom: 2vw;
+    width:100%;
+    text-align: center;
+}
+
+/*intento de minificación*/
+.encabezado2, .maestrosapuntados, .botones , .tarjeta{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+}
+
+/*Configuracion contenedor tarjetas y botones dentro de la tarjeta*/
+.contenedortarjetas, .btns{
+    display:flex;
+    align-items: center;
+    flex-direction:column;
+}
+
+/*Configuracion maestros apuntados*/
+.contenedortarjetas .maestrosapuntados{
+    position:relative;
+    top:7.5vw;
+    justify-content: space-evenly;
+    width:100%;
+    /* background-color:orange; */
+    height:25vw;
+}
+
+/*Configuracion cosas para que no tengan scroll vertical*/
+.maestrosapuntados, .btn1, .btn, .encabezado2, .tarjeta, .pic {
+    overflow: hidden;
+}
+/*Configuración circulo maestros apuntados (6)*/
+.contenedortarjetas .maestrosapuntados .circulo{
+    background-color: #b0b0b0;
+    border:solid 0.5vw #7a7171;
+    font-size: 6vw;
+    text-align: center;
+    line-height: 9vw;
+    margin-right:20vw;
+}
+
+/* Configuracion maestros apuntados boton + boton editar (...) y boton borrar*/
+.circulo, .btn, .btn1, .btn2, .botoneditar, .btn2morado, .exitbtn, .editbtn{
+    width:10vw;
+    height:10vw;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 6vw;
+}
+
+/*Botones guardar/cancelar*/
+.btn-aplicar, .btn-cancelar{
+    border-radius: 8vw;
+    line-height: 10vw;
+    color:white;
+    overflow-y: hidden;
+    width:30vw;
+    font-size: 5vw;
+    text-align: center;
+    border: none;
+}
+
+/*Contenedor botones Guardar/Cancelar*/
+ .botones{
+    display:flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width:100%;
+    bottom: 2vh;
+    /* background-color:purple; */
+}
+
+/*Configuracion boton guardar*/
+.botones .btn-aplicar{
+    background-color: #e22829;
+}
+/*Configuración boton cancelar*/
+ .botones .btn-cancelar{
+    background-color: #b0b0b0;
+}
+
+/*Icono +*/
+.btn{
+    background-color: #046fb1;
+    border:solid 0.5vw #003e62;
+    background-image: url("../imgs/iconomas.png");
+    background-size:80%;
+}
+/*Contiene tarjetas con fondo rojo*/
+.contenedortarjetas{
+    border-radius: 7.5vw 7.5vw 0vw 0vw;
+    top:20vw;
+    width:100%;
+    height:100vh;
+    background-color: #f0eded;
+    justify-content: space-evenly;
+    padding-bottom: 10vh; 
+}
+
+/*Tarjetas maestros reutilizable*/
+.tarjeta {
+    background-color: #ff6464;
+    border: 0.5vw solid rgb(51,51,51);
+    width:90%;
+    height:25vw;
+    border-radius: 3vw;
+}
+
+/*Foto perfil en tarjeta*/
+.pic {
+    width:28vw;
+    margin-left:2vw;
+}
+
+/*Configuración foto perfil*/
+.pic img{
+    width: 14vw;
+}
+
+/*Información maestro (tarjeta)*/
+.txt {
+    margin-left:1.5vw;
+    color:rgb(51, 51, 51);
+    font-size: 5vw;
+    width: 100%;
+}
+
+/*Container botones y botones*/
+.btns {
+    justify-content: space-evenly;
+    height:25vw;
+    display:flex;
+    margin-right:3vw;
+}
+
+/*Icono editar (...)*/
+.btn1 {
+    background-color: #b0b0b0;
+    border:solid 0.5vw #7a7171;
+}
+
+/*Icono borrar (papelera)*/
+.btn2 {
+    background-color: #e22829;
+    border: solid 0.5vw #b31818;
+    background-image: url("../imgs/papelera.png");
+}
+
+
+/* p32 */
+
+
+
+
+/*Plantilla Torneo*/
+.torneo{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.torneo div.panel{
+    background-color: #F0EDED;
+    border-radius: 30px 30px 0 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200vh;
+    gap: 20px;
+}
+.torneo div.panel div.panel-datos{
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+
+.torneo div.maestros{
+    background-color: #F0EDED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+}
+
+.torneo div.maestros h4{
+    text-align: start;
+    width: 100vw;
+    padding: 10px 30px;
+}
+
+.torneo div.maestros a{
+    background-color: #e3282a;
+    padding: 7px 0;
+    width: 30vw;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #F0EDED;
+    text-align: center;
+}
+
+
+div.maestros .tarjeta{
+    height: 13vh;
+}
+
+div.maestros .tarjeta .btns{
+    height: 10vh;
+    width: 5vh;
+}
+
+div.maestros .tarjeta .btn1{
+    height: 10vh;
+    width: 5vh;
+}
+div.maestros .tarjeta .btn2{
+    height: 10vh;
+    width: 5vh;
+}
+
+
+
+/* p50 */
+.busqueda{
+    border: 2px solid gray;
+    width:70vw;
+    height:10vw;
+    margin-top:9vw;
+    border-radius:6px;
+    padding:1vw;
+}
+
+.boton-mi-cuenta{
+    background-color:red;
+    color:white;
+    width:25vw;
+    height:8vw;
+    text-align: center;
+    line-height: 8vw;
+    border-radius:3.5vw;
+    margin: 2vw 0vw 0vw -47vw;
+}
+/* p50 */
+
+
+/* p31 */
+
+.formulario{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.overflow .botones{
+    position: absolute;
+}
+
+.formulario input, .formulario select{
+    border: none;
+    background-color: #b0b0b0;
+    width:85vw;
+    height:10vw;
+    border-radius:50vw;
+    margin:4vw;
+    text-align: center;
+}
+
+.formulario .mediano{
+    width: 38vw;
+    text-align: center;
+}
+
+.mediano::placeholder{
+    color:black;
+}
+
+.inputsmedianos{
+    display:flex;
+    width:90%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedortarjetas .formulario{
+    position:absolute;
+    top:40vw;
+}
+
+
+
+.overflow{
+    overflow-y:hidden;
+}
+
+/*p31*/
+
+
+/* AMONESTACION */
+
+.amonestacion-card::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        -35deg,
+        rgba(255, 255, 255, 0.07) 0,
+        rgba(255, 255, 255, 0.07) 50px,
+        rgba(255, 255, 255, 0.02) 50px,
+        rgba(255, 255, 255, 0.02) 100px
+    );
+    opacity: 0.6;
+}
+
+.amonestacion-encabezado{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* logo play-pokemon*/
+.logo-playpokemon{
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.amonestacion-pikachu{
+    position: relative;
+    z-index: 1;
+    width: 140px;
+    display: block;
+    margin: 12px auto 0;
+}
+
+.amonestacion-formulario{
+    position: relative;
+    margin-top: 16px;
+    background-color: #f6f6f7;
+    border-radius: 20px;
+    padding: 18px 16px 20px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+    margin: 4vh;
+}
+
+.amonestacion-formulario .campo{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.amonestacion-formulario label{
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #6c6c6c;
+    font-weight: 700;
+}
+
+.amonestacion-formulario select,
+.amonestacion-formulario textarea{
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+    background-color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    outline: none;
+}
+
+.amonestacion-formulario .acciones{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 6px;
+}
+
+/*p51*
+
+/*p53 / p50*/
+ .flex-tituloliga{
+    position:relative;
+    top:.5vw;
+    width:90%;
+    margin: 0 auto;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: white; */
+    color:rgb(0, 0, 0);
+    font-size:8vw;
+    font-weight: 900;
+}
+
+.flex-tituloliga .puntuacionpartida{
+    background-color:red;
+    color:white;
+    width:20vw;
+    text-align: center;
+    height:10vw;
+    align-content: center;
+    border-radius: 50vw;
+    font-size: 8vw;
+    font-weight: 900;
+}
+.envoltorio{
+    position:relative;
+    width:95%;  
+}
+
+.tarjetasmesas{
+    width:100%;
+    margin:0 auto;
+    height:32.5vw;
+    /* background-color:red; */
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.tarjetamesa{
+    background-color:#e7e7e7;
+    border:solid 0.5vw #c6c6c6;
+    width:46vw;
+    height:30vw;
+    border-radius: 4vw;
+    font-size:5vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarjetasmesas .morado{
+    background-color: #c0baf2;
+}
+
+.botonmesa1, .botonmesa2, .botonmesa3{
+    width:8vw;
+    height:8vw;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 6vw;
+}
+
+.btns .gris{
+     background-size: 70%;
+    background-image: url("../imgs/copagris.png");
+}
+.botonmesa1{
+    background-color:#6631d7;
+    border: solid 0.5vw #361086;
+    background-size: 110%;
+    background-image: url("../imgs/copamarilla.png");
+}
+.botonmesa2{
+    background-color:#b0b0b0;
+    border: solid 0.5vw #595959;
+    background-image: url("../imgs/llave.png");
+}
+.botonmesa3{
+    background-color:#e22829;
+    border: solid 0.5vw #8c0707;
+    background-size:25%;
+    background-image: url("../imgs/exclamación.png");
+}
+
+/*p53 / p50*/
+
+/*p52*/
+
+.titulomesa .tarjeta{
+    width:100%;
+}
+
+.contenedortarjetas .blanco{
+    background-color:#F0EDED;
+    border: solid 0.5vw #c6c6c6;
+}
+
+.contenedortarjetas .morado {
+    background-color: #c0baf2;
+    border: solid 0.5vw #b6abee;
+}
+
+.btn2morado{
+     background-image: url("../imgs/iconoequis.png")
+}
+
+/* p41 */
+
+.regSup .btns{
+    position:relative;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:95%;
+    margin: 0 auto;
+    align-items: center;
+    top:15vw;
+}
+
+.editbtn{
+    background-color: #b0b0b0;
+    border: solid 0.5vw #595959;
+    background-image: url("../imgs/llave.png")
+}
+.exitbtn{
+    background-color: #e22829;
+    border: solid 0.5vw #8c0707;
+    background-image: url("../imgs/salir.png");
+}
+
+
+/* p63 */
+.podioliga .titulomesa{
+    position: relative;
+    top:20vw;
+    font-size: 5vw;
+}
+
+.podioliga .blanco{
+    background-color: #e7e7e7;
+    width:80vw;
+}
+
+.blanco .btns .ligapokemon{
+    width: 15vw;
+    height: 15vw;
+    background-image: url("../imgs/ligapokemon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*p63*/
+
+
+
+
+/*implementación mejorada*/
+.test .encabezado1test{
+    width:90%;
+    color:white;
+    margin:0 auto;
+    height:15vw;
+    /* background-color:red; */
+    background-color:#e22829;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:5vw;
+}
+
+.test .horizontal h2{
+    color:white;
+    padding: 4vw;
+}
+
+.encabezado1test .logo-playpokemon{
+    width:8vw;
+    
+}
+
+.encabezado1test .horizontal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Implementación original*/
+/*.encabezado1 {
+    background-color: #b10404;
+    justify-content: center;
+}
+
+.encabezado1 .encabezado1-iconos{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.encabezado1 .horizontal{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+img encabezado1 
+.encabezado1 .logo-playpokemon{
+    height: 5vw;
+}
+
+Titulo pag encabezado1 
+.encabezado1 h1{
+    text-transform: uppercase;
+    color:white;
+    padding: 5px;
+}
+
+usuario pag encabezado1 
+.encabezado1 h2{
+    font-size: italic;
+    color: white;
+    padding: 5px;
+}
+*/
+
+
+
+/* Maestros */
+
+div.panelMaestros{
+display: flex;
+flex-direction: column;
+gap: 1vh;
+justify-content: center;
+align-items: center;
+}
+
+.barra-busqueda{
+    width: 80vw;
+    padding: 1vh;
+    outline: none;
+    border-radius: 1vh;
+    border: 1px solid grey;
+}
+
+.panelMaestros{
+    background-color: #e7e7e7;
+    padding: 3vh;
+    border-radius: 32px;
+}
+
+.panelMaestros .enlace{
+    width: 80vw;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+}
+.panelMaestros .enlace a{
+    
+    text-decoration: none;
+    background-color: #e3282a;
+    padding: 1vw 1.5vw;
+    border-radius: 20px;
+    color: white;
+   
+
+}
+
+
+/* Perfil (info-usuario)*/
+
+.perfil{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    gap: 8vh;
+    position: relative;
+}
+
+.usuarioSup{
+    height: 30vh;
+    background-color: #e3282a;
+}
+
+.img-perfil img{
+width: 100%;
+}
+.img-perfil{
+    width: 50vw;
+    position: absolute;
+    top: 20vh;
+}
+
+.img-logo-perfil img{
+    width: 100%;
+}
+.img-logo-perfil{
+    position: absolute;
+    top: 2vh;
+    right: 5vw;
+    width: 10vw;
+}

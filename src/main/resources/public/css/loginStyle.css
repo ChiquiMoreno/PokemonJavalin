@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+   
+}
+
+body.login{
+    background-color: #046fb1 ;  
+    margin: 0;
+    padding: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ;
+    align-items: center;
+    width: 100vw;
+    height: 92vh; 
+    position: relative;
+}
+
+.contenedor{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    width: 100%;
+}
+
+div.imgLogin{
+    width: 60%;
+}
+.loginPanel{
+    height: 50vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px 30px 0 0;
+    background-color: #F0EDED;
+}
+.contenedorImg{
+    height: 50vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPanel form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-evenly;
+}
+
+.loginPanel form input{
+    border-radius: 30px;
+    outline: none;
+    border: 1px solid gray;
+    width: 80%;
+    padding: 2vh;
+}
+
+.loginPanel form input[type="submit"]{
+    background-color: #e3282a;
+    color: white;
+    width: 40vw;
+    border: none;
+}
+
+
+a{
+    width: 80%;
+    text-align: end;
+    color: #e3282a;
+}
+
+
+.error{
+    position: absolute;
+    width: 80vw;
+    height: 15vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 27vh;
+    left: 10vw;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh;
+}
+.error p{
+    text-align: center;
+    color: #962B2B;
+
+}
+.error img{
+    width: 6vh;
+    height: auto;
+    margin: 0;
+}

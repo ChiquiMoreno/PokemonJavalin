@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla 41</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="perfil">
+
+
+<div class="usuarioSup"></div>
+
+
+<div class="contenedortarjetas podioliga">
+
+    <div class="titulomesa">
+        <i>USUARIO</i><br>Aitor Amigot<br><br><i>ID DEL JUGADOR</i><br>332575A<br><br><i>CAMPEONATOS</i><br><br>
+
+        <div class="tarjeta blanco">
+
+            <div class="txt">Competitivo estándar<br>11/01/2026<br>Comics Pamplona</div>
+            <div class="btns">
+                <div class="ligapokemon"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+<div class="botones">
+    <div class="btn-aplicar">Cerrar liga</div>
+</div>
+
+<div class="img-perfil">
+    <img src="imgs/fotoperfil1.png" alt="">
+</div>
+<div class="img-logo-perfil">
+    <img src="imgs/logo2.png" alt="">
+</div>
+
+
+<footer class="navbar">
+    <a href="index.html">
+        <img src="imgs/salirRojo.png" alt="cerrar-sesion">
+    </a>
+    <a href="torneos.html">
+        <img src="imgs/pokeballred.png" alt="pokeballred">
+    </a>
+    <a href="maestros.html">
+        <img src="imgs/persona.png" alt="persona">
+    </a>
+</footer>
+</body>
+</html>
