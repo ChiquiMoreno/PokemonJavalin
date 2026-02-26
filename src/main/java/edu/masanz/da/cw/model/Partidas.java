@@ -8,7 +8,7 @@ public class Partidas {
     Map<Integer, Mesas> partidas;
     private int numPartida;
 
-    public Partidas(Map<Integer, Mesas> partidas) {
+    public Partidas() {
         partidas = new HashMap<>();
         this.numPartida = 0;
     }
