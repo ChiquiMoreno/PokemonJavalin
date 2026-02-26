@@ -63,10 +63,5 @@ public class Standing {
         return points;
     }
 
-    public void addPoints(int amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("amount debe ser >= 0");
-        }
-        points += amount;
-    }
+
 }
