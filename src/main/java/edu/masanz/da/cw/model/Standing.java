@@ -13,9 +13,6 @@ public class Standing {
     private int points;
 
     public Standing(Jugador jugador) {
-        if (jugador == null) {
-            throw new IllegalArgumentException("jugador no puede ser null");
-        }
         this.jugador = jugador;
     }
 
@@ -63,5 +60,11 @@ public class Standing {
         return points;
     }
 
-
+    public boolean addPoints(int pointsToAdd) {
+        if (pointsToAdd < 0) {
+            return false;
+        }
+        points += pointsToAdd;
+        return true;
+    }
 }

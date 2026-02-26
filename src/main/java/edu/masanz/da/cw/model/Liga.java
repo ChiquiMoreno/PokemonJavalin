@@ -6,6 +6,9 @@ public class Liga {
 
     List<Partidas> liga;
     List<Jugador> jugadoresApuntados;
+    private int numeroRondas;
+    private int partidasPorRonda;
+    private boolean hayBye;
 
     public Liga(List<Partidas> liga, List<Jugador> jugadoresApuntados) {
         this.liga = liga;
@@ -26,5 +29,29 @@ public class Liga {
 
     public void setJugadoresApuntados(List<Jugador> jugadoresApuntados) {
         this.jugadoresApuntados = jugadoresApuntados;
+    }
+
+    public int getNumeroRondas() {
+        return numeroRondas;
+    }
+
+    public void setNumeroRondas(int numeroRondas) {
+        this.numeroRondas = numeroRondas;
+    }
+
+    public int getPartidasPorRonda() {
+        return partidasPorRonda;
+    }
+
+    public void setPartidasPorRonda(int partidasPorRonda) {
+        this.partidasPorRonda = partidasPorRonda;
+    }
+
+    public boolean isHayBye() {
+        return hayBye;
+    }
+
+    public void setHayBye(boolean hayBye) {
+        this.hayBye = hayBye;
     }
 }
