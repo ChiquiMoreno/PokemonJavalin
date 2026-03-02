@@ -1,0 +1,42 @@
+package edu.masanz.da.cw.controller;
+
+import edu.masanz.da.cw.model.Usuario;
+import edu.masanz.da.cw.service.UsuarioService;
+import io.javalin.http.Context;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
+
+public class AuthController {
+
+    private static UsuarioService usuarioService = new UsuarioService();
+
+    public static void login(Context ctx) {
+        ctx.render("/templates/index.ftl");
+    }
+//    public static void maestros(Context ctx) {
+//        ctx.render("/templates/maestros.ftl");
+//    }
+
+    public static void procesarLogin(Context ctx) {
+
+        String alias = ctx.formParam("alias");
+        String password = ctx.formParam("password");
+
+        Usuario usuario = usuarioService.autenticar(alias, password);
+        if (usuario != null) {
+            ctx.sessionAttribute("alias", alias);
+            ctx.redirect("/logueado/torneos");
+        } else {
+            ctx.render("/templates/index.ftl",
+                    Map.of("error", "Credenciales inválidas"));
+        }
+    }
+
+    public static void logout(Context ctx) {
+//        ctx.req().getSession().invalidate();// invalidamos la sesión, eliminar todos los atributos
+        ctx.req().getSession().removeAttribute("alias");// eliminamos solo el atributo iduser
+        ctx.redirect("/");
+    }
+
+}

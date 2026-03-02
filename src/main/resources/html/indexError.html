@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/loginStyle.css">
+</head>
+<body class="login">
+   
+    <div class="contenedor">
+        <div class="imgLogin">
+            <img src="/imgs/logo2.png" alt="">
+        </div>
+    </div>
+    
+    <div class="loginPanel">
+        <form action="torneos.html" method="post">
+            <input type="text" name="id_jugador" id="id_jugador" placeholder="ID Jugador" required>
+
+            <input type="password" name="pwd" id="pwd" placeholder="Contraseña" required>
+
+            <input type="submit" value="LOGIN">
+            <a href="registro.html">Crear una cuenta</a>
+        </form>    
+    </div>
+
+    <div class="error">
+        <img src="imgs/caratriste.png" alt="">
+        <p>Ups... el ID y la contraseña no coinciden</p>
+    </div>
+
+</body>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amonestacion</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <main class="pantalla-amonestacion">
+        <section class="amonestacion-card">
+            <header class="amonestacion-encabezado">
+                <div class="amonestacion-titulo">
+                    <p class="amonestacion-etiqueta">Amonestación</p>
+                    <h1>Aitor Amigot</h1>
+                </div>
+                <img src="imgs/logo2.png" alt="Insignia de torneo" class="logo-playpokemon">
+            </header>
+
+            <img src="imgs/pikachu.png" alt="Pikachu" class="amonestacion-pikachu">
+
+            <form class="amonestacion-formulario" action="" method="post">
+                <div class="campo">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" name="tipo">
+                        <option>Leve</option>
+                        <option>Grave</option>
+                        <option>Expulsión</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="observacion">Observación</label>
+                    <textarea id="observacion" name="observacion" rows="3"></textarea>
+                </div>
+                <div class="campo">
+                    <label for="decision">Decisión</label>
+                    <textarea id="decision" name="decision" rows="3" required></textarea>
+                </div>
+                <div class="botones">
+                    <button class="btn-aplicar" type="submit">Aplicar</button>
+                    <button class="btn-cancelar" type="button">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
