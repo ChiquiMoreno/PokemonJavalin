@@ -112,10 +112,6 @@ public class LigaLogicService {
         partidaService.iniciarPartida(jugadoresOrdenados);
 
 
-
-
-
-
     }
     
 

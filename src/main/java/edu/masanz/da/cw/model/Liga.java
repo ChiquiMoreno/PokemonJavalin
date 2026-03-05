@@ -6,6 +6,7 @@ public class Liga {
 
     Map<Integer, Partida> partidas;
     List<Jugador> jugadoresApuntados;
+    Map<Integer, Jugador> ganadoresLiga;
     private int idLiga;
     private String fecha;
     private String lugar;
@@ -39,7 +40,6 @@ public class Liga {
     }
 
     // region getters and setters
-
 
     public Map<Integer, Partida> getPartidas() {
         return partidas;
