@@ -6,13 +6,14 @@ public class Liga {
 
     Map<Integer, Partida> partidas;
     List<Jugador> jugadoresApuntados;
-    Map<Integer, Jugador> ganadoresLiga;
+    Map<Integer, String> podio;
     private int idLiga;
     private String fecha;
     private String lugar;
     private String rondas;
     private String descripcion;
     private String tipo;
+    private String estado;
 
     private int numPartidas;
 
@@ -23,12 +24,13 @@ public class Liga {
         this.idLiga = id;
     }
 
-    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion){
+    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, String estado){
         this.tipo = tipo;
         this.fecha = fecha;
         this.lugar = lugar;
         this.rondas = rondas;
         this.descripcion = descripcion;
+        this.estado = estado;
     }
 
     public boolean agregarJugador(Jugador jugador){
@@ -40,6 +42,7 @@ public class Liga {
     }
 
     // region getters and setters
+
 
     public Map<Integer, Partida> getPartidas() {
         return partidas;
@@ -119,6 +122,37 @@ public class Liga {
         this.descripcion = descripcion;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Liga{" +
+                "idLiga=" + idLiga +
+                ", fecha='" + fecha + '\'' +
+                ", lugar='" + lugar + '\'' +
+                ", rondas='" + rondas + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
+
     //endregion getters and setters
+
+
+    public Map<Integer, String> getPodio() {
+        return podio;
+    }
+
+    public void setPodio(Map<Integer, String> podio) {
+        this.podio = podio;
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package edu.masanz.da.cw.service;
 
+import edu.masanz.da.cw.dao.TorneosDaoDb;
 import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Liga;
 import edu.masanz.da.cw.model.Partida;
@@ -13,6 +14,22 @@ public class LigaLogicService {
     private static final int MAX_JUGADORES = 20;
     private static final int MIN_ROUNDS = 2;
     private static final int MAX_ROUNDS = 6;
+
+    private static TorneosDaoDb dao = new TorneosDaoDb();
+
+    // TODO
+    public static Liga getLiga(int idLiga) {
+        return  dao.getLiga(idLiga);
+    }
+
+    // TODO
+    public static void comprobarCantidadLiga(int idLiga) {
+
+    }
+
+    public ArrayList<Liga> getAllLigas(){
+        return dao.getAllLigas();
+    }
 
     //Verificado :)
     public boolean calculoPartidas(Liga liga) {
@@ -53,8 +70,13 @@ public class LigaLogicService {
         }
     }
 
-    public void iniciarLiga(int id){
+
+    public void runLiga(int id, List<Jugador> jugadoresApuntados){
         Liga liga = new Liga(id);
+        for (int i = 0; i < jugadoresApuntados.size(); i++) {
+            liga.agregarJugador(jugadoresApuntados.get(i));
+
+        }
     }
 
     //Pruebas
@@ -97,6 +119,7 @@ public class LigaLogicService {
         System.out.println(liga.getJugadoresApuntados().size());
 
         System.out.println(liga.getJugadoresApuntados().toString());
+        System.out.println("-----------------------------");
 
         LigaLogicService logicaService = new LigaLogicService();
 
@@ -105,17 +128,28 @@ public class LigaLogicService {
         int numPartidas = liga.getNumPartidas();
         PartidaLogicService partidaService = new PartidaLogicService();
         //inicio partida con el set que devuelve el liga get jugadores
-        Set<Jugador> jugadoresOrdenados = partidaService.ordenarJugadores(liga.getJugadoresApuntados());
-        partidaService.iniciarPartida(jugadoresOrdenados);
-        int numJugadores = liga.getJugadoresApuntados().size();
+        System.out.println(liga.getJugadoresApuntados().toString());
+        System.out.println("-----------------------------");
 
-        partidaService.iniciarPartida(jugadoresOrdenados);
+        partidaService.ordenarJugadores(liga.getJugadoresApuntados());
+        System.out.println(liga.getJugadoresApuntados().toString());
 
 
     }
-    
 
+    public Map<Integer, String> crearPodio(List<Jugador> jugadoresOrdenados){
+       Map<Integer, String> podio = new HashMap<>();
+        for (int i = 0; i < jugadoresOrdenados.size() - 1; i++) {
+            podio.put(i,jugadoresOrdenados.get(i).getAliasJugador());
+        }
+        return podio;
+    }
 
+    private Map<Integer, Usuario> productos = Map.of(
+            //TODO
+    );
 
-
+    public Collection<Usuario> listarUsuarios() {
+        return productos.values();
+    }
 }

@@ -3,7 +3,7 @@ package edu.masanz.da.cw.model;
 public class Jugador {
 
     private int puntaje;
-    private int liga;
+    private int idLiga;
     private String aliasJugador;
 
     private int ganadas;
@@ -51,12 +51,8 @@ public class Jugador {
         this.puntaje = puntaje;
     }
 
-    public boolean sumarPuntaje(int puntajeNuevo) {
-        if (puntajeNuevo < 0) {
-            return false;
-        }
+    public void sumarPuntaje(int puntajeNuevo) {
         puntaje += puntajeNuevo;
-        return true;
     }
 
     @Override

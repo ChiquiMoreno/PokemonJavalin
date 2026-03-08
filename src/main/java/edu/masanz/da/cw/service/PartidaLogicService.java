@@ -3,16 +3,13 @@ package edu.masanz.da.cw.service;
 import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Mesa;
 import edu.masanz.da.cw.model.Partida;
+import edu.masanz.da.cw.model.Usuario;
 
 import javax.naming.Context;
 import java.util.*;
 
 public  class PartidaLogicService {
 
-
-    public void sumarPuntaje(List<Jugador> jugador, int alias, int puntaje){
-        jugador.get(alias).setPuntaje(puntaje);
-    }
 
     private static final int GANA = 300;
     private static final int EMPATE = 100;
@@ -55,10 +52,10 @@ public  class PartidaLogicService {
                 int bonusA = calcularBonusRival(jugadorBGanadas);
 
                 jugadorA.setGanadas(jugadorA.getGanadas() + 1);
-                jugadorA.setPuntaje(jugadorA.getPuntaje() + GANA + bonusA);
+                jugadorA.sumarPuntaje(GANA + bonusA);
 
                 jugadorB.setPerdidas(jugadorB.getPerdidas() + 1);
-                jugadorB.setPuntaje(jugadorB.getPuntaje() + PIERDE);
+                jugadorB.sumarPuntaje(PIERDE);
                 return true;
             }
 
@@ -67,10 +64,10 @@ public  class PartidaLogicService {
                 int bonusB = calcularBonusRival(jugadorAGanadas);
 
                 jugadorB.setGanadas(jugadorB.getGanadas() + 1);
-                jugadorB.setPuntaje(jugadorB.getPuntaje() + GANA + bonusB);
+                jugadorB.sumarPuntaje(GANA + bonusB);
 
                 jugadorA.setPerdidas(jugadorA.getPerdidas() + 1);
-                jugadorA.setPuntaje(jugadorA.getPuntaje() + PIERDE);
+                jugadorA.sumarPuntaje(PIERDE);
                 return true;
             }
 
@@ -86,19 +83,18 @@ public  class PartidaLogicService {
 
     }
 
-
-    public Mesa asignarJugadoresAMesa(List<Jugador> jugadores){
-        Mesa mesa = new Mesa();
-        if(jugadores.size() != 2) mesa = null;
-
-        for (int i = 0; i < 2; i++) {
-            mesa.agregarJugador(jugadores.get(i));
+    public void asignarJugadoresAMesa(Jugador jugadorA, Jugador jugadorB, Mesa mesa){
+        if(jugadorA.getPuntaje() > jugadorB.getPuntaje()){
+            mesa.setJugadorA(jugadorA);
+            mesa.setJugadorB(jugadorB);
+        } else {
+            mesa.setJugadorA(jugadorB);
+            mesa.setJugadorB(jugadorA);
         }
-        return mesa;
     }
 
 
-    public Partida iniciarPartida(Set<Jugador> jugadores) {
+    public Partida iniciarPartida(List<Jugador> jugadores) {
 
         Partida partida = new Partida();
 
@@ -126,13 +122,21 @@ public  class PartidaLogicService {
         return partida;
     }
 
-    public Set<Jugador> ordenarJugadores(List<Jugador> jugadores){
-        // TreeSet con comparador descendente
-        Set<Jugador> jugadoresOrdenados = new TreeSet<>();
+    // Verificado :)
+    public List<Jugador> ordenarJugadores(List<Jugador> jugadores){
+        for (int i = 0; i < jugadores.size() -1; i++) {
+            for (int j = i + 1; j < jugadores.size() -1; j++) {
+                if(jugadores.get(i).getPuntaje() < jugadores.get(j).getPuntaje()){
+                    Collections.swap(jugadores, i, j);
+                }
+            }
+        }
 
+        return jugadores;
+    }
 
+    public static void main(String[] args) {
 
-        return jugadoresOrdenados;
     }
 
 

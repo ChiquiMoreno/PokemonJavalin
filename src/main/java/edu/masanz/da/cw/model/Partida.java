@@ -36,4 +36,9 @@ public class Partida {
     public void setGanadores(List<String> ganadores) {
         this.ganadores = ganadores;
     }
+
+    public void setGanadorMesa(String nombreJugador, int mesa){
+        partida.get(mesa).setGanadorMesa(nombreJugador);
+    }
+
 }

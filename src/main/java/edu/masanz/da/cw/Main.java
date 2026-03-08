@@ -38,19 +38,20 @@ public class Main {
 
     private static void setJavalinAppRoutes(Javalin app) {
 
-        app.before("/logueado/*", VerificacionDeLogueoController::validateLogin);
+        //app.before("/logueado/*", UsuarioController::validateLogin);
 
 
         app.get("/", AuthController::login);
         app.post("/autenticar", AuthController::procesarLogin);
         app.get("/logout", AuthController::logout);
 
-        app.get("/logueado/torneos", Controller::torneos);
-        app.get("/logueado/maestros", Controller::maestros);
-        app.get("/logueado/crearliga", Controller::crearliga);
-        app.get("/logueado/perfil", Controller::perfil);
+        app.get("/logueado/torneos", LigaController::torneos);
+        app.get("/logueado/torneos{idLiga}", LigaController::mostrarTorneo);
+        app.get("/logueado/maestros", UsuarioController::maestros);
+        app.get("/logueado/crearliga", LigaController::servirCrearLiga);
+        app.get("/logueado/perfil", UsuarioController::perfil);
 
-        app.get("/registro", Controller::registro);
+        app.get("/registro", UsuarioController::mostrarRegistro);
         app.post("/registro", UsuarioController::registro);
 
 
