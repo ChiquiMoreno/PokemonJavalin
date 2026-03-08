@@ -13,9 +13,15 @@ public class Liga {
     private String rondas;
     private String descripcion;
     private String tipo;
-    private String estado;
+    private int estado;
+    private String estadoStr;
 
     private int numPartidas;
+    public static final int EN_CONSTRUCCION = -1;
+    public static final int INCIAR = 0;
+    public static final int EN_CURSO = 1;
+    public static final int FINALIZADO = 2;
+
 
     public Liga(int id) {
         partidas = new HashMap<>();
@@ -24,13 +30,13 @@ public class Liga {
         this.idLiga = id;
     }
 
-    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, String estado){
+    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, int estado){
         this.tipo = tipo;
         this.fecha = fecha;
         this.lugar = lugar;
         this.rondas = rondas;
         this.descripcion = descripcion;
-        this.estado = estado;
+        setEstado(estado);
     }
 
     public boolean agregarJugador(Jugador jugador){
@@ -122,12 +128,8 @@ public class Liga {
         this.descripcion = descripcion;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     @Override
@@ -145,7 +147,6 @@ public class Liga {
 
     //endregion getters and setters
 
-
     public Map<Integer, String> getPodio() {
         return podio;
     }
@@ -154,5 +155,18 @@ public class Liga {
         this.podio = podio;
     }
 
+    public void setEstado(int estado) {
+        this.estado = estado;
+        switch (estado){
+            case EN_CONSTRUCCION:
+                this.estadoStr = "EN CONSTRUCCIóN"; break;
+            case INCIAR:
+                this.estadoStr = "INICIAR"; break;
+            case EN_CURSO:
+                this.estadoStr = "EN CURSO"; break;
+            case FINALIZADO:
+                this.estadoStr = "FINALIZADO"; break;
+        }
 
+    }
 }

@@ -1,9 +1,8 @@
 package edu.masanz.da.cw.service;
 
-import edu.masanz.da.cw.dao.TorneosDaoDb;
+import edu.masanz.da.cw.dao.LigaDaoDb;
 import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Liga;
-import edu.masanz.da.cw.model.Partida;
 import edu.masanz.da.cw.model.Usuario;
 
 import java.util.*;
@@ -15,7 +14,7 @@ public class LigaLogicService {
     private static final int MIN_ROUNDS = 2;
     private static final int MAX_ROUNDS = 6;
 
-    private static TorneosDaoDb dao = new TorneosDaoDb();
+    private static LigaDaoDb dao = new LigaDaoDb();
 
     // TODO
     public static Liga getLiga(int idLiga) {

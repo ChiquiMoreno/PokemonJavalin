@@ -11,17 +11,17 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class TorneosDaoDb {
+public class LigaDaoDb {
 
 
-    public TorneosDaoDb() {
+    public LigaDaoDb() {
         ConnectionManager.conectar("pokemon_db", "proy", "password");
 
     }
 
     public ArrayList<Liga> getAllLigas() {
         List<Liga> listaLigas = new ArrayList<>();
-        String sql ="select * from torneo";
+        String sql ="select * from liga";
         Object[] params = new Object[0];
         Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
         for (int i = 0; i < resultado.length ; i++) {
@@ -31,7 +31,7 @@ public class TorneosDaoDb {
             String fecha = (String) resultado[i][3];
             String descripcion = (String) resultado[i][4];
             String tipo = (String) resultado[i][5];
-            String estado = (String) resultado[i][6];
+            int estado = (int) resultado[i][6];
             Liga liga = new Liga(id);
             liga.definirDatos(tipo,fecha,lugar,rondas,descripcion, estado);
             listaLigas.add(liga);
@@ -67,5 +67,8 @@ public class TorneosDaoDb {
     private Map<Integer, Usuario> usuarios = Map.of(
         //TODO
     );
+
+    //prueba
+    int i = 0;
 
 }
