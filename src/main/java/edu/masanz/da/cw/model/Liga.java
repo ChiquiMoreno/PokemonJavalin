@@ -22,14 +22,26 @@ public class Liga {
     public static final int EN_CURSO = 1;
     public static final int FINALIZADO = 2;
 
+    public Liga(){
+        partidas = new HashMap<>();
+        jugadoresApuntados = new ArrayList<>();
+        numPartidas = 0;
+        estado = EN_CONSTRUCCION;
+    }
 
-    public Liga(int id) {
+    public Liga(int id, String tipo, String fecha, String lugar, String rondas, String descripcion, int estado) {
         partidas = new HashMap<>();
         jugadoresApuntados = new ArrayList<>();
         numPartidas = 0;
         this.idLiga = id;
+        this.tipo = tipo;
+        this.fecha = fecha;
+        this.lugar = lugar;
+        this.rondas = rondas;
+        this.descripcion = descripcion;
+        setEstado(estado);
     }
-
+/*
     public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, int estado){
         this.tipo = tipo;
         this.fecha = fecha;
@@ -38,7 +50,7 @@ public class Liga {
         this.descripcion = descripcion;
         setEstado(estado);
     }
-
+*/
     public boolean agregarJugador(Jugador jugador){
         if(jugadoresApuntados.size() > 20){
             return false;
@@ -93,6 +105,7 @@ public class Liga {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+        this.descripcion = "LO QUe Sea";
     }
 
 

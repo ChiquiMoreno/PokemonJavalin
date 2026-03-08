@@ -66,11 +66,13 @@
                         </select>
                     </div>
                 </div>
-
-                <button class="boton-anadir" type="button">
-                    <img src="imgs/iconomas.png" alt="Añadir torneo">
-                </button>
-
+                <form action="/logueado/crearliga" method="get">
+                    <#--  <button class="boton-anadir" type="submit">  -->
+                     <button type="submit">
+                        <!--<img src="imgs/iconomas.png" alt="Añadir torneo">-->
+                        Añadir torneo
+                    </button>
+                </form>
             </div>
 
             <div class="lista-torneos">

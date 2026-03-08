@@ -16,6 +16,15 @@ public class LigaLogicService {
 
     private static LigaDaoDb dao = new LigaDaoDb();
 
+    /**
+     * NOIasnmoansoansoansoajsioajss
+     * @param nuevaLiga la nueva liga
+     * @return id de la liga creada
+     */
+    public void nuevaLiga(Liga nuevaLiga){
+        LigaDaoDb.nuevaLiga(nuevaLiga);
+    }
+
     // TODO
     public static Liga getLiga(int idLiga) {
         return  dao.getLiga(idLiga);
@@ -71,7 +80,7 @@ public class LigaLogicService {
 
 
     public void runLiga(int id, List<Jugador> jugadoresApuntados){
-        Liga liga = new Liga(id);
+        Liga liga = new Liga();
         for (int i = 0; i < jugadoresApuntados.size(); i++) {
             liga.agregarJugador(jugadoresApuntados.get(i));
 
@@ -80,7 +89,7 @@ public class LigaLogicService {
 
     //Pruebas
     public static void main(String[] args) {
-        Liga liga = new Liga(1);
+        Liga liga = new Liga();
         Usuario user1 = new Usuario();
         Usuario user2 = new Usuario();
         Usuario user3 = new Usuario();

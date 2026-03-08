@@ -34,7 +34,29 @@ public class LigaController {
     }
 
     public static void servirCrearLiga(@NotNull Context ctx) {
+        //TODO: Pasar nombre OJO Meter el nombre en el contexto
         ctx.render("/templates/crearliga.ftl");
+    }
+    public static void nuevaLiga(@NotNull Context ctx) {
+
+        //TODO: Crear la liga en bbdd
+        //Construir la liga con lo que viene
+        Liga nuevaLiga = new Liga();
+        switch (ctx.formParam("tipo")){
+            case "1": nuevaLiga.setTipo("Competitivo estándar"); break;
+            case "2": nuevaLiga.setTipo("Expandido"); break;
+            case "3": nuevaLiga.setTipo("Desafío líder de gimnasio"); break;
+            case "4": nuevaLiga.setTipo("Amistoso"); break;
+        }
+        nuevaLiga.setFecha(ctx.formParam("dia") + " " + ctx.formParam("hora"));
+        nuevaLiga.setLugar(ctx.formParam("lugar"));
+        nuevaLiga.setRondas(ctx.formParam("rondas"));
+
+        //Pasar a crear en base datos
+        ligaLogicService.nuevaLiga(nuevaLiga);
+        Map<String,Object> model = new HashMap<>();
+        model.put("liga", nuevaLiga);
+        ctx.render("/templates/inscripcion.ftl", model);
     }
 
     public static void mostrarTorneo(@NotNull Context context) {

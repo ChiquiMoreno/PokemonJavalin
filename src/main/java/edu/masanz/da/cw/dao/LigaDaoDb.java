@@ -32,8 +32,8 @@ public class LigaDaoDb {
             String descripcion = (String) resultado[i][4];
             String tipo = (String) resultado[i][5];
             int estado = (int) resultado[i][6];
-            Liga liga = new Liga(id);
-            liga.definirDatos(tipo,fecha,lugar,rondas,descripcion, estado);
+            Liga liga = new Liga(id, tipo,fecha,lugar,rondas,descripcion, estado);
+            //liga.definirDatos(tipo,fecha,lugar,rondas,descripcion, estado);
             listaLigas.add(liga);
         }
         System.out.println(listaLigas.toString());
@@ -56,7 +56,7 @@ public class LigaDaoDb {
 
     // TODO
     public Liga getLiga(int idLiga) {
-        Liga liga = new Liga(1);
+        Liga liga = new Liga();
         return liga;
     }
 
@@ -68,7 +68,17 @@ public class LigaDaoDb {
         //TODO
     );
 
-    //prueba
-    int i = 0;
+    public static void nuevaLiga(Liga liga){
+        String sql = "INSERT into liga (lugar, rondas, fecha, descripcion, tipo) values (?,?,?,?,?);";
+
+        Object[] params = {
+                liga.getLugar(),
+                liga.getRondas(),
+                liga.getFecha(),
+                liga.getDescripcion(),
+                liga.getTipo()};
+        liga.setIdLiga((int)ConnectionManager.ejecutarInsertSQL(sql, params));
+    }
+
 
 }
