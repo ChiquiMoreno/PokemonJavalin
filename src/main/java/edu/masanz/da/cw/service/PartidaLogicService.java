@@ -3,15 +3,13 @@ package edu.masanz.da.cw.service;
 import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Mesa;
 import edu.masanz.da.cw.model.Partida;
+import edu.masanz.da.cw.model.Usuario;
 
+import javax.naming.Context;
 import java.util.*;
 
-public class PartidaLogicService {
+public  class PartidaLogicService {
 
-
-    public void sumarPuntaje(List<Jugador> jugador, int alias, int puntaje){
-        jugador.get(alias).setPuntaje(puntaje);
-    }
 
     private static final int GANA = 300;
     private static final int EMPATE = 100;
@@ -50,26 +48,26 @@ public class PartidaLogicService {
             if (ganador == null) return false;
 
             // Gana A
-            if (ganador.equals(jugadorA.getJugador().getNombre())) {
+            if (ganador.equals(jugadorA.getAliasJugador())) {
                 int bonusA = calcularBonusRival(jugadorBGanadas);
 
                 jugadorA.setGanadas(jugadorA.getGanadas() + 1);
-                jugadorA.setPuntaje(jugadorA.getPuntaje() + GANA + bonusA);
+                jugadorA.sumarPuntaje(GANA + bonusA);
 
                 jugadorB.setPerdidas(jugadorB.getPerdidas() + 1);
-                jugadorB.setPuntaje(jugadorB.getPuntaje() + PIERDE);
+                jugadorB.sumarPuntaje(PIERDE);
                 return true;
             }
 
             // Gana B
-            if (ganador.equals(jugadorB.getJugador().getNombre())) {
+            if (ganador.equals(jugadorB.getAliasJugador())) {
                 int bonusB = calcularBonusRival(jugadorAGanadas);
 
                 jugadorB.setGanadas(jugadorB.getGanadas() + 1);
-                jugadorB.setPuntaje(jugadorB.getPuntaje() + GANA + bonusB);
+                jugadorB.sumarPuntaje(GANA + bonusB);
 
                 jugadorA.setPerdidas(jugadorA.getPerdidas() + 1);
-                jugadorA.setPuntaje(jugadorA.getPuntaje() + PIERDE);
+                jugadorA.sumarPuntaje(PIERDE);
                 return true;
             }
 
@@ -81,34 +79,66 @@ public class PartidaLogicService {
 
     }
 
-    public Mesa asignarJugadoresAMesa(List<Jugador> jugadores){
-        Mesa mesa = new Mesa();
-        if(jugadores.size() != 2) mesa = null;
+    public void runPartida(Partida partida){
 
-        for (int i = 0; i < 2; i++) {
-            mesa.agregarJugador(jugadores.get(i));
-        }
-        return mesa;
     }
 
-//    public Partida iniciarPartida(int numPartida, List<Jugador> jugadores){
-//        Partida partida = new Partida();
-//        int numJugadores = jugadores.size();
-//
-//        //Clave = puntaje
-//        Map<Integer, Jugador> jugadoresOrdenados;
-//
-//        return partida;
-//    }
+    public void asignarJugadoresAMesa(Jugador jugadorA, Jugador jugadorB, Mesa mesa){
+        if(jugadorA.getPuntaje() > jugadorB.getPuntaje()){
+            mesa.setJugadorA(jugadorA);
+            mesa.setJugadorB(jugadorB);
+        } else {
+            mesa.setJugadorA(jugadorB);
+            mesa.setJugadorB(jugadorA);
+        }
+    }
+
 
     public Partida iniciarPartida(List<Jugador> jugadores) {
 
         Partida partida = new Partida();
 
-        //jugadores.sort(partida.getMesaById());
+        if (jugadores == null || jugadores.size() < 2 || jugadores.size() > 20) {
+            return partida;
+        }
 
+        Iterator<Jugador> it = jugadores.iterator();
+
+        int numMesas = jugadores.size() / 2;
+
+        for (int i = 1; i <= numMesas; i++) {
+            Mesa mesa = new Mesa();
+
+            //Jugadores en orden
+            Jugador jugadorA = it.next();
+            Jugador jugadorB = it.next();
+
+            mesa.setJugadorA(jugadorA);
+            mesa.setJugadorB(jugadorB);
+
+            partida.agregarMesa(i, mesa);
+
+        }
         return partida;
     }
+
+    // Verificado :)
+    public List<Jugador> ordenarJugadores(List<Jugador> jugadores){
+        for (int i = 0; i < jugadores.size() -1; i++) {
+            for (int j = i + 1; j < jugadores.size() -1; j++) {
+                if(jugadores.get(i).getPuntaje() < jugadores.get(j).getPuntaje()){
+                    Collections.swap(jugadores, i, j);
+                }
+            }
+        }
+
+        return jugadores;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
 
 
 

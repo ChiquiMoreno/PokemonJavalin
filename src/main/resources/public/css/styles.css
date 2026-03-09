@@ -1,4 +1,3 @@
-
 *{
     margin:0;
     padding:0;
@@ -18,28 +17,8 @@ body {
     background-color: #e3282a;
 }
 
-/*Barrra de navegacion*/
-
-/*Se implementa copiando este codigo, la navbar precisa de la clase alinear 
-en el body
-
-<body class="alinear">
-    
-    <footer class="navbar">
-<a href="index.html">
-    <img src="imgs/calendar.png" alt="calendario">
-</a>
-<a href="index.html">
-    <img src="imgs/pokeballred.png" alt="pokeballred">
-</a>
-<a href="index.html">
-    <img src="imgs/persona.png" alt="persona">
-</a>
-    </footer>
-</body>*/
-
 /*Configuración para que quede justamente abajo de la pantalla*/
-.alinear{
+.alinear {
     min-height:80vh;
     max-height: 100vh;
 }
@@ -64,7 +43,7 @@ en el body
 
 /* TORNEOS */
 /* encabezado de las pantallas principales*/
-.encabezado1{
+.encabezado1 {
     width:90%;
     margin:0 auto;
     height:15vw;
@@ -73,143 +52,91 @@ en el body
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap:5vw;
-}
-.horizontal h2{
-    color: white;
 }
 
-.encabezado1 .logo-playpokemon{
-    width:8vw;
-}
+.horizontal h2 {color: white;}
 
-.horizontal{
+.encabezado1 .logo-playpokemon {width:8vw;}
+
+.horizontal {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.encabezado1 {
-    background-color: #b10404;
-    justify-content: center;
-}
-
-.encabezado1 .encabezado1-iconos{
-    width:100%;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.encabezado1 .horizontal{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-/* img encabezado1 */
-.encabezado1 .logo-playpokemon{
-    height: 5vw;
-}
-
 /* Titulo pag encabezado1 */
-.encabezado1 h1{
+.encabezado1 h1 {
     text-transform: uppercase;
     color:white;
     padding: 5px;
 }
 
-/* usuario pag encabezado1 */
-.encabezado1 h2{
-    font-size: italic;
-    color: white;
-    padding: 5px;
-}
-
-/* menu torneos*/
-.menutorneos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
- 
-/* botones del menu torneos*/
-.desptorneo label{
-    display: inline-block;
-    padding: 5px;
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
+.encabezado1 .logo-playpokemon {
+    right:0;
+    position: absolute;
 }
 
 /* desplegables */
-.despAnios, .despCalendario, .despTipo{
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  /* min-width: 220px; */
-  border: 1px solid #333;
-  border-radius: 10px;
-  background: #fff;
-  padding: 8px;
-  display: none;
-  z-index: 50;
+.despAnios, .despCalendario, .despTipo {
+    position:relative;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #fff;
+    padding: 8px;
+    display: none;
+    z-index: 50;
+    position:absolute;
+    top:10vw;
+    height:6.5vh;
+    width:auto;
 }
 
 /* fondo principal */
-.pantalla-torneos{
-
-    min-height: 100vh;
-}
+.pantalla-torneos {min-height: 100vh;}
 
 /* encabezado */
-.encabezado1{
+.encabezado1 {
     background: #e3282a;
     position: relative;
     text-align: center;
-    padding-top: 24px;
 }
 
-.encabezado1-pikachu{
-    width: 160px;
-}
+.encabezado1-pikachu {width: 160px;}
 
 /* principal cuerpo torneos */
-.torneos{
+.torneos {
     padding: 16px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
+    border-radius: 30px 30px 0px 0px;
     background-color: #f4f4f6;
     position: relative;
     height: 70vh;
 }
 
-.menutorneos{
-    border-radius: 
-    16px;
+.menutorneos {
+    border-radius: 16px;
     margin-bottom: 20px;
     display: flex;
     justify-content: flex-start;
 }
 
-.desptorneo{
+.desptorneo {
     margin-left: 8px;
 }
 
-/* eliminar boton checkbox */
-.desptorneo input{
+/* ocultar boton checkbox */
+.desptorneo input {
     display: none;
 }
 
 /* botones menu torneos a cambiar */
-.desptorneo label{
+.desptorneo label {
     background-color: #e7e7e7;
     border: 1px solid #cfcfcf;
     padding: 5px 20px;
     border-radius: 40px;
 }
 
-.boton-anadir{
+.boton-anadir {
     background-color: #046fb1;
     border: none;
     border-radius: 50%;
@@ -219,19 +146,17 @@ en el body
     right: 5%;
 }
 
-.boton-anadir img{
-    width: 16px;
-}
+.boton-anadir img {width: 16px;}
 
 /* conjunto de torneos */
-.lista-torneos{
+.lista-torneos {
     margin-top: 16px;
     display: grid;
     gap: 25px;
 }
 
 /* tarjeta individual torneos */
-.tarjeta-torneo{
+.tarjeta-torneo {
     background-color: #ededed;
     border-radius: 16px;
     padding: 14px 16px 16px;
@@ -240,14 +165,14 @@ en el body
 }
 
 /* Titulo tipo de torneo */
-.tarjeta-torneo h3{
+.tarjeta-torneo h3 {
     font-size: 15px;
     font-weight: 700;
     margin-bottom: 4px;
 }
 
 /* boton estado de la partida */
-.tarjeta-torneo-estado{
+.tarjeta-torneo-estado {
     color: white;
     text-transform: uppercase;
     text-align: center;
@@ -259,38 +184,28 @@ en el body
     position: absolute;
     top: -10px;
     right: 20px;
-    z-index: auto;
+    /*z-index: auto;*/
 }
 
-.finalizado{
-     background-color: #e3282a;
-}
+.finalizado {background-color: #e3282a;}
 
-.en-curso{
-    background-color: #046fb1 ;
-}
+.en-curso { background-color: #046fb1;}
 
-.iniciar{
-    background-color: #f3d30c;
-}
+.iniciar {background-color: #f3d30c;}
 
 /* Texto descriptivo tarjetas */
-.tarjeta-torneo-detalle{
-    font-size: 13px;
-    margin-bottom: 4px;
-    color: #333;
-    margin: 2px
-}
+
+.tarjeta-torneo .txt {font-size:13px;}
 
 /* estilo hipervinculo */
-.tarjeta-torneo-link{
+.tarjeta-torneo-link {
     color: #e3282a;
     font-weight: 700;
     font-size: 13px;
 }
 
 /* estilo comun botones acciones lateral derecha */
-.tarjeta-torneo-acciones{
+.tarjeta-torneo-acciones {
     position: absolute;
     right: 12px;
     top: 30%;
@@ -300,7 +215,7 @@ en el body
 }
 
 /* estilo boton/items acciones lateral derecha */
-.tarjeta-torneo-acciones button{
+.tarjeta-torneo-acciones button {
     border: none;   
     width: 30px;
     height: 30px;
@@ -310,43 +225,18 @@ en el body
 }
 
 /* color azul boton agregar */
-.button-agregar{
-    background-color: #046fb1;
-}
+.button-agregar {background-color: #046fb1;}
 
 /* color rojo boton eliminar */
-.button-eliminar{
-    background-color: #e3282a;
-}
+.button-eliminar {background-color: #e3282a;}
 
 /* tamaño items botones*/
-.tarjeta-torneo-acciones img{
-    width: 16px;
-}
+.tarjeta-torneo-acciones img {width: 16px;}
 
-footer{  /* esto podria provocar conflictos (elemento footer)*/
-    position: absolute;
-    bottom: 1px;
-    display:flex;
-    width:100%;
-    justify-content: space-around;
-    border-top: red 3px solid;
-}
-
-footer img{
-    width:30px;
-    margin-top:5px;
-}
-
-
-div.body{
-    background-color:bisque ;
-}
-
-
+div.body {background-color:bisque;}
 
 /*Registro*/
-body.reg{
+body.reg {
     display: flex;
     flex-direction: column;
     background-color: black;
@@ -357,7 +247,7 @@ body.reg{
     height: 92vh;
 }
 
-.regPanel form{
+.regPanel form {
     display: flex;
     flex-direction: column;
     padding: 2vh;
@@ -365,27 +255,26 @@ body.reg{
     align-items: center;
     gap: 1vh;
 }
-.regPanel form label{
+.regPanel form label {
     width: 80vw;
     text-align: start;
     text-transform: uppercase;
     font-size: small;
 }
 
-.regPanel{
+.regPanel {
     background-color: #F0EDED;
     border-radius: 20px 20px 0 0;
     height: 62vh;
 }
 
-.regSup{
+.regSup {
     height: 30vh;
     background-color: #e3282a;
     border-radius: 0 0 20px 20px;
 }
 
-
-.reg img.imgReg{
+.reg img.imgReg {
     position: absolute;
     height: 20vh;
     top: 20vh;
@@ -394,26 +283,26 @@ body.reg{
     height: auto;
 }
 
-.regPanel form inputk-{
+.regPanel form inputk- {
     margin-bottom: 1vh;
     width: 80vw;   
 }
 
-.regPanel a.a-id{
+.regPanel a.a-id {
     width: 80vw;
     text-align: end;
     color: #e3282a;
     font-size: small;
 }
 
-.regPanel input{
+.regPanel input {
     border: none;
     border-radius: 7px;
     outline: none;
     padding: 1vh;
     width: 80vw;
 }
-.reg_submit{
+.reg_submit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -423,7 +312,7 @@ body.reg{
     
 }
 
-.reg_submit input{
+.reg_submit input {
     border: none;
     outline: none;
     border-radius: 30px;
@@ -433,26 +322,23 @@ body.reg{
     font-size: 4vw;
 }
 
-.reg_submit input.crear{
-background-color: #e3282a;
-}
+.reg_submit input.crear {background-color: #e3282a;}
 
-
-.registroCan{
-background-color: #B0B0B0;
-border: none;
-outline: none;
-border-radius: 30px;
-color: white;
-width: 30vw;
-padding: 3vw;
-font-size: 4vw;
-text-align: center;
-text-decoration: none;
+.registroCan {
+    background-color: #B0B0B0;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: white;
+    width: 30vw;
+    padding: 3vw;
+    font-size: 4vw;
+    text-align: center;
+    text-decoration: none;
 }
 
 /* ERROR */
-.error{
+.error {
     position: absolute;
     width: 80vw;
     height: 15vh;
@@ -467,29 +353,15 @@ text-decoration: none;
     padding: 2vh;
 }
 /* error texto*/
-.error p{
+.error p {
     text-align: center;
     color: #962B2B;
 
 }
 /* error imagen*/
-.error img{
-    width: 6vh;
-    height: auto;
-    margin: 0;
-}
+.error img {width: 6vh;}
 
 /*p32*/
-
-/*header aitor amigot se puede reutilizar con la estructura
-
-<header>
-    <div class="encabezado2">
-        <div class="texto">Aitor Amigot</div>
-        <img class="imagen" src="imgs/logo2.png" alt="logo"></img>
-    </div>
-</header>
-*/
 .encabezado2{
     width:95%;
     height:20vw;
@@ -499,11 +371,9 @@ text-decoration: none;
     background-size:121%;
 }
 
-.encabezado2 .imagen{
-    width:12vw;
-}
+.encabezado2 .imagen {width:12vw;}
 
-.encabezado2 .texto{
+.encabezado2 .texto {
     color:white;
     font-style: italic;
     font-size: 4vw;
@@ -512,7 +382,7 @@ text-decoration: none;
 
 /*header aitor amigot se puede reutilizar*/
 /* titulo con subrayado rojo*/
- .titulo{
+ .titulo {
     position:absolute;
     top:25vw;
     color: #8c0707;
@@ -526,35 +396,27 @@ text-decoration: none;
 }
 
 /*intento de minificación*/
-.encabezado2, .maestrosapuntados, .botones , .tarjeta{
+.encabezado2, .maestrosapuntados, .botones , .tarjeta {
     display:flex;
     flex-direction:row;
     align-items: center;
 }
 
 /*Configuracion contenedor tarjetas y botones dentro de la tarjeta*/
-.contenedortarjetas, .btns{
-    display:flex;
-    align-items: center;
-    flex-direction:column;
-}
+
 
 /*Configuracion maestros apuntados*/
-.contenedortarjetas .maestrosapuntados{
-    position:relative;
-    top:7.5vw;
+.contenedortarjetas .maestrosapuntados {
     justify-content: space-evenly;
     width:100%;
-    /* background-color:orange; */
+    background-color:orange;
     height:25vw;
 }
 
 /*Configuracion cosas para que no tengan scroll vertical*/
-.maestrosapuntados, .btn1, .btn, .encabezado2, .tarjeta, .pic {
-    overflow: hidden;
-}
+.maestrosapuntados, .btn1, .btn, .encabezado2, .tarjeta, .pic {overflow: hidden;}
 /*Configuración circulo maestros apuntados (6)*/
-.contenedortarjetas .maestrosapuntados .circulo{
+.contenedortarjetas .maestrosapuntados .circulo {
     background-color: #b0b0b0;
     border:solid 0.5vw #7a7171;
     font-size: 6vw;
@@ -564,7 +426,7 @@ text-decoration: none;
 }
 
 /* Configuracion maestros apuntados boton + boton editar (...) y boton borrar*/
-.circulo, .btn, .btn1, .btn2, .botoneditar, .btn2morado, .exitbtn, .editbtn{
+.circulo, .btn, .btn1, .btn2, .botoneditar, .btn2morado, .exitbtn, .editbtn {
     width:10vw;
     height:10vw;
     border-radius:50%;
@@ -578,7 +440,7 @@ text-decoration: none;
 }
 
 /*Botones guardar/cancelar*/
-.btn-aplicar, .btn-cancelar{
+.btn-aplicar, .btn-cancelar {
     border-radius: 8vw;
     line-height: 10vw;
     color:white;
@@ -590,40 +452,35 @@ text-decoration: none;
 }
 
 /*Contenedor botones Guardar/Cancelar*/
- .botones{
-    display:flex;
-    align-items: flex-end;
-    flex-direction: row;
+ .botones {
     justify-content: space-evenly;
     width:100%;
     bottom: 2vh;
-    /* background-color:purple; */
 }
 
 /*Configuracion boton guardar*/
-.botones .btn-aplicar{
-    background-color: #e22829;
-}
+.botones .btn-aplicar {background-color: #e22829;}
 /*Configuración boton cancelar*/
- .botones .btn-cancelar{
-    background-color: #b0b0b0;
-}
+ .botones .btn-cancelar {background-color: #b0b0b0;}
 
 /*Icono +*/
-.btn{
+.btn {
     background-color: #046fb1;
     border:solid 0.5vw #003e62;
     background-image: url("../imgs/iconomas.png");
     background-size:80%;
 }
 /*Contiene tarjetas con fondo rojo*/
-.contenedortarjetas{
+.contenedortarjetas {
     border-radius: 7.5vw 7.5vw 0vw 0vw;
     top:20vw;
     width:100%;
     height:100vh;
     background-color: #f0eded;
-    justify-content: space-evenly;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content: space-between;
     padding-bottom: 10vh; 
 }
 
@@ -643,9 +500,7 @@ text-decoration: none;
 }
 
 /*Configuración foto perfil*/
-.pic img{
-    width: 14vw;
-}
+.pic img {width: 14vw;}
 
 /*Información maestro (tarjeta)*/
 .txt {
@@ -659,9 +514,12 @@ text-decoration: none;
 .btns {
     justify-content: space-evenly;
     height:25vw;
-    display:flex;
     margin-right:3vw;
+    display:flex;
+    align-items: center;
+    flex-direction:column;
 }
+
 
 /*Icono editar (...)*/
 .btn1 {
@@ -676,19 +534,13 @@ text-decoration: none;
     background-image: url("../imgs/papelera.png");
 }
 
-
-/* p32 */
-
-
-
-
 /*Plantilla Torneo*/
 .torneo{
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
-.torneo div.panel{
+.torneo div.panel {
     background-color: #F0EDED;
     border-radius: 30px 30px 0 0;
     padding: 30px;
@@ -698,14 +550,13 @@ text-decoration: none;
     height: 200vh;
     gap: 20px;
 }
-.torneo div.panel div.panel-datos{
+.torneo div.panel div.panel-datos {
     display: flex;
     flex-direction: column;
     gap: 5px
 }
 
-
-.torneo div.maestros{
+.torneo div.maestros {
     background-color: #F0EDED;
     display: flex;
     flex-direction: column;
@@ -714,13 +565,13 @@ text-decoration: none;
     height: 80vh;
 }
 
-.torneo div.maestros h4{
+.torneo div.maestros h4 {
     text-align: start;
     width: 100vw;
     padding: 10px 30px;
 }
 
-.torneo div.maestros a{
+.torneo div.maestros a {
     background-color: #e3282a;
     padding: 7px 0;
     width: 30vw;
@@ -731,28 +582,25 @@ text-decoration: none;
 }
 
 
-div.maestros .tarjeta{
-    height: 13vh;
-}
+div.maestros .tarjeta {height: 13vh;}
 
-div.maestros .tarjeta .btns{
+div.maestros .tarjeta .btns {
     height: 10vh;
     width: 5vh;
 }
 
-div.maestros .tarjeta .btn1{
-    height: 10vh;
-    width: 5vh;
-}
-div.maestros .tarjeta .btn2{
+div.maestros .tarjeta .btn1 {
     height: 10vh;
     width: 5vh;
 }
 
-
+div.maestros .tarjeta .btn2 {
+    height: 10vh;
+    width: 5vh;
+}
 
 /* p50 */
-.busqueda{
+.busqueda {
     border: 2px solid gray;
     width:70vw;
     height:10vw;
@@ -761,7 +609,7 @@ div.maestros .tarjeta .btn2{
     padding:1vw;
 }
 
-.boton-mi-cuenta{
+.boton-mi-cuenta {
     background-color:red;
     color:white;
     width:25vw;
@@ -773,21 +621,18 @@ div.maestros .tarjeta .btn2{
 }
 /* p50 */
 
-
 /* p31 */
 
-.formulario{
+.formulario {
     display:flex;
     flex-direction: column;
     justify-content: space-around;
     align-items:center;
 }
 
-.overflow .botones{
-    position: absolute;
-}
+.overflow .botones {position: absolute;}
 
-.formulario input, .formulario select{
+.formulario input, .formulario select {
     border: none;
     background-color: #b0b0b0;
     width:85vw;
@@ -797,39 +642,32 @@ div.maestros .tarjeta .btn2{
     text-align: center;
 }
 
-.formulario .mediano{
+.formulario .mediano {
     width: 38vw;
     text-align: center;
 }
 
-.mediano::placeholder{
-    color:black;
-}
+.mediano::placeholder {color:black;}
 
-.inputsmedianos{
+.inputsmedianos {
     display:flex;
     width:90%;
     justify-content: center;
     align-items: center;
 }
 
-.contenedortarjetas .formulario{
+.contenedortarjetas .formulario {
     position:absolute;
     top:40vw;
 }
 
-
-
-.overflow{
-    overflow-y:hidden;
-}
+.overflow {overflow-y:hidden;}
 
 /*p31*/
 
-
 /* AMONESTACION */
 
-.amonestacion-card::before{
+.amonestacion-card::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -843,7 +681,7 @@ div.maestros .tarjeta .btn2{
     opacity: 0.6;
 }
 
-.amonestacion-encabezado{
+.amonestacion-encabezado {
     position: relative;
     z-index: 1;
     display: flex;
@@ -854,13 +692,13 @@ div.maestros .tarjeta .btn2{
 }
 
 /* logo play-pokemon*/
-.logo-playpokemon{
+.logo-playpokemon {
     width: 38px;
     height: 38px;
     object-fit: contain;
 }
 
-.amonestacion-pikachu{
+.amonestacion-pikachu {
     position: relative;
     z-index: 1;
     width: 140px;
@@ -868,7 +706,7 @@ div.maestros .tarjeta .btn2{
     margin: 12px auto 0;
 }
 
-.amonestacion-formulario{
+.amonestacion-formulario {
     position: relative;
     margin-top: 16px;
     background-color: #f6f6f7;
@@ -878,22 +716,21 @@ div.maestros .tarjeta .btn2{
     margin: 4vh;
 }
 
-.amonestacion-formulario .campo{
+.amonestacion-formulario .campo {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-bottom: 12px;
 }
 
-.amonestacion-formulario label{
+.amonestacion-formulario label {
     font-size: 12px;
     text-transform: uppercase;
     color: #6c6c6c;
     font-weight: 700;
 }
 
-.amonestacion-formulario select,
-.amonestacion-formulario textarea{
+.amonestacion-formulario select, .amonestacion-formulario textarea {
     width: 100%;
     border: none;
     border-radius: 12px;
@@ -901,10 +738,9 @@ div.maestros .tarjeta .btn2{
     font-size: 14px;
     background-color: #fff;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    outline: none;
 }
 
-.amonestacion-formulario .acciones{
+.amonestacion-formulario .acciones {
     display: flex;
     gap: 10px;
     justify-content: center;
@@ -914,21 +750,18 @@ div.maestros .tarjeta .btn2{
 /*p51*
 
 /*p53 / p50*/
- .flex-tituloliga{
+ .flex-tituloliga {
     position:relative;
-    top:.5vw;
+    top:1vw;
     width:90%;
-    margin: 0 auto;
     display:flex;
     align-items: center;
     justify-content: space-evenly;
-    /* background-color: white; */
-    color:rgb(0, 0, 0);
     font-size:8vw;
     font-weight: 900;
 }
 
-.flex-tituloliga .puntuacionpartida{
+.flex-tituloliga .puntuacionpartida {
     background-color:red;
     color:white;
     width:20vw;
@@ -939,23 +772,22 @@ div.maestros .tarjeta .btn2{
     font-size: 8vw;
     font-weight: 900;
 }
-.envoltorio{
+
+.envoltorio {
     position:relative;
     width:95%;  
 }
 
-.tarjetasmesas{
+.tarjetasmesas {
     width:100%;
-    margin:0 auto;
     height:32.5vw;
-    /* background-color:red; */
     display:flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
 }
-.tarjetamesa{
+
+.tarjetamesa {
     background-color:#e7e7e7;
     border:solid 0.5vw #c6c6c6;
     width:46vw;
@@ -963,16 +795,13 @@ div.maestros .tarjeta .btn2{
     border-radius: 4vw;
     font-size:5vw;
     display:flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.tarjetasmesas .morado{
-    background-color: #c0baf2;
-}
+.tarjetasmesas .morado { background-color: #c0baf2;}
 
-.botonmesa1, .botonmesa2, .botonmesa3{
+.botonmesa1, .botonmesa2, .botonmesa3 {
     width:8vw;
     height:8vw;
     border-radius:50%;
@@ -985,22 +814,25 @@ div.maestros .tarjeta .btn2{
     font-size: 6vw;
 }
 
-.btns .gris{
-     background-size: 70%;
+.btns .gris {
+    background-size: 70%;
     background-image: url("../imgs/copagris.png");
 }
-.botonmesa1{
+
+.botonmesa1 {
     background-color:#6631d7;
     border: solid 0.5vw #361086;
     background-size: 110%;
     background-image: url("../imgs/copamarilla.png");
 }
-.botonmesa2{
+
+.botonmesa2 {
     background-color:#b0b0b0;
     border: solid 0.5vw #595959;
     background-image: url("../imgs/llave.png");
 }
-.botonmesa3{
+
+.botonmesa3 {
     background-color:#e22829;
     border: solid 0.5vw #8c0707;
     background-size:25%;
@@ -1011,11 +843,9 @@ div.maestros .tarjeta .btn2{
 
 /*p52*/
 
-.titulomesa .tarjeta{
-    width:100%;
-}
+.titulomesa .tarjeta {width:100%;}
 
-.contenedortarjetas .blanco{
+.contenedortarjetas .blanco {
     background-color:#F0EDED;
     border: solid 0.5vw #c6c6c6;
 }
@@ -1025,13 +855,11 @@ div.maestros .tarjeta .btn2{
     border: solid 0.5vw #b6abee;
 }
 
-.btn2morado{
-     background-image: url("../imgs/iconoequis.png")
-}
+.btn2morado {background-image: url("../imgs/iconoequis.png")}
 
 /* p41 */
 
-.regSup .btns{
+.regSup .btns {
     position:relative;
     display:flex;
     flex-direction: row;
@@ -1042,12 +870,13 @@ div.maestros .tarjeta .btn2{
     top:15vw;
 }
 
-.editbtn{
+.editbtn {
     background-color: #b0b0b0;
     border: solid 0.5vw #595959;
     background-image: url("../imgs/llave.png")
 }
-.exitbtn{
+
+.exitbtn {
     background-color: #e22829;
     border: solid 0.5vw #8c0707;
     background-image: url("../imgs/salir.png");
@@ -1055,18 +884,18 @@ div.maestros .tarjeta .btn2{
 
 
 /* p63 */
-.podioliga .titulomesa{
+.podioliga .titulomesa {
     position: relative;
     top:20vw;
     font-size: 5vw;
 }
 
-.podioliga .blanco{
+.podioliga .blanco {
     background-color: #e7e7e7;
     width:80vw;
 }
 
-.blanco .btns .ligapokemon{
+.blanco .btns .ligapokemon {
     width: 15vw;
     height: 15vw;
     background-image: url("../imgs/ligapokemon.png");
@@ -1077,92 +906,17 @@ div.maestros .tarjeta .btn2{
 
 /*p63*/
 
-
-
-
-/*implementación mejorada*/
-.test .encabezado1test{
-    width:90%;
-    color:white;
-    margin:0 auto;
-    height:15vw;
-    /* background-color:red; */
-    background-color:#e22829;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap:5vw;
-}
-
-.test .horizontal h2{
-    color:white;
-    padding: 4vw;
-}
-
-.encabezado1test .logo-playpokemon{
-    width:8vw;
-    
-}
-
-.encabezado1test .horizontal{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/*Implementación original*/
-/*.encabezado1 {
-    background-color: #b10404;
-    justify-content: center;
-}
-
-.encabezado1 .encabezado1-iconos{
-    width:100%;
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-.encabezado1 .horizontal{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-img encabezado1 
-.encabezado1 .logo-playpokemon{
-    height: 5vw;
-}
-
-Titulo pag encabezado1 
-.encabezado1 h1{
-    text-transform: uppercase;
-    color:white;
-    padding: 5px;
-}
-
-usuario pag encabezado1 
-.encabezado1 h2{
-    font-size: italic;
-    color: white;
-    padding: 5px;
-}
-*/
-
-
-
 /* Maestros */
 
-div.panelMaestros{
-display: flex;
-flex-direction: column;
-gap: 1vh;
-justify-content: center;
-align-items: center;
+div.panelMaestros {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    justify-content: center;
+    align-items: center;
 }
 
-.barra-busqueda{
+.barra-busqueda {
     width: 80vw;
     padding: 1vh;
     outline: none;
@@ -1170,33 +924,31 @@ align-items: center;
     border: 1px solid grey;
 }
 
-.panelMaestros{
+.panelMaestros {
     background-color: #e7e7e7;
     padding: 3vh;
     border-radius: 32px;
 }
 
-.panelMaestros .enlace{
+.panelMaestros .enlace {
     width: 80vw;
     height: 6vh;
     display: flex;
     align-items: center;
 }
-.panelMaestros .enlace a{
+
+.panelMaestros .enlace a {
     
     text-decoration: none;
     background-color: #e3282a;
     padding: 1vw 1.5vw;
     border-radius: 20px;
     color: white;
-   
-
 }
-
 
 /* Perfil (info-usuario)*/
 
-.perfil{
+.perfil {
     display: flex;
     flex-direction: column;
     background-color: black;
@@ -1204,57 +956,54 @@ align-items: center;
     position: relative;
 }
 
-.usuarioSup{
+.usuarioSup {
     height: 30vh;
     background-color: #e3282a;
 }
 
-.img-perfil img{
-width: 100%;
-}
-.img-perfil{
+.img-perfil img {width: 100%;}
+
+.img-perfil {
     width: 50vw;
     position: absolute;
     top: 20vh;
 }
 
-.img-logo-perfil img{
-    width: 100%;
-}
-.img-logo-perfil{
+.img-logo-perfil img {width: 100%;}
+
+.img-logo-perfil {
     position: absolute;
     top: 2vh;
     right: 5vw;
     width: 10vw;
 }
 
-.desplegable{
-    display:none;
+.desplegable:checked ~ div {display:block;}
+
+.cerrar:checked ~ div {display:none;} /*aun no funciona*/
+
+.desptorneo {
+    display:flex;
+    align-items:center;
+    flex-direction:row;
+    justify-content:center;
 }
 
-.despAnios, .despCalendario, .despTipo{
-    position:absolute;
-    top:10vw;
-    background-color:pink;
-    height:10vw;
-    width:auto;
+/*sin registro*/
+.botones .amarillo {
+    background-color:#f3d30c;
+    text-transform: uppercase;
+    font-weight:700;
+    border: .475vw #cac8bf solid;
+    width:40vw;
 }
 
-.despAnios{
-    margin-left:5vw;
-}
-.despCalendario{
-    margin-left:23.5vw;
-}
-
-.despTipo{
-    margin-left:40vw;
-}
-
-.desplegable:checked ~ div{
-    display:block;
-}
-
-.cerrar:checked ~ div{
-    display:none;
+.sin-partida {
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    color:#9ea1a3;
+    font-weight:600;
+    height:40vh;
+    text-align:center;
 }

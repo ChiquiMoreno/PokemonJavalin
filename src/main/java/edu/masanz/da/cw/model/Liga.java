@@ -3,31 +3,54 @@ package edu.masanz.da.cw.model;
 import java.util.*;
 
 public class Liga {
-    private int idLiga;
-    Map<Integer, Partida> liga;
+
+    Map<Integer, Partida> partidas;
     List<Jugador> jugadoresApuntados;
-    private int numPartidas;
-    private Date fecha;
+    Map<Integer, String> podio;
+    private int idLiga;
+    private String fecha;
     private String lugar;
     private String rondas;
     private String descripcion;
     private String tipo;
+    private int estado;
+    private String estadoStr;
 
-    public Liga(int id) {
-        liga = new HashMap<>();
+    private int numPartidas;
+    public static final int EN_CONSTRUCCION = -1;
+    public static final int INCIAR = 0;
+    public static final int EN_CURSO = 1;
+    public static final int FINALIZADO = 2;
+
+    public Liga(){
+        partidas = new HashMap<>();
+        jugadoresApuntados = new ArrayList<>();
+        numPartidas = 0;
+        estado = EN_CONSTRUCCION;
+    }
+
+    public Liga(int id, String tipo, String fecha, String lugar, String rondas, String descripcion, int estado) {
+        partidas = new HashMap<>();
         jugadoresApuntados = new ArrayList<>();
         numPartidas = 0;
         this.idLiga = id;
-    }
-
-    public void definirDatos(String tipo, Date fecha, String lugar, String rondas, String descripcion){
         this.tipo = tipo;
         this.fecha = fecha;
         this.lugar = lugar;
         this.rondas = rondas;
         this.descripcion = descripcion;
+        setEstado(estado);
     }
-
+/*
+    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, int estado){
+        this.tipo = tipo;
+        this.fecha = fecha;
+        this.lugar = lugar;
+        this.rondas = rondas;
+        this.descripcion = descripcion;
+        setEstado(estado);
+    }
+*/
     public boolean agregarJugador(Jugador jugador){
         if(jugadoresApuntados.size() > 20){
             return false;
@@ -39,12 +62,12 @@ public class Liga {
     // region getters and setters
 
 
-    public Map<Integer, Partida> getLiga() {
-        return liga;
+    public Map<Integer, Partida> getPartidas() {
+        return partidas;
     }
 
-    public void setLiga(Map<Integer, Partida> liga) {
-        this.liga = liga;
+    public void setPartidas(Map<Integer, Partida> partidas) {
+        this.partidas = partidas;
     }
 
     public void setIdLiga(int idLiga) {
@@ -82,14 +105,15 @@ public class Liga {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+        this.descripcion = "LO QUe Sea";
     }
 
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -117,6 +141,45 @@ public class Liga {
         this.descripcion = descripcion;
     }
 
+    public int getEstado() {
+        return estado;
+    }
+
+    @Override
+    public String toString() {
+        return "Liga{" +
+                "idLiga=" + idLiga +
+                ", fecha='" + fecha + '\'' +
+                ", lugar='" + lugar + '\'' +
+                ", rondas='" + rondas + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
+
     //endregion getters and setters
 
+    public Map<Integer, String> getPodio() {
+        return podio;
+    }
+
+    public void setPodio(Map<Integer, String> podio) {
+        this.podio = podio;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+        switch (estado){
+            case EN_CONSTRUCCION:
+                this.estadoStr = "EN CONSTRUCCIóN"; break;
+            case INCIAR:
+                this.estadoStr = "INICIAR"; break;
+            case EN_CURSO:
+                this.estadoStr = "EN CURSO"; break;
+            case FINALIZADO:
+                this.estadoStr = "FINALIZADO"; break;
+        }
+
+    }
 }

@@ -2,19 +2,21 @@ package edu.masanz.da.cw.model;
 
 public class Jugador {
 
-    private Usuario jugador;
     private int puntaje;
+    private int idLiga;
+    private String aliasJugador;
+
     private int ganadas;
     private int empates;
     private int perdidas;
 
-    public Jugador(Usuario jugador) {
+    public Jugador(Usuario usuario) {
         this.puntaje = 0;
-        this.jugador = jugador;
+        this.aliasJugador = usuario.getAlias();
     }
 
-    public String getAlias(){
-        return jugador.getAlias();
+    public String getAliasJugador(){
+        return aliasJugador;
     }
 
     public int getGanadas() {
@@ -41,18 +43,6 @@ public class Jugador {
         this.perdidas = perdidas;
     }
 
-    public String getNombreJugador(){
-        return jugador.getNombre();
-    }
-
-    public Usuario getJugador() {
-        return jugador;
-    }
-
-    public void setJugador(Usuario jugador) {
-        this.jugador = jugador;
-    }
-
     public int getPuntaje() {
         return puntaje;
     }
@@ -61,14 +51,15 @@ public class Jugador {
         this.puntaje = puntaje;
     }
 
-    public boolean sumarPuntaje(int puntajeNuevo) {
-        if (puntajeNuevo < 0) {
-            return false;
-        }
+    public void sumarPuntaje(int puntajeNuevo) {
         puntaje += puntajeNuevo;
-        return true;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "jugador=" + aliasJugador +
+                ", puntaje=" + puntaje +
+                '}';
+    }
 }

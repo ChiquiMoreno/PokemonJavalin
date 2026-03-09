@@ -4,18 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla 50</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="alinear">
 
-
 <header>
 <#include "/templates/inc/header_nombre_apellidos.ftl"/>
-   <#-- <div class="encabezado2">
-        <div class="texto">Aitor Amigot</div>
-        <img class="imagen" src="imgs/logo2.png" alt="logo" />
-    </div>-->
 </header>
 
 <div class="contenedortarjetas">
@@ -57,16 +52,5 @@
 
 </div>
 <#include "/templates/inc/navbar.ftl"/>
-    <#--<footer class="navbar">
-            <a href="/">
-                <img src="imgs/salirRojo.png" alt="cerrar-sesion">
-            </a>
-            <a href="/torneos">
-                <img src="imgs/pokeballred.png" alt="pokeballred">
-            </a>
-            <a href="/maestros">
-                <img src="imgs/persona.png" alt="persona">
-            </a>
-    </footer>-->
 </body>
 </html>

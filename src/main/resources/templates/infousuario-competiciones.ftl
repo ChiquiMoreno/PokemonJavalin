@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla 41</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="perfil">
@@ -26,13 +26,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
 </div>
 
 <div class="botones">
@@ -40,24 +33,12 @@
 </div>
 
 <div class="img-perfil">
-    <img src="imgs/fotoperfil1.png" alt="">
+    <img src="/imgs/fotoperfil1.png" alt="">
 </div>
 <div class="img-logo-perfil">
-    <img src="imgs/logo2.png" alt="">
+    <img src="/imgs/logo2.png" alt="">
 </div>
 
 <#include "/templates/inc/navbar.ftl"/>
-   <#--<footer class="navbar">
-                <a href="/">
-                    <img src="imgs/salirRojo.png" alt="cerrar-sesion">
-                </a>
-                <a href="/torneos">
-                    <img src="imgs/pokeballred.png" alt="pokeballred">
-                </a>
-                <a href="/maestros">
-                    <img src="imgs/persona.png" alt="persona">
-                </a>
-        </footer>-->
-
 </body>
 </html>

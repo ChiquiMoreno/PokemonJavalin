@@ -66,49 +66,42 @@
                         </select>
                     </div>
                 </div>
-
-                <button class="boton-anadir" type="button">
-                    <img src="imgs/iconomas.png" alt="Añadir torneo">
-                </button>
-
+                <form action="/logueado/crearliga" method="get">
+                    <#--  <button class="boton-anadir" type="submit">  -->
+                     <button type="submit">
+                        <!--<img src="imgs/iconomas.png" alt="Añadir torneo">-->
+                        Añadir torneo
+                    </button>
+                </form>
             </div>
 
             <div class="lista-torneos">
-
-                <div class="tarjeta-torneo">
-                        <h3>Amistoso</h3>
-                        <span class="tarjeta-torneo-estado iniciar">iniciar</span>
-                    <div class="tarjeta-torneo-detalle">
-                        <p>0/07/2026</p>
-                        <p>Comics Pamplona</p>
-                        <p>Ganador:</p>
+                <#list listaLigas as liga>
+                    <div class="tarjeta-torneo">
+                            <h3>${liga.tipo}</h3>
+                            <span class="tarjeta-torneo-estado iniciar">${liga.estado}</span>
+                        <div class="tarjeta-torneo-detalle">
+                            <p>${liga.fecha}</p>
+                            <p>${liga.lugar}</p>
+                            <p>Ganador:</p>
+                        </div>
+                        <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
+                        <div class="tarjeta-torneo-acciones">
+                            <button type="button" class="button-agregar">
+                                <img src="imgs/persona.png" alt="Participantes">
+                            </button>
+                            <button type="button" class="button-eliminar">
+                                <img src="imgs/papelera.png" alt="Eliminar">
+                            </button>
+                        </div>
                     </div>
-                    <a class="tarjeta-torneo-link" href="/torneos">Más información</a>
-                    <div class="tarjeta-torneo-acciones">
-                        <button type="button" class="button-agregar">
-                            <img src="imgs/persona.png" alt="Participantes">
-                        </button>
-                        <button type="button" class="button-eliminar">
-                            <img src="imgs/papelera.png" alt="Eliminar">
-                        </button>
-                    </div>
-                </div>
+                </#list>
 
             </div>
         </section>
 
 <#include "/templates/inc/navbar.ftl"/>
-  <#--  <footer class="navbar">
-            <a href="/">
-                <img src="imgs/salirRojo.png" alt="cerrar-sesion">
-            </a>
-            <a href="/torneos">
-                <img src="imgs/pokeballred.png" alt="pokeballred">
-            </a>
-            <a href="/maestros">
-                <img src="imgs/persona.png" alt="persona">
-            </a>
-    </footer>-->
+
 
     </main>
 </body>

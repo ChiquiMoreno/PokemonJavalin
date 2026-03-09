@@ -5,28 +5,24 @@ import java.util.List;
 
 public class Mesa {
 
-    private final int CANT_JUGADORES = 2;
-    ArrayList<Jugador> jugadoresMesa;
     private String ganadorMesa;
     private boolean empate;
+    private Jugador jugadorA;
+    private Jugador jugadorB;
 
     public Mesa() {
-        this.jugadoresMesa = new ArrayList<Jugador>();
+
     }
 
-    public boolean agregarJugador (Jugador jugador){
-        if(jugadoresMesa.size() >= 2 || jugador == null){
-            return false;
+    public boolean asignarGanador(String alias) {
+        if(alias.equalsIgnoreCase(jugadorA.getAliasJugador())){
+            ganadorMesa = jugadorA.getAliasJugador();
+            return true;
+        } else if (alias.equalsIgnoreCase(jugadorB.getAliasJugador())) {
+            ganadorMesa = jugadorB.getAliasJugador();
+            return true;
         }
-        jugadoresMesa.add(jugador);
-        return true;
-    }
-
-    public void asignarGanador(Jugador jugador) {
-        if (jugador != null) {
-            ganadorMesa = jugador.getNombreJugador();
-            empate = false;
-        }
+        else {return false;}
     }
 
     public int consultarPuntaje(Jugador jugador){
@@ -36,13 +32,7 @@ public class Mesa {
         return jugador.getPuntaje();
     }
 
-    public List<Jugador> getJugadoresMesa() {
-        return jugadoresMesa;
-    }
-
-    public void setJugadoresMesa(List<Jugador> jugadoresMesa) {
-        this.jugadoresMesa = (ArrayList<Jugador>) jugadoresMesa;
-    }
+    //region getters and setters
 
     public String getGanadorMesa() {
         return ganadorMesa;
@@ -61,17 +51,22 @@ public class Mesa {
     }
 
     public Jugador getJugadorA() {
-        if (jugadoresMesa == null || jugadoresMesa.isEmpty()) {
-            return null;
-        }
-        return jugadoresMesa.get(0);
+        return jugadorA;
     }
 
     public Jugador getJugadorB() {
-        if (jugadoresMesa == null || jugadoresMesa.size() < 2) {
-            return null;
-        }
-        return jugadoresMesa.get(1);
+        return jugadorB;
     }
 
+    public void setJugadorB(Jugador jugadorB) {
+        this.jugadorB = jugadorB;
+    }
+
+    public void setJugadorA(Jugador jugadorA) {
+        this.jugadorA = jugadorA;
+    }
+
+    public String getAliasJugadorA(){return jugadorA.getAliasJugador();}
+
+    public String getAliasJugadorB(){return jugadorB.getAliasJugador();}
 }

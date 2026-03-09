@@ -13,10 +13,9 @@ public class AuthController {
 
     public static void login(Context ctx) {
         ctx.render("/templates/index.ftl");
+
     }
-//    public static void maestros(Context ctx) {
-//        ctx.render("/templates/maestros.ftl");
-//    }
+
 
     public static void procesarLogin(Context ctx) {
 

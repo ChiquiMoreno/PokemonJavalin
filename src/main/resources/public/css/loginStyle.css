@@ -2,13 +2,10 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
-   
 }
 
-body.login{
+body.login {
     background-color: #046fb1 ;  
-    margin: 0;
-    padding: 0; 
     display: flex;
     flex-direction: column;
     justify-content: space-between ;
@@ -18,21 +15,18 @@ body.login{
     position: relative;
 }
 
-.contenedor{
+.contenedor {
     height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-img{
-    width: 100%;
-}
+img{width: 100%;}
 
-div.imgLogin{
-    width: 60%;
-}
-.loginPanel{
+div.imgLogin{width: 60%;}
+
+.loginPanel {
     height: 50vh;
     width: 100vw;
     display: flex;
@@ -41,7 +35,8 @@ div.imgLogin{
     border-radius: 30px 30px 0 0;
     background-color: #F0EDED;
 }
-.contenedorImg{
+
+.contenedorImg {
     height: 50vh;
     width: 100vw;
     display: flex;
@@ -49,7 +44,7 @@ div.imgLogin{
     align-items: center;
 }
 
-.loginPanel form{
+.loginPanel form {
     width: 100%;
     height: 100%;
     display: flex;
@@ -58,7 +53,7 @@ div.imgLogin{
     justify-content: space-evenly;
 }
 
-.loginPanel form input{
+.loginPanel form input {
     border-radius: 30px;
     outline: none;
     border: 1px solid gray;
@@ -66,22 +61,20 @@ div.imgLogin{
     padding: 2vh;
 }
 
-.loginPanel form input[type="submit"]{
+.loginPanel form input[type="submit"] {
     background-color: #e3282a;
     color: white;
     width: 40vw;
     border: none;
 }
 
-
-a{
+a {
     width: 80%;
     text-align: end;
     color: #e3282a;
 }
 
-
-.error{
+.error {
     position: absolute;
     width: 80vw;
     height: 15vh;
@@ -95,12 +88,13 @@ a{
     justify-content: space-between;
     padding: 2vh;
 }
-.error p{
+
+.error p {
     text-align: center;
     color: #962B2B;
-
 }
-.error img{
+
+.error img {
     width: 6vh;
     height: auto;
     margin: 0;

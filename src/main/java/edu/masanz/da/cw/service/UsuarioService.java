@@ -6,8 +6,8 @@ import edu.masanz.da.cw.model.Usuario;
 public class UsuarioService {
     private UsuarioDaoDb dao = new UsuarioDaoDb();
 
-    public static void crearUsuario(String alias, String password, String nombre, String apellido) {
-//        dao.crearUsuario(alias, password,nombre,apellido);
+    public void crearUsuario(String alias, String password, String nombre, String apellido) {
+        dao.crearUsuario(alias, password,nombre,apellido);
     }
 //    private Map<String, Usuario> usuarios = Map.of(
 
