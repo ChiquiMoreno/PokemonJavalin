@@ -1,6 +1,7 @@
 package edu.masanz.da.cw.dao;
 
 import edu.masanz.da.cw.db.ConnectionManager;
+import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Liga;
 import edu.masanz.da.cw.model.Usuario;
 import io.javalin.http.Context;
@@ -80,7 +81,15 @@ public class LigaDaoDb {
         liga.setIdLiga((int) ConnectionManager.ejecutarInsertSQL(sql, params));
     }
 
+    public static List<Jugador> obtenerJugadoresLiga(int idliga){
+        //TODO: implementar
+        List<Jugador> jugadores = new ArrayList<>();
 
+        String sql = "select * from jugadores where idLiga = ?;";
+        Object[] params = {idliga};
+        ConnectionManager.ejecutarSelectSQL(sql,params);
+        return jugadores;
+    }
 
     public static void updateEstadoLiga(int id){
         if(LigaDaoDb.getEstadoEnCurso() == 0){

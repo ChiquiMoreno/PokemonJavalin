@@ -79,12 +79,10 @@ public class LigaLogicService {
     }
 
 
-    public void runLiga(List<Jugador> jugadoresApuntados){
-        Liga liga = new Liga();
-        for (int i = 0; i < jugadoresApuntados.size(); i++) {
-            liga.agregarJugador(jugadoresApuntados.get(i));
-
-        }
+    public void runLiga(int idliga){
+        //TODO: hacer update pasar liga en curso
+        List<Jugador> jugadoresApuntados = LigaDaoDb.obtenerJugadoresLiga(idliga);
+        //iniciarPartida(jugadoresApuntados)
     }
 
 //    //region Pruebas
@@ -154,18 +152,10 @@ public class LigaLogicService {
         return podio;
     }
 
-    private Map<Integer, Usuario> productos = Map.of(
-            //TODO
-    );
-
     public void cambiarEstadoLiga(Liga liga){
         if(liga.getEstado() > 2){
             LigaDaoDb.updateEstadoLiga(liga.getIdLiga());
         }
         System.out.println("La liga excede");
-    }
-
-    public Collection<Usuario> listarUsuarios() {
-        return productos.values();
     }
 }
