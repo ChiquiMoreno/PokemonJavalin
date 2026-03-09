@@ -6,10 +6,7 @@ import edu.masanz.da.cw.model.Usuario;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LigaDaoDb {
 
@@ -19,9 +16,17 @@ public class LigaDaoDb {
 
     }
 
+    public Liga getLiga(int id){
+        String sql ="select * from liga where id = ?";
+        Object[] params = {id};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        Liga liga = new Liga();
+        return liga;
+    }
+
     public ArrayList<Liga> getAllLigas() {
         List<Liga> listaLigas = new ArrayList<>();
-        String sql ="select * from liga";
+        String sql ="select * from liga order by estado;";
         Object[] params = new Object[0];
         Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
         for (int i = 0; i < resultado.length ; i++) {
@@ -32,8 +37,9 @@ public class LigaDaoDb {
             String descripcion = (String) resultado[i][4];
             String tipo = (String) resultado[i][5];
             int estado = (int) resultado[i][6];
-            Liga liga = new Liga(id, tipo,fecha,lugar,rondas,descripcion, estado);
-            //liga.definirDatos(tipo,fecha,lugar,rondas,descripcion, estado);
+//            getLiga(id).setEstado(estado);
+            String estadoStr = (String) getLiga(id).getEstadoStr();
+            Liga liga = new Liga(id,tipo,fecha,lugar,rondas,descripcion, estado, estadoStr);
             listaLigas.add(liga);
         }
         System.out.println(listaLigas.toString());
@@ -54,12 +60,6 @@ public class LigaDaoDb {
         return 0;
     }
 
-    // TODO
-    public Liga getLiga(int idLiga) {
-        Liga liga = new Liga();
-        return liga;
-    }
-
     public Collection<Usuario> listarUsuariosAJugadores() {
         return usuarios.values();
     }
@@ -77,8 +77,28 @@ public class LigaDaoDb {
                 liga.getFecha(),
                 liga.getDescripcion(),
                 liga.getTipo()};
-        liga.setIdLiga((int)ConnectionManager.ejecutarInsertSQL(sql, params));
+        liga.setIdLiga((int) ConnectionManager.ejecutarInsertSQL(sql, params));
     }
+
+
+
+    public static void updateEstadoLiga(int id){
+        if(LigaDaoDb.getEstadoEnCurso() == 0){
+            String sql = "update liga set estado = estado + 1 where = ?;";
+            Object[] params = {id};
+            ConnectionManager.ejecutarSelectSQL(sql,params);
+        }
+    }
+
+    public static int getEstadoEnCurso(){
+        String sql = "select count(*) from liga where estado = ?;";
+        Object[] params = {1};
+        ConnectionManager.ejecutarSelectSQL(sql,params);
+        Object resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        return (int) resultado;
+    }
+
+
 
 
 }

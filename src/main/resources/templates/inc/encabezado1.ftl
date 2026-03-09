@@ -6,6 +6,6 @@
                 </div>
                  <div class="horizontal">
                 <h2>${nombreApellido}</h2>
-                <img src="imgs/pikachu.png" alt="pikachu" class="encabezado1-pikachu">
+                <img src="/imgs/pikachu.png" alt="pikachu" class="encabezado1-pikachu">
             </div>
         </div>

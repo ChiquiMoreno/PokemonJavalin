@@ -1,5 +1,5 @@
 <footer class="navbar">
-    <a href="/">
+    <a href="./sin-partida">
         <img src="/imgs/copa.png" alt="cerrar-sesion">
     </a>
     <a href="./torneos">

@@ -66,35 +66,69 @@
                         </select>
                     </div>
                 </div>
+
                 <form action="/logueado/crearliga" method="get">
-                    <#--  <button class="boton-anadir" type="submit">  -->
-                     <button type="submit">
-                        <!--<img src="imgs/iconomas.png" alt="Añadir torneo">-->
-                        Añadir torneo
+                    <button class="boton-anadir" type="submit">
+                        <img src="/imgs/iconomas.png" alt="Añadir torneo">
                     </button>
                 </form>
+
             </div>
+
+            <#-- mostrar primero los torneos en curso, luego los que no han iniciado y por último los finalizados -->
+            <div class="lista-torneos">
+                <#list listaLigas as liga>
+                    <#if liga.estado == 1>               
+                            <div class="tarjeta-torneo">
+                                    <h3>${liga.tipo}</h3>
+                                    <span class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</span>
+                                <div class="tarjeta-torneo-detalle">
+                                    <p>${liga.fecha}</p>
+                                    <p>${liga.lugar}</p>
+                                </div>
+                                <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
+                                <div class="tarjeta-torneo-acciones">
+                                        <#--  ya no se pueden agregar participantes a los torneos, por lo que se ha comentado el botón de agregar -->
+                                        <#--  <button type="button" class="button-agregar">
+                                            <img src="/imgs/persona.png" alt="Participantes">
+                                        </button>  -->
+                                    <button type="button" class="button-eliminar">
+                                        <img src="/imgs/papelera.png" alt="Eliminar">
+                                    </button>
+                                </div>
+                            </div>
+                        </#if>
+
+                </#list>
 
             <div class="lista-torneos">
                 <#list listaLigas as liga>
-                    <div class="tarjeta-torneo">
-                            <h3>${liga.tipo}</h3>
-                            <span class="tarjeta-torneo-estado iniciar">${liga.estado}</span>
-                        <div class="tarjeta-torneo-detalle">
-                            <p>${liga.fecha}</p>
-                            <p>${liga.lugar}</p>
-                            <p>Ganador:</p>
-                        </div>
-                        <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
-                        <div class="tarjeta-torneo-acciones">
-                            <button type="button" class="button-agregar">
-                                <img src="imgs/persona.png" alt="Participantes">
-                            </button>
-                            <button type="button" class="button-eliminar">
-                                <img src="imgs/papelera.png" alt="Eliminar">
-                            </button>
-                        </div>
-                    </div>
+                    <#if liga.estado == 0 || liga.estado == 2>
+
+                            <div class="tarjeta-torneo">
+                                    <h3>${liga.tipo}</h3>
+                                    <#if liga.estado == 0>
+                                    <span class="tarjeta-torneo-estado iniciar">${liga.estadoStr}</span>
+                                    <#else>
+                                    <span class="tarjeta-torneo-estado finalizado">${liga.estadoStr}</span>
+                                    </#if>
+
+                                <div class="tarjeta-torneo-detalle">
+                                    <p>${liga.fecha}</p>
+                                    <p>${liga.lugar}</p>
+                                </div>
+                                <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
+                                <div class="tarjeta-torneo-acciones">
+                                        <#--  ya no se pueden agregar participantes a los torneos, por lo que se ha comentado el botón de agregar -->
+                                        <#--  <button type="button" class="button-agregar">
+                                            <img src="/imgs/persona.png" alt="Participantes">
+                                        </button>  -->
+                                    <button type="button" class="button-eliminar">
+                                        <img src="/imgs/papelera.png" alt="Eliminar">
+                                    </button>
+                                </div>
+                            </div>
+                    </#if>
                 </#list>
 
             </div>

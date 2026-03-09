@@ -47,16 +47,19 @@ public class Main {
 
         app.get("/logueado/torneos", LigaController::torneos);
         app.get("/logueado/torneos{idLiga}", LigaController::mostrarTorneo);
+        app.get("logueado/editar-perfil", UsuarioController::mostrarEditarPerfil);
+        app.post("logueado/editar-perfil", UsuarioController::editarPerfil);
         app.get("/logueado/maestros", UsuarioController::maestros);
         app.get("/logueado/crearliga", LigaController::servirCrearLiga);
         app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
         app.get("/logueado/perfil", UsuarioController::perfil);
 
+        app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
+
+
+
         app.get("/registro", UsuarioController::mostrarRegistro);
         app.post("/registro", UsuarioController::registro);
-
-        app.get("/prueba", TestController::prueba);
-        app.post("/prueba1", TestController::otro);
 
 
 //        app.get("/add/{id}", CarritoController::agregarProducto);

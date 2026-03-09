@@ -1,5 +1,6 @@
 package edu.masanz.da.cw.controller;
 
+import edu.masanz.da.cw.db.ConnectionManager;
 import edu.masanz.da.cw.model.*;
 import edu.masanz.da.cw.service.*;
 import io.javalin.http.Context;
@@ -24,21 +25,21 @@ public class LigaController {
         Map<String,Object> model = new HashMap<>();
         model.put("nombreApellido", nombreApellido);
         model.put("listaLigas", ligaLogicService.getAllLigas());
+
         ctx.render("/templates/torneos.ftl", model);
     }
 
     public static void procesarLiga(Context ctx) {
-        int idLiga;
-//        LigaLogicService.comprobarCantidadLiga(idLiga);
+        int idLiga = 0;
+        LigaLogicService.comprobarCantidadLiga(idLiga);
 
     }
 
     public static void servirCrearLiga(@NotNull Context ctx) {
-        //TODO: Pasar nombre OJO Meter el nombre en el contexto
         ctx.render("/templates/crearliga.ftl");
     }
-    public static void nuevaLiga(@NotNull Context ctx) {
 
+    public static void nuevaLiga(@NotNull Context ctx) {
         //TODO: Crear la liga en bbdd
         //Construir la liga con lo que viene
         Liga nuevaLiga = new Liga();
@@ -80,5 +81,11 @@ public class LigaController {
         String idLiga = ctx.sessionAttribute("idLiga");
         return idLiga != null ? idLiga : "";
     }
+
+    public static void mostrarSinPartida(@NotNull Context ctx) {
+        ctx.render("/templates/sin-partida.ftl");
+    }
+
+
 
 }

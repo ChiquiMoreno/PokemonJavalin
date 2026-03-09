@@ -3,6 +3,7 @@ package edu.masanz.da.cw.controller;
 import edu.masanz.da.cw.model.Usuario;
 import edu.masanz.da.cw.service.UsuarioService;
 import io.javalin.http.Context;
+import io.javalin.http.Handler;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 
 public class UsuarioController {
+
 
     private static UsuarioService usuarioService = new UsuarioService();
 
@@ -66,5 +68,15 @@ public class UsuarioController {
         ctx.render("/templates/maestros.ftl",model);
 
 
+    }
+
+    public static void mostrarEditarPerfil(@NotNull Context context) { //TODO  mostrar editar perfil
+    String alias = context.sessionAttribute("alias");
+    Map<String,Object> model = new HashMap<>();
+
+
+    }
+
+    public static void editarPerfil(@NotNull Context context) {//TODO ditar perfil
     }
 }

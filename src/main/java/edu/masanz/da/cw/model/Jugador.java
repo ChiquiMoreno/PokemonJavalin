@@ -5,14 +5,17 @@ public class Jugador {
     private int puntaje;
     private int idLiga;
     private String aliasJugador;
+    private String nombreJugador;
 
     private int ganadas;
     private int empates;
     private int perdidas;
 
-    public Jugador(Usuario usuario) {
+    public Jugador(Usuario usuario, int idLiga ) {
         this.puntaje = 0;
         this.aliasJugador = usuario.getAlias();
+        this.nombreJugador = usuario.getNombre();
+        this.idLiga = idLiga;
     }
 
     public String getAliasJugador(){

@@ -13,7 +13,6 @@ public class AuthController {
 
     public static void login(Context ctx) {
         ctx.render("/templates/index.ftl");
-
     }
 
 

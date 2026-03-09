@@ -52,9 +52,10 @@
                 <option value="20" >20</option >
             </select></label>  -->
             <#--  <div class="btn-aplicar">Siguiente</div>  -->
-           
+                <div clases="botones">
                 <button class="btn-aplicar" type ="submit">Siguiente</button>
                 <div class="btn-cancelar">Cancelar</div>
+                </div>
   
         </form>             
     </div>
