@@ -20,9 +20,9 @@ public class LigaController {
         String alias = ctx.sessionAttribute("alias");
         Usuario usuario = usuarioService.getUsuarioByAlias(alias);
         String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
-//        List<Liga> listaLigas= ;
-
+        String titulo = "Torneos";
         Map<String,Object> model = new HashMap<>();
+        model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         model.put("listaLigas", ligaLogicService.getAllLigas());
 
@@ -61,21 +61,19 @@ public class LigaController {
     }
 
     public static void mostrarTorneo(@NotNull Context context) {
+        UsuarioService usuarioService = new UsuarioService();
+        System.out.println(context.pathParam("idLiga"));
         int idLiga = Integer.parseInt(context.pathParam("idLiga"));
         Map<String, Object> model = new HashMap<>();
-        Liga liga = LigaLogicService.getLiga(idLiga);
+        model.put("liga",LigaLogicService.getLiga(idLiga));
+        model.put("jugadores", UsuarioService.getJugadoresTorneo(idLiga));
+        Usuario usuario = usuarioService.getUsuarioByAlias(context.sessionAttribute("alias"));
+        String nombreApellido = usuario.getNombre()+ " "+ usuario.getApellido();
+        model.put("nombreApellido", nombreApellido);
+        context.render("templates/torneo.ftl",model);
     }
 
-    public static void listarUsuarios(Context ctx) {
-        String idLiga = obtenerLiga(ctx);
-        //TODO
-        ctx.render("/templates/inscripcion.ftl",
-                Map.of(
-                        "idLiga", idLiga,
-                        "usuarios", ligaLogicService.listarUsuarios()
-                )
-        );
-    }
+
 
     public static String obtenerLiga(Context ctx) {
         String idLiga = ctx.sessionAttribute("idLiga");

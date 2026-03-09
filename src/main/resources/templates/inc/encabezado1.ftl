@@ -1,5 +1,5 @@
   <div class="encabezado1">
-                <h1>Torneos</h1>
+                <h1>${titulo}</h1>
                 <img src="/imgs/logo2.png" alt="Insignia de torneo" class="logo-playpokemon">
 
 

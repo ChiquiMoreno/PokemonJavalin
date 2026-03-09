@@ -1,7 +1,12 @@
 package edu.masanz.da.cw.dao;
 
 import edu.masanz.da.cw.db.ConnectionManager;
+import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Usuario;
+import edu.masanz.da.cw.service.UsuarioService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDaoDb {
 
@@ -50,5 +55,35 @@ public class UsuarioDaoDb {
         Object[] params = {alias,password,nombre,apellido};
         ConnectionManager.ejecutarInsertSQL(sql,params);
 
+    }
+
+    public List<Jugador> getJugadoresTorneo(int idLiga) {
+        UsuarioService usuarioService = new UsuarioService();
+        String sql = "select aliasUsuario from jugador where idLiga = ?";
+        Object [] params = {idLiga};
+        Object [][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        List<Jugador> jugadores = new ArrayList<>();
+        for (int i = 0; i < resultado.length ; i++) {
+            Jugador jugador = new Jugador(usuarioService.getUsuarioByAlias((String) resultado[i][0]), idLiga);
+            jugadores.add(jugador);
+        }
+        return jugadores;
+    }
+
+    public List<Usuario> getAllUsuarios() {
+        String sql = "select * from usuario";
+        Object [] params = new Object[0];
+        Object [][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        List<Usuario> usuarios = new ArrayList<>();
+        for (int i = 0; i < resultado.length; i++) {
+            String alias = (String) resultado[i][0];
+            String passwd = (String) resultado[i][1];
+            String nombre = (String) resultado[i][2];
+            String apellido = (String) resultado[i][3];
+
+            Usuario usuario = new Usuario(alias,passwd,nombre,apellido);
+            usuarios.add(usuario);
+        }
+        return usuarios;
     }
 }

@@ -3,9 +3,7 @@ CREATE TABLE pokemon_db.usuario (
              passwd varchar(60) DEFAULT NULL,
              nombre varchar(60) DEFAULT NULL,
              apellido varchar(60) DEFAULT NULL,
-
              PRIMARY KEY (alias)
-
 );
 
 CREATE TABLE liga (
@@ -19,7 +17,6 @@ CREATE TABLE liga (
             PRIMARY KEY (id)
 );
 
-
 CREATE TABLE jugador (
 			puntaje int not null default 0,
             idLiga int not null,
@@ -29,4 +26,21 @@ CREATE TABLE jugador (
             CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id),
             CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias),
             PRIMARY KEY (idLiga,aliasUsuario)
+);
+
+create table if not exists mesa(
+	numMesa int primary key,
+	aliasJugadorA varchar(60),
+    aliasJugadorB varchar(60),
+    aliasGanador varchar(60),
+    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA) REFERENCES jugador(aliasUsuario),
+    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB) REFERENCES jugador(aliasUsuario),
+    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador) REFERENCES jugador(aliasUsuario)
+);
+
+create table if not exists Partida(
+	idPartida int,
+    numMesa int,
+    primary key(idPartida, numMesa),
+	CONSTRAINT fkPartidaMesa FOREIGN KEY (numMesa) REFERENCES mesa(numMesa)
 );

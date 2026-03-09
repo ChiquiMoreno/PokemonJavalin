@@ -17,17 +17,24 @@ public class LigaDaoDb {
 
     }
 
-    public Liga getLiga(int id){
-        String sql ="select * from liga where id = ?";
-        Object[] params = {id};
-        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
-        Liga liga = new Liga();
+    public Liga getLiga(int idLiga){
+        String sql = "select * from liga where id=?";
+
+        Object[] params = {idLiga};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
+        String lugar = (String) resultado[0][1];
+        String rondas = (String) resultado[0][2];
+        String fecha = (String) resultado[0][3];
+        String descripcion = (String) resultado[0][4];
+        String tipo = (String) resultado[0][5];
+        int estado = (int) resultado[0][6];
+        Liga liga = new Liga(idLiga, tipo, fecha, lugar, rondas, descripcion, estado);
         return liga;
     }
 
     public ArrayList<Liga> getAllLigas() {
         List<Liga> listaLigas = new ArrayList<>();
-        String sql ="select * from liga order by estado;";
+        String sql ="select * from liga";
         Object[] params = new Object[0];
         Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
         for (int i = 0; i < resultado.length ; i++) {
@@ -38,9 +45,7 @@ public class LigaDaoDb {
             String descripcion = (String) resultado[i][4];
             String tipo = (String) resultado[i][5];
             int estado = (int) resultado[i][6];
-//            getLiga(id).setEstado(estado);
-            String estadoStr = (String) getLiga(id).getEstadoStr();
-            Liga liga = new Liga(id,tipo,fecha,lugar,rondas,descripcion, estado, estadoStr);
+            Liga liga = new Liga(id,tipo,fecha,lugar,rondas,descripcion, estado);
             listaLigas.add(liga);
         }
         System.out.println(listaLigas.toString());
@@ -52,7 +57,7 @@ public class LigaDaoDb {
     }
 
     public static int cantidadJugadores(int idLiga){
-        String sql = "select count(*) from jugador where liga = ?;";
+        String sql = "select count(*) from jugador where idLiga = ?;";
 
         Object[] params = {idLiga};
 
@@ -106,8 +111,6 @@ public class LigaDaoDb {
         Object resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
         return (int) resultado;
     }
-
-
 
 
 }

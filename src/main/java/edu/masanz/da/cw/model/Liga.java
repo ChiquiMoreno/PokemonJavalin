@@ -30,7 +30,7 @@ public class Liga {
         estado = EN_CONSTRUCCION;
     }
 
-    public Liga(int id, String tipo, String fecha, String lugar, String rondas, String descripcion, int estado, String estadoStr) {
+    public Liga(int id, String tipo, String fecha, String lugar, String rondas, String descripcion, int estado) {
         partidas = new HashMap<>();
         jugadoresApuntados = new ArrayList<>();
         numPartidas = 0;

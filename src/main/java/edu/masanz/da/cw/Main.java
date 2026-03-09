@@ -46,13 +46,16 @@ public class Main {
         app.get("/logout", AuthController::logout);
 
         app.get("/logueado/torneos", LigaController::torneos);
-        app.get("/logueado/torneos{idLiga}", LigaController::mostrarTorneo);
+        app.get("/logueado/torneos/{idLiga}", LigaController::mostrarTorneo);
+
         app.get("logueado/editar-perfil", UsuarioController::mostrarEditarPerfil);
         app.post("logueado/editar-perfil", UsuarioController::editarPerfil);
         app.get("/logueado/maestros", UsuarioController::maestros);
+        app.get("/logueado/perfil", UsuarioController::perfil);
+
         app.get("/logueado/crearliga", LigaController::servirCrearLiga);
         app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
-        app.get("/logueado/perfil", UsuarioController::perfil);
+
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
 

@@ -26,6 +26,7 @@ public class LigaLogicService {
         LigaDaoDb.nuevaLiga(nuevaLiga);
     }
     // TODO
+
     public static Liga getLiga(int idLiga) {
         return  dao.getLiga(idLiga);
     }
@@ -147,7 +148,7 @@ public class LigaLogicService {
     public Map<Integer, String> crearPodio(List<Jugador> jugadoresOrdenados){
        Map<Integer, String> podio = new HashMap<>();
         for (int i = 0; i < jugadoresOrdenados.size() - 1; i++) {
-            podio.put(i,jugadoresOrdenados.get(i).getAliasJugador());
+            //podio.put(i, jugadoresOrdenados.get(i).getAliasJugador());
         }
         return podio;
     }

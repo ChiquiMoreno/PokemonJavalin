@@ -18,6 +18,26 @@ public class Jugador {
         this.idLiga = idLiga;
     }
 
+    public int getIdLiga() {
+        return idLiga;
+    }
+
+    public void setIdLiga(int idLiga) {
+        this.idLiga = idLiga;
+    }
+
+    public void setAliasJugador(String aliasJugador) {
+        this.aliasJugador = aliasJugador;
+    }
+
+    public String getNombreJugador() {
+        return nombreJugador;
+    }
+
+    public void setNombreJugador(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
+    }
+
     public String getAliasJugador(){
         return aliasJugador;
     }
