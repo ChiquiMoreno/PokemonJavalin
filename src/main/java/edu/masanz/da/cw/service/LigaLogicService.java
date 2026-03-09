@@ -26,6 +26,7 @@ public class LigaLogicService {
         LigaDaoDb.nuevaLiga(nuevaLiga);
     }
     // TODO
+
     public static Liga getLiga(int idLiga) {
         return  dao.getLiga(idLiga);
     }

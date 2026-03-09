@@ -48,6 +48,6 @@
     </div>
 
 
-    <#include "/templates/inc/navbar.ftl"/>
+    <#include "/templates/inc/navbarbtn1red.ftl"/>
 </body>
 </html>

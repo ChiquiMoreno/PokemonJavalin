@@ -51,19 +51,24 @@ public class UsuarioController {
     public static void perfil(@NotNull Context ctx) {
         String alias = ctx.sessionAttribute("alias");
         Map<String,Object> model = new HashMap<>();
+        String titulo = "Perfil";
         Usuario usuario = usuarioService.getUsuarioByAlias(alias);
         String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
+        model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         model.put("alias", alias);
-        ctx.render("/templates/maestros.ftl",model);
+        ctx.render("/templates/infousuario-competiciones.ftl",model);
     }
 
 
     public static void maestros(@NotNull Context ctx) {
         String alias = ctx.sessionAttribute("alias");
+        String titulo = "Maestros";
         Map<String,Object> model = new HashMap<>();
         Usuario usuario = usuarioService.getUsuarioByAlias(alias);
         String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
+        model.put("usuarios", usuarioService.getAllUsuarios());
+        model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         ctx.render("/templates/maestros.ftl",model);
 

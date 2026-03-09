@@ -941,6 +941,7 @@ div.panelMaestros {
     width: 50vw;
     position: absolute;
     top: 20vh;
+    left: 25vw;
 }
 
 .img-logo-perfil img {width: 100%;}
@@ -994,7 +995,7 @@ div.panelMaestros {
     align-content: center; 
     row-gap: 10vw;
     column-gap: 10vw;
-    bottom: 2vh;
+    bottom: -5vh;
     font-size:4vw;
 }
 

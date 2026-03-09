@@ -1,10 +1,18 @@
 package edu.masanz.da.cw.service;
 
 import edu.masanz.da.cw.dao.UsuarioDaoDb;
+import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Usuario;
 
+import java.util.List;
+
 public class UsuarioService {
-    private UsuarioDaoDb dao = new UsuarioDaoDb();
+    private static UsuarioDaoDb dao = new UsuarioDaoDb();
+
+    public static List<Jugador> getJugadoresTorneo(int idLiga) {
+        return dao.getJugadoresTorneo(idLiga);
+    }
+
 
     public void crearUsuario(String alias, String password, String nombre, String apellido) {
         dao.crearUsuario(alias, password,nombre,apellido);
@@ -21,4 +29,7 @@ public class UsuarioService {
     }
 
 
+    public List<Usuario> getAllUsuarios() {
+        return dao.getAllUsuarios();
+    }
 }
