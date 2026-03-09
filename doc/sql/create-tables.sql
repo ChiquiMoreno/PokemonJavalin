@@ -30,12 +30,13 @@ CREATE TABLE jugador (
 
 create table if not exists mesa(
 	numMesa int primary key,
+	idliga int not null,
 	aliasJugadorA varchar(60),
     aliasJugadorB varchar(60),
     aliasGanador varchar(60),
-    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA) REFERENCES jugador(aliasUsuario),
-    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB) REFERENCES jugador(aliasUsuario),
-    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador) REFERENCES jugador(aliasUsuario)
+    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA, idliga) REFERENCES jugador(aliasUsuario, idliga),
+    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB, idliga) REFERENCES jugador(aliasUsuario, idliga),
+    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador, idliga) REFERENCES jugador(aliasUsuario, idliga)
 );
 
 create table if not exists Partida(
