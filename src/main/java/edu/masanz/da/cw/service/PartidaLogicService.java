@@ -105,7 +105,7 @@ public class PartidaLogicService {
 
         Partida partida = new Partida();
 
-        jugadores.sort(partida.getMesaById());
+        //jugadores.sort(partida.getMesaById());
 
         return partida;
     }

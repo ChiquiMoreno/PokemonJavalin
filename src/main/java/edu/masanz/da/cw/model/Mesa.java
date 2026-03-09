@@ -5,12 +5,13 @@ import java.util.List;
 
 public class Mesa {
 
-    List<Jugador> jugadoresMesa;
+    private final int CANT_JUGADORES = 2;
+    ArrayList<Jugador> jugadoresMesa;
     private String ganadorMesa;
     private boolean empate;
 
     public Mesa() {
-        this.jugadoresMesa = new ArrayList<>();
+        this.jugadoresMesa = new ArrayList<Jugador>();
     }
 
     public boolean agregarJugador (Jugador jugador){
@@ -40,7 +41,7 @@ public class Mesa {
     }
 
     public void setJugadoresMesa(List<Jugador> jugadoresMesa) {
-        this.jugadoresMesa = jugadoresMesa;
+        this.jugadoresMesa = (ArrayList<Jugador>) jugadoresMesa;
     }
 
     public String getGanadorMesa() {

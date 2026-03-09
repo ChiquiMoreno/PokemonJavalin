@@ -53,6 +53,9 @@ public class Main {
         app.get("/registro", Controller::registro);
         app.post("/registro", UsuarioController::registro);
 
+        app.get("/prueba", TestController::prueba);
+        app.post("/prueba1", TestController::otro);
+
 
 //        app.get("/add/{id}", CarritoController::agregarProducto);
 //        app.get("/cart", CarritoController::verCarrito);
