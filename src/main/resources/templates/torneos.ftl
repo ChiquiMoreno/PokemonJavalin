@@ -108,7 +108,9 @@
                             <div class="tarjeta-torneo">
                                     <h3>${liga.tipo}</h3>
                                     <#if liga.estado == 0>
-                                    <span class="tarjeta-torneo-estado iniciar">${liga.estadoStr}</span>
+                                    <form action="./partidas/${liga.idLiga}" method="post">
+                                        <button type="submit" class="tarjeta-torneo-estado iniciar">${liga.estadoStr}</button>
+                                    </form>
                                     <#else>
                                     <span class="tarjeta-torneo-estado finalizado">${liga.estadoStr}</span>
                                     </#if>

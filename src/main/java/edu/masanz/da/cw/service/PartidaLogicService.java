@@ -124,8 +124,8 @@ public  class PartidaLogicService {
 
     // Verificado :)
     public List<Jugador> ordenarJugadores(List<Jugador> jugadores){
-        for (int i = 0; i < jugadores.size() -1; i++) {
-            for (int j = i + 1; j < jugadores.size() -1; j++) {
+        for (int i = 0; i < jugadores.size(); i++) {
+            for (int j = i + 1; j < jugadores.size(); j++) {
                 if(jugadores.get(i).getPuntaje() < jugadores.get(j).getPuntaje()){
                     Collections.swap(jugadores, i, j);
                 }
