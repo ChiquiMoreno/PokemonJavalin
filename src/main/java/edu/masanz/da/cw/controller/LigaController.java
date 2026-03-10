@@ -143,7 +143,10 @@ public class LigaController {
             return;
         }
 
-        for (int mesaId = 1; mesaId <= 10; mesaId++) {
+        List<String> ganadoresRonda = new ArrayList<>();
+        int totalMesas = estado.partida.getCantidadMesa();
+
+        for (int mesaId = 1; mesaId <= totalMesas; mesaId++) {
             Mesa mesa = estado.partida.getMesaById(mesaId);
             if (mesa == null) {
                 continue;
@@ -152,15 +155,19 @@ public class LigaController {
             mesa.setEmpate(false);
             if ("A".equalsIgnoreCase(resultadoMesa) && mesa.getJugadorA() != null) {
                 mesa.setGanadorMesa(mesa.getJugadorA().getAliasJugador());
+                ganadoresRonda.add(mesa.getJugadorA().getAliasJugador());
             } else if ("B".equalsIgnoreCase(resultadoMesa) && mesa.getJugadorB() != null) {
                 mesa.setGanadorMesa(mesa.getJugadorB().getAliasJugador());
+                ganadoresRonda.add(mesa.getJugadorB().getAliasJugador());
             } else {
                 mesa.setGanadorMesa(null);
                 mesa.setEmpate(true);
             }
         }
 
-        for (int mesaId = 1; mesaId <= 10; mesaId++) {
+        estado.partida.setGanadores(ganadoresRonda);
+
+        for (int mesaId = 1; mesaId <= totalMesas; mesaId++) {
             Mesa mesa = estado.partida.getMesaById(mesaId);
             if (mesa != null) {
                 partidaLogicService.calcularEnfrentamiento(mesa);
