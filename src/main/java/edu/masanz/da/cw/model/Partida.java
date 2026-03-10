@@ -8,6 +8,7 @@ public class Partida {
 
     Map<Integer, Mesa> partida;
     List<String> ganadores;
+    int cantidadMesa = partida.size();
 
     public Partida() {
         partida = new HashMap<>();
@@ -41,4 +42,11 @@ public class Partida {
         partida.get(mesa).setGanadorMesa(nombreJugador);
     }
 
+    public int getCantidadMesa() {
+        return cantidadMesa;
+    }
+
+    public void setCantidadMesa(int cantidadMesa) {
+        this.cantidadMesa = cantidadMesa;
+    }
 }

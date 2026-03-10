@@ -3,6 +3,7 @@ package edu.masanz.da.cw.service;
 import edu.masanz.da.cw.dao.LigaDaoDb;
 import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Liga;
+import edu.masanz.da.cw.model.Partida;
 import edu.masanz.da.cw.model.Usuario;
 
 import java.util.*;
@@ -168,8 +169,8 @@ public class LigaLogicService {
         return productos.values();
     }
 
-    public static int getNumMesa(){
-        return 0;
+    public static int getNumMesa(Partida partida){
+        return partida.getCantidadMesa();
     }
 
 
