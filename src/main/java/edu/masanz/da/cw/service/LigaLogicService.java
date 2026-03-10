@@ -148,10 +148,14 @@ public class LigaLogicService {
     public Map<Integer, String> crearPodio(List<Jugador> jugadoresOrdenados){
        Map<Integer, String> podio = new HashMap<>();
         for (int i = 0; i < jugadoresOrdenados.size() - 1; i++) {
-            //podio.put(i, jugadoresOrdenados.get(i).getAliasJugador());
+            podio.put(i,jugadoresOrdenados.get(i).getAliasJugador());
         }
         return podio;
     }
+
+    private Map<Integer, Usuario> productos = Map.of(
+            //TODO
+    );
 
     public void cambiarEstadoLiga(Liga liga){
         if(liga.getEstado() > 2){
@@ -159,4 +163,14 @@ public class LigaLogicService {
         }
         System.out.println("La liga excede");
     }
+
+    public Collection<Usuario> listarUsuarios() {
+        return productos.values();
+    }
+
+    public static int getNumMesa(){
+        return 0;
+    }
+
+
 }

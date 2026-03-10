@@ -3,7 +3,9 @@ CREATE TABLE pokemon_db.usuario (
              passwd varchar(60) DEFAULT NULL,
              nombre varchar(60) DEFAULT NULL,
              apellido varchar(60) DEFAULT NULL,
+
              PRIMARY KEY (alias)
+
 );
 
 CREATE TABLE liga (
@@ -16,6 +18,7 @@ CREATE TABLE liga (
             estado int default -1,
             PRIMARY KEY (id)
 );
+
 
 CREATE TABLE jugador (
 			puntaje int not null default 0,

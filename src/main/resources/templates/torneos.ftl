@@ -81,12 +81,12 @@
                     <#if liga.estado == 1>               
                             <div class="tarjeta-torneo">
                                     <h3>${liga.tipo}</h3>
-                                    <span class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</span>
+                                    <a href="/partida" class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</a>
                                 <div class="tarjeta-torneo-detalle">
                                     <p>${liga.fecha}</p>
                                     <p>${liga.lugar}</p>
                                 </div>
-                                <a class="tarjeta-torneo-link" href="./torneos/${liga.idLiga}">Más información</a>
+                                <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
                                 <div class="tarjeta-torneo-acciones">
                                         <#--  ya no se pueden agregar participantes a los torneos, por lo que se ha comentado el botón de agregar -->
                                         <#--  <button type="button" class="button-agregar">
@@ -117,7 +117,7 @@
                                     <p>${liga.fecha}</p>
                                     <p>${liga.lugar}</p>
                                 </div>
-                                <a class="tarjeta-torneo-link" href="./torneos/${liga.idLiga}">Más información</a>
+                                <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
                                 <div class="tarjeta-torneo-acciones">
                                         <#--  ya no se pueden agregar participantes a los torneos, por lo que se ha comentado el botón de agregar -->
                                         <#--  <button type="button" class="button-agregar">

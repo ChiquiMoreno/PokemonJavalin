@@ -134,4 +134,12 @@ public  class PartidaLogicService {
 
         return jugadores;
     }
+
+    public static void main(String[] args) {
+
+    }
+
+
+
+
 }

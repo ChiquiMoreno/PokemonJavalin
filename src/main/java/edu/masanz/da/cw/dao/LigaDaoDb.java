@@ -57,7 +57,7 @@ public class LigaDaoDb {
     }
 
     public static int cantidadJugadores(int idLiga){
-        String sql = "select count(*) from jugador where idLiga = ?;";
+        String sql = "select count(*) from jugador where liga = ?;";
 
         Object[] params = {idLiga};
 

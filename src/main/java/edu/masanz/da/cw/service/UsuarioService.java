@@ -32,4 +32,8 @@ public class UsuarioService {
     public List<Usuario> getAllUsuarios() {
         return dao.getAllUsuarios();
     }
+
+    public void editarPerfil(String nuevoNombre, String nuevoApellido, String alias) {
+        dao.editarUsuario(nuevoNombre,nuevoApellido,alias);
+    }
 }

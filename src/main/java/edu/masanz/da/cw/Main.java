@@ -58,7 +58,7 @@ public class Main {
 
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
-
+        app.get("/logueado/partidas", LigaController::mostrarPartida);
 
 
         app.get("/registro", UsuarioController::mostrarRegistro);

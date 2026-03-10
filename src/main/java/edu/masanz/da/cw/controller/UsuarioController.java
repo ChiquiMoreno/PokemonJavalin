@@ -76,12 +76,24 @@ public class UsuarioController {
     }
 
     public static void mostrarEditarPerfil(@NotNull Context context) { //TODO  mostrar editar perfil
-    String alias = context.sessionAttribute("alias");
-    Map<String,Object> model = new HashMap<>();
-
-
+    context.render("/templates/editarperfil.ftl");
     }
 
     public static void editarPerfil(@NotNull Context context) {//TODO ditar perfil
+        String alias = context.sessionAttribute("alias");
+        Map<String,Object> model = new HashMap<>();
+        String nuevoNombre= context.formParam("nombre");
+        String nuevoApellido= context.formParam("apellido");
+        String password= context.formParam("password");
+        String opcion = context.formParam("opcion");
+
+        if (usuarioService.autenticar(alias,password)!=null){
+            usuarioService.editarPerfil(nuevoNombre,nuevoApellido,alias);
+        }else {
+            String error = "error, contraseña invalida";
+            model.put("eror",error);
+            context.render("/templates/editarperfil.ftl",model);
+        }
+
     }
 }

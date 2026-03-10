@@ -60,14 +60,6 @@ public class Liga {
         return true;
     }
 
-    public String getEstadoStr() {
-        return estadoStr;
-    }
-
-    public void setEstadoStr(String estadoStr) {
-        this.estadoStr = estadoStr;
-    }
-
     // region getters and setters
 
 

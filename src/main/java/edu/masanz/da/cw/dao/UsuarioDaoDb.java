@@ -86,4 +86,10 @@ public class UsuarioDaoDb {
         }
         return usuarios;
     }
+
+    public void editarUsuario(String nuevoNombre, String nuevoApellido, String alias) {
+        String sql = "update usuario set nombre = ? and apellido = ? where alias = ?";
+        Object [] params = {nuevoNombre,nuevoApellido,alias};
+        ConnectionManager.ejecutarUpdateSQL(sql,params);
+    }
 }

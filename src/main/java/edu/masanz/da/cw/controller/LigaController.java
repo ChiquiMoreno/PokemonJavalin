@@ -85,5 +85,21 @@ public class LigaController {
     }
 
 
+    public static void mostrarPartida(@NotNull Context ctx) {
+        String alias = ctx.sessionAttribute("alias");
+        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
+        String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
+        Map<String,Object> model = new HashMap<>();
+        model.put("nombreApellido", nombreApellido);
+        ctx.render("/templates/partidas.ftl");
+    }
+
+    private static void cargarNombreUsuarioSesion(Context ctx, Map<String, Object> model) {
+        String alias = ctx.sessionAttribute("alias");
+        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
+        if (usuario != null) {
+            model.put("nombreApellido", usuario.getNombre() + " " + usuario.getApellido());
+        }
+    }
 
 }

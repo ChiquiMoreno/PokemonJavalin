@@ -1,0 +1,11 @@
+<footer class="navbar">
+    <a href="./sin-partida">
+        <img src="/imgs/copa.png" alt="torneos">
+    </a>
+    <a href="./torneos">
+        <img src="/imgs/pokeballred.png" alt="pokeballred">
+    </a>
+    <a href="./maestros">
+        <img src="/imgs/persona.png" alt="persona">
+    </a>
+</footer>

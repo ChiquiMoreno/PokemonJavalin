@@ -10,27 +10,42 @@
 <body class="alinear">
 
 <header>
-<#include "/templates/inc/header_nombre_apellidos.ftl"/>
+<#--  <#include "/templates/inc/header_nombre_apellidos.ftl"/>  -->
 </header>
 
 <div class="contenedortarjetas">
 
     <div class="flex-tituloliga">
         <div class="tituloliga">Partidas</div>
-        <div class="puntuacionpartida">1/5</div>
+        <div class="puntuacionpartida">${partidaActual}/${liga.numPartidas}</div>
     </div>
 
     <div class="envoltorio">
 
         <div class="titulomesa">
-            Mesa 1
+        <div class="titulomesa">Mesa </div>
+            
             <div class="tarjetasmesas">
                 <div class="tarjetamesa">
                     <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
                     <div class="btns">
                         <div class="botonmesa1"></div>
-                        <div class="botonmesa2"></div>
-                        <div class="botonmesa3"></div>
+                    </div>
+                </div>
+                <div class="tarjetamesa">
+                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
+                    <div class="btns">
+                        <div class="botonmesa1"></div>
+                    </div>
+                </div>
+            </div>
+            Mesa 1
+
+            <div class="tarjetasmesas">
+                <div class="tarjetamesa">
+                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
+                    <div class="btns">
+                        <div class="botonmesa1"></div>
                     </div>
                 </div>
                 <div class="tarjetamesa">
@@ -51,6 +66,6 @@
     </div>
 
 </div>
-<#include "/templates/inc/navbarbtn2red.ftl"/>
+<#include "/templates/inc/navbarbtn1red.ftl"/>
 </body>
 </html>
