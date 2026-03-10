@@ -8,10 +8,11 @@ public class Partida {
 
     Map<Integer, Mesa> partida;
     List<String> ganadores;
-    int cantidadMesa = partida.size();
+    int cantidadMesa;
 
     public Partida() {
         partida = new HashMap<>();
+        cantidadMesa = 0;
     }
 
     public Map<Integer, Mesa> getPartida() {
@@ -20,6 +21,7 @@ public class Partida {
 
     public void setPartida(Map<Integer, Mesa> partida) {
         this.partida = partida;
+        this.cantidadMesa = partida == null ? 0 : partida.size();
     }
 
     public Mesa getMesaById(int id) {
@@ -28,6 +30,7 @@ public class Partida {
 
     public void agregarMesa(int i, Mesa mesa){
         partida.put(i, mesa);
+        cantidadMesa = partida.size();
     }
 
     public List<String> getGanadores() {
