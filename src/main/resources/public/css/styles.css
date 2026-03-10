@@ -734,7 +734,8 @@ div.maestros .tarjeta .btns{
 
 .envoltorio {
     position: relative;
-    width: 95%;  
+    width: 95%;
+    margin: 3vw auto 0;
 }
 
 .tarjetasmesas {
@@ -756,6 +757,43 @@ div.maestros .tarjeta .btns{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.titulomesa {
+    margin: 3vw 0 1vw;
+    font-size: 4vw;
+}
+
+.selectable {
+    position: relative;
+    cursor: pointer;
+    padding: 3vw;
+}
+
+.winner-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.winner-crown {
+    width: 8.5vw;
+    height: 8.5vw;
+    border-radius: 50%;
+    background-color: #6631d7;
+    border: solid 0.5vw #361086;
+    background-image: url("../imgs/copagris.png");
+    background-size: 78%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.winner-radio:checked ~ .winner-crown {
+    background-image: url("../imgs/copamarilla.png");
+}
+
+.form-ronda .botones {
+    margin-top: 4vw;
 }
 
 .tarjetasmesas .morado {background-color: #c0baf2;}

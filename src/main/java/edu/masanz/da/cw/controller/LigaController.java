@@ -145,6 +145,23 @@ public class LigaController {
 
         for (int mesaId = 1; mesaId <= 10; mesaId++) {
             Mesa mesa = estado.partida.getMesaById(mesaId);
+            if (mesa == null) {
+                continue;
+            }
+            String resultadoMesa = ctx.formParam("resultadoMesa_" + mesaId);
+            mesa.setEmpate(false);
+            if ("A".equalsIgnoreCase(resultadoMesa) && mesa.getJugadorA() != null) {
+                mesa.setGanadorMesa(mesa.getJugadorA().getAliasJugador());
+            } else if ("B".equalsIgnoreCase(resultadoMesa) && mesa.getJugadorB() != null) {
+                mesa.setGanadorMesa(mesa.getJugadorB().getAliasJugador());
+            } else {
+                mesa.setGanadorMesa(null);
+                mesa.setEmpate(true);
+            }
+        }
+
+        for (int mesaId = 1; mesaId <= 10; mesaId++) {
+            Mesa mesa = estado.partida.getMesaById(mesaId);
             if (mesa != null) {
                 partidaLogicService.calcularEnfrentamiento(mesa);
             }
