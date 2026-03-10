@@ -21,48 +21,56 @@
     </div>
 
     <div class="envoltorio">
+        <#assign hayPartida = partida?? && partida.partida??>
 
-        <div class="titulomesa">
-        <div class="titulomesa">Mesa </div>
-            
-            <div class="tarjetasmesas">
-                <div class="tarjetamesa">
-                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
-                    <div class="btns">
-                        <div class="botonmesa1"></div>
-                    </div>
-                </div>
-                <div class="tarjetamesa">
-                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
-                    <div class="btns">
-                        <div class="botonmesa1"></div>
-                    </div>
-                </div>
-            </div>
-            Mesa 1
+        <#if hayPartida>
+            <#list 1..10 as mesaId>
+                <#assign mesa = partida.getMesaById(mesaId)>
+                <#if mesa??>
+                    <div class="titulomesa">
+                        Mesa ${mesaId}
+                        <div class="tarjetasmesas">
+                            <#assign jugadorA = mesa.jugadorA!>
+                            <#assign jugadorB = mesa.jugadorB!>
 
-            <div class="tarjetasmesas">
-                <div class="tarjetamesa">
-                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
-                    <div class="btns">
-                        <div class="botonmesa1"></div>
+                            <div class="tarjetamesa <#if mesa.ganadorMesa?? && jugadorA?? && mesa.ganadorMesa == jugadorA.aliasJugador>morado</#if>">
+                                <div class="txt">
+                                    ${(jugadorA.nombreJugador)!'-'}<br>
+                                    Alias: ${(jugadorA.aliasJugador)!'-'}<br><br>
+                                    Puntos: ${(jugadorA.puntaje)!0}
+                                </div>
+                            </div>
+
+                            <div class="tarjetamesa <#if mesa.ganadorMesa?? && jugadorB?? && mesa.ganadorMesa == jugadorB.aliasJugador>morado</#if>">
+                                <div class="txt">
+                                    ${(jugadorB.nombreJugador)!'-'}<br>
+                                    Alias: ${(jugadorB.aliasJugador)!'-'}<br><br>
+                                    Puntos: ${(jugadorB.puntaje)!0}
+                                </div>
+                            </div>
+                        </div>
+
+                        <form method="post" action="/logueado/partidas/${idLiga}/resultado" class="btns" style="margin-top:8px; display:flex; gap:8px;">
+                            <input type="hidden" name="mesaId" value="${mesaId}">
+                            <button type="submit" name="resultado" value="A" class="botonmesa1">Gana A</button>
+                            <button type="submit" name="resultado" value="E" class="botonmesa2">Empate</button>
+                            <button type="submit" name="resultado" value="B" class="botonmesa3">Gana B</button>
+                        </form>
                     </div>
-                </div>
-                <div class="tarjetamesa">
-                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
-                    <div class="btns">
-                        <div class="botonmesa1"></div>
-                        <div class="botonmesa2"></div>
-                        <div class="botonmesa3"></div>
-                    </div>
-                </div>
+                </#if>
+            </#list>
+        <#else>
+            <div class="titulomesa">
+                No hay partidas disponibles todavía.
             </div>
-        </div>
+        </#if>
 
     </div>
 
     <div class="botones">
-        <div class="btn-aplicar">Siguiente</div>
+        <form method="post" action="/logueado/partidas/${idLiga}/siguiente">
+            <button type="submit" class="btn-aplicar">Siguiente ronda</button>
+        </form>
     </div>
 
 </div>
