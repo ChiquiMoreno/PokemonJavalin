@@ -25,7 +25,8 @@
             <#assign hayPartida = partida?? && partida.partida??>
 
             <#if hayPartida>
-                <#list 1..10 as mesaId>
+            <#assign totalMesas = partida.partida?size>
+            <#list 1..totalMesas as mesaId>
                     <#assign mesa = partida.getMesaById(mesaId)>
                     <#if mesa??>
                         <#assign jugadorA = mesa.jugadorA!>
