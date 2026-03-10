@@ -16,7 +16,7 @@
 <div class="contenedortarjetas podioliga">
 
     <div class="titulomesa">
-        <i>USUARIO</i><br>Aitor Amigot<br><br><i>ID DEL JUGADOR</i><br>332575A<br><br><i>CAMPEONATOS</i><br><br>
+        <i>Nombre y apellido</i><br>${nombreApellido}<br><br><i>Alias</i><br>${alias}<br><br><i>CAMPEONATOS</i><br><br>
 
         <div class="tarjeta blanco">
 
@@ -39,6 +39,6 @@
     <img src="/imgs/logo2.png" alt="">
 </div>
 
-<#include "/templates/inc/navbar.ftl"/>
+<#include "/templates/inc/navbarbtn3red.ftl"/>
 </body>
 </html>

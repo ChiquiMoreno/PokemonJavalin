@@ -17,18 +17,20 @@
             <input type="text" placeholder="🔍 Buscar" class="barra-busqueda">
         </form>
         <div class="enlace"><a href="./perfil">Mi cuenta</a></div>
+        <#list usuarios as usuario>
         <div class="tarjeta">
             <div class="pic">
             <img src="/imgs/fotoperfil2.png" alt="fotoperfil"></img>
             </div>
-            <div class="txt">Álvaro Marturet<br> ID: 213121EF</div>
+            <div class="txt">${usuario.nombre} ${usuario.apellido}<br> ${usuario.alias}</div>
             <div class="btns">
                 <button class="btn1">···</button>
                 <button class="btn2"></button>
             </div>
         </div>
+        </#list>
     </div>
-<#include "/templates/inc/navbar.ftl"/>
+<#include "/templates/inc/navbarbtn3red.ftl"/>
 
 
 </body>

@@ -22,6 +22,7 @@ public class Liga {
     public static final int EN_CURSO = 1;
     public static final int FINALIZADO = 2;
 
+
     public Liga(){
         partidas = new HashMap<>();
         jugadoresApuntados = new ArrayList<>();
@@ -41,16 +42,16 @@ public class Liga {
         this.descripcion = descripcion;
         setEstado(estado);
     }
-/*
-    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, int estado){
-        this.tipo = tipo;
-        this.fecha = fecha;
-        this.lugar = lugar;
-        this.rondas = rondas;
-        this.descripcion = descripcion;
-        setEstado(estado);
-    }
-*/
+
+//    public void definirDatos(String tipo, String fecha, String lugar, String rondas, String descripcion, int estado){
+//        this.tipo = tipo;
+//        this.fecha = fecha;
+//        this.lugar = lugar;
+//        this.rondas = rondas;
+//        this.descripcion = descripcion;
+//        setEstado(estado);
+//    }
+
     public boolean agregarJugador(Jugador jugador){
         if(jugadoresApuntados.size() > 20){
             return false;
@@ -113,7 +114,6 @@ public class Liga {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-        this.descripcion = "LO QUe Sea";
     }
 
 
@@ -176,11 +176,19 @@ public class Liga {
         this.podio = podio;
     }
 
+    public String getEstadoStr() {
+        return estadoStr;
+    }
+
+    public void setEstadoStr(String estadoStr) {
+        this.estadoStr = estadoStr;
+    }
+
     public void setEstado(int estado) {
         this.estado = estado;
         switch (estado){
             case EN_CONSTRUCCION:
-                this.estadoStr = "EN CONSTRUCCIóN"; break;
+                this.estadoStr = "EN CONSTRUCCIÓN"; break;
             case INCIAR:
                 this.estadoStr = "INICIAR"; break;
             case EN_CURSO:

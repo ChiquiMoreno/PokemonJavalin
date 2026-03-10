@@ -1,5 +1,6 @@
 package edu.masanz.da.cw.controller;
 
+import edu.masanz.da.cw.db.ConnectionManager;
 import edu.masanz.da.cw.model.*;
 import edu.masanz.da.cw.service.*;
 import io.javalin.http.Context;
@@ -19,26 +20,26 @@ public class LigaController {
         String alias = ctx.sessionAttribute("alias");
         Usuario usuario = usuarioService.getUsuarioByAlias(alias);
         String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
-//        List<Liga> listaLigas= ;
-
+        String titulo = "Torneos";
         Map<String,Object> model = new HashMap<>();
+        model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         model.put("listaLigas", ligaLogicService.getAllLigas());
+
         ctx.render("/templates/torneos.ftl", model);
     }
 
     public static void procesarLiga(Context ctx) {
-        int idLiga;
-//        LigaLogicService.comprobarCantidadLiga(idLiga);
+        int idLiga = 0;
+        LigaLogicService.comprobarCantidadLiga(idLiga);
 
     }
 
     public static void servirCrearLiga(@NotNull Context ctx) {
-        //TODO: Pasar nombre OJO Meter el nombre en el contexto
         ctx.render("/templates/crearliga.ftl");
     }
-    public static void nuevaLiga(@NotNull Context ctx) {
 
+    public static void nuevaLiga(@NotNull Context ctx) {
         //TODO: Crear la liga en bbdd
         //Construir la liga con lo que viene
         Liga nuevaLiga = new Liga();
@@ -60,25 +61,29 @@ public class LigaController {
     }
 
     public static void mostrarTorneo(@NotNull Context context) {
+        UsuarioService usuarioService = new UsuarioService();
+        System.out.println(context.pathParam("idLiga"));
         int idLiga = Integer.parseInt(context.pathParam("idLiga"));
         Map<String, Object> model = new HashMap<>();
-        Liga liga = LigaLogicService.getLiga(idLiga);
+        model.put("liga",LigaLogicService.getLiga(idLiga));
+        model.put("jugadores", UsuarioService.getJugadoresTorneo(idLiga));
+        Usuario usuario = usuarioService.getUsuarioByAlias(context.sessionAttribute("alias"));
+        String nombreApellido = usuario.getNombre()+ " "+ usuario.getApellido();
+        model.put("nombreApellido", nombreApellido);
+        context.render("templates/torneo.ftl",model);
     }
 
-    public static void listarUsuarios(Context ctx) {
-        String idLiga = obtenerLiga(ctx);
-        //TODO
-        ctx.render("/templates/inscripcion.ftl",
-                Map.of(
-                        "idLiga", idLiga,
-                        "usuarios", ligaLogicService.listarUsuarios()
-                )
-        );
-    }
+
 
     public static String obtenerLiga(Context ctx) {
         String idLiga = ctx.sessionAttribute("idLiga");
         return idLiga != null ? idLiga : "";
     }
+
+    public static void mostrarSinPartida(@NotNull Context ctx) {
+        ctx.render("/templates/sin-partida.ftl");
+    }
+
+
 
 }

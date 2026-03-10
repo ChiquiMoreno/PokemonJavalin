@@ -16,16 +16,17 @@ public class LigaLogicService {
 
     private static LigaDaoDb dao = new LigaDaoDb();
 
+
     /**
-     * NOIasnmoansoansoansoajsioajss
+     * Nueva liga
      * @param nuevaLiga la nueva liga
      * @return id de la liga creada
      */
     public void nuevaLiga(Liga nuevaLiga){
         LigaDaoDb.nuevaLiga(nuevaLiga);
     }
-
     // TODO
+
     public static Liga getLiga(int idLiga) {
         return  dao.getLiga(idLiga);
     }
@@ -79,85 +80,83 @@ public class LigaLogicService {
     }
 
 
-    public void runLiga(int id, List<Jugador> jugadoresApuntados){
-        Liga liga = new Liga();
-        for (int i = 0; i < jugadoresApuntados.size(); i++) {
-            liga.agregarJugador(jugadoresApuntados.get(i));
-
-        }
+    public void runLiga(int idliga){
+        //TODO: hacer update pasar liga en curso
+        List<Jugador> jugadoresApuntados = LigaDaoDb.obtenerJugadoresLiga(idliga);
+        //iniciarPartida(jugadoresApuntados)
     }
 
-    //Pruebas
-    public static void main(String[] args) {
-        Liga liga = new Liga();
-        Usuario user1 = new Usuario();
-        Usuario user2 = new Usuario();
-        Usuario user3 = new Usuario();
-        Usuario user4 = new Usuario();
-        Usuario user5 = new Usuario();
-        Usuario user6 = new Usuario();
-        user1.setAlias("Paco");
-        user2.setAlias("Julian");
-        user3.setAlias("Urko");
-        user4.setAlias("Chiqui");
-        user5.setAlias("Andrés");
-        user6.setAlias("JJ");
-        System.out.println(user1.getAlias());
-        System.out.println(user2.getAlias());
-        System.out.println(user3.getAlias());
-        System.out.println(user4.getAlias());
-        System.out.println(user5.getAlias());
-        System.out.println(user6.getAlias());
-
-        System.out.println("-----------------------------");
-
-        Jugador jugador1 = new Jugador(user1);
-        Jugador jugador2 = new Jugador(user2);
-        Jugador jugador3 = new Jugador(user3);
-        Jugador jugador4 = new Jugador(user4);
-        Jugador jugador5 = new Jugador(user5);
-        Jugador jugador6 = new Jugador(user6);
-
-        liga.agregarJugador(jugador1);
-        liga.agregarJugador(jugador2);
-        liga.agregarJugador(jugador3);
-        liga.agregarJugador(jugador4);
-        liga.agregarJugador(jugador5);
-        liga.agregarJugador(jugador6);
-        System.out.println(liga.getJugadoresApuntados().size());
-
-        System.out.println(liga.getJugadoresApuntados().toString());
-        System.out.println("-----------------------------");
-
-        LigaLogicService logicaService = new LigaLogicService();
-
-        logicaService.calculoPartidas(liga);
-        System.out.println(liga.getNumPartidas());
-        int numPartidas = liga.getNumPartidas();
-        PartidaLogicService partidaService = new PartidaLogicService();
-        //inicio partida con el set que devuelve el liga get jugadores
-        System.out.println(liga.getJugadoresApuntados().toString());
-        System.out.println("-----------------------------");
-
-        partidaService.ordenarJugadores(liga.getJugadoresApuntados());
-        System.out.println(liga.getJugadoresApuntados().toString());
-
-
-    }
+//    //region Pruebas
+//    public static void main(String[] args) {
+//        Liga liga = new Liga();
+//        Usuario user1 = new Usuario();
+//        Usuario user2 = new Usuario();
+//        Usuario user3 = new Usuario();
+//        Usuario user4 = new Usuario();
+//        Usuario user5 = new Usuario();
+//        Usuario user6 = new Usuario();
+//        user1.setAlias("Paco");
+//        user2.setAlias("Julian");
+//        user3.setAlias("Urko");
+//        user4.setAlias("Chiqui");
+//        user5.setAlias("Andrés");
+//        user6.setAlias("JJ");
+//        System.out.println(user1.getAlias());
+//        System.out.println(user2.getAlias());
+//        System.out.println(user3.getAlias());
+//        System.out.println(user4.getAlias());
+//        System.out.println(user5.getAlias());
+//        System.out.println(user6.getAlias());
+//
+//        System.out.println("-----------------------------");
+//
+//        Jugador jugador1 = new Jugador(user1);
+//        Jugador jugador2 = new Jugador(user2);
+//        Jugador jugador3 = new Jugador(user3);
+//        Jugador jugador4 = new Jugador(user4);
+//        Jugador jugador5 = new Jugador(user5);
+//        Jugador jugador6 = new Jugador(user6);
+//
+//        liga.agregarJugador(jugador1);
+//        liga.agregarJugador(jugador2);
+//        liga.agregarJugador(jugador3);
+//        liga.agregarJugador(jugador4);
+//        liga.agregarJugador(jugador5);
+//        liga.agregarJugador(jugador6);
+//        System.out.println(liga.getJugadoresApuntados().size());
+//
+//        System.out.println(liga.getJugadoresApuntados().toString());
+//        System.out.println("-----------------------------");
+//
+//        LigaLogicService logicaService = new LigaLogicService();
+//
+//        logicaService.calculoPartidas(liga);
+//        System.out.println(liga.getNumPartidas());
+//        int numPartidas = liga.getNumPartidas();
+//        PartidaLogicService partidaService = new PartidaLogicService();
+//        //inicio partida con el set que devuelve el liga get jugadores
+//        System.out.println(liga.getJugadoresApuntados().toString());
+//        System.out.println("-----------------------------");
+//
+//        partidaService.ordenarJugadores(liga.getJugadoresApuntados());
+//        System.out.println(liga.getJugadoresApuntados().toString());
+//
+//
+//    }
+//    //endregion
 
     public Map<Integer, String> crearPodio(List<Jugador> jugadoresOrdenados){
        Map<Integer, String> podio = new HashMap<>();
         for (int i = 0; i < jugadoresOrdenados.size() - 1; i++) {
-            podio.put(i,jugadoresOrdenados.get(i).getAliasJugador());
+            //podio.put(i, jugadoresOrdenados.get(i).getAliasJugador());
         }
         return podio;
     }
 
-    private Map<Integer, Usuario> productos = Map.of(
-            //TODO
-    );
-
-    public Collection<Usuario> listarUsuarios() {
-        return productos.values();
+    public void cambiarEstadoLiga(Liga liga){
+        if(liga.getEstado() > 2){
+            LigaDaoDb.updateEstadoLiga(liga.getIdLiga());
+        }
+        System.out.println("La liga excede");
     }
 }
