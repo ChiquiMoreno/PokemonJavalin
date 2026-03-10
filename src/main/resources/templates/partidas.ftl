@@ -17,63 +17,68 @@
 
     <div class="flex-tituloliga">
         <div class="tituloliga">Partidas</div>
-        <div class="puntuacionpartida">${partidaActual}/${liga.numPartidas}</div>
+        <div class="puntuacionpartida">${numRondaActual}/${numRondasTotales}</div>
     </div>
 
-    <div class="envoltorio">
-        <#assign hayPartida = partida?? && partida.partida??>
+    <form method="post" action="/logueado/partidas/${idLiga}/siguiente" class="form-ronda">
+        <div class="envoltorio">
+            <#assign hayPartida = partida?? && partida.partida??>
 
-        <#if hayPartida>
-            <#list 1..10 as mesaId>
-                <#assign mesa = partida.getMesaById(mesaId)>
-                <#if mesa??>
-                    <div class="titulomesa">
-                        Mesa ${mesaId}
+            <#if hayPartida>
+                <#list 1..10 as mesaId>
+                    <#assign mesa = partida.getMesaById(mesaId)>
+                    <#if mesa??>
+                        <#assign jugadorA = mesa.jugadorA!>
+                        <#assign jugadorB = mesa.jugadorB!>
+                        <div class="titulomesa">Mesa ${mesaId}</div>
                         <div class="tarjetasmesas">
-                            <#assign jugadorA = mesa.jugadorA!>
-                            <#assign jugadorB = mesa.jugadorB!>
-
-                            <div class="tarjetamesa <#if mesa.ganadorMesa?? && jugadorA?? && mesa.ganadorMesa == jugadorA.aliasJugador>morado</#if>">
+                            <label class="tarjetamesa selectable <#if mesa.ganadorMesa?? && jugadorA?? && mesa.ganadorMesa == jugadorA.aliasJugador>morado</#if>">
+                                <input type="radio" name="resultadoMesa_${mesaId}" value="A" class="winner-radio" <#if mesa.ganadorMesa?? && jugadorA?? && mesa.ganadorMesa == jugadorA.aliasJugador>checked</#if>>
                                 <div class="txt">
                                     ${(jugadorA.nombreJugador)!'-'}<br>
-                                    Alias: ${(jugadorA.aliasJugador)!'-'}<br><br>
+                                    ${(jugadorA.apellidosJugador)!''}<br><br>
                                     Puntos: ${(jugadorA.puntaje)!0}
                                 </div>
-                            </div>
+                                <span class="winner-crown" aria-hidden="true"></span>
+                            </label>
 
-                            <div class="tarjetamesa <#if mesa.ganadorMesa?? && jugadorB?? && mesa.ganadorMesa == jugadorB.aliasJugador>morado</#if>">
+                            <label class="tarjetamesa selectable <#if mesa.ganadorMesa?? && jugadorB?? && mesa.ganadorMesa == jugadorB.aliasJugador>morado</#if>">
+                                <input type="radio" name="resultadoMesa_${mesaId}" value="B" class="winner-radio" <#if mesa.ganadorMesa?? && jugadorB?? && mesa.ganadorMesa == jugadorB.aliasJugador>checked</#if>>
                                 <div class="txt">
                                     ${(jugadorB.nombreJugador)!'-'}<br>
-                                    Alias: ${(jugadorB.aliasJugador)!'-'}<br><br>
+                                    ${(jugadorB.apellidosJugador)!''}<br><br>
                                     Puntos: ${(jugadorB.puntaje)!0}
                                 </div>
-                            </div>
+                                <span class="winner-crown" aria-hidden="true"></span>
+                            </label>
                         </div>
+                    </#if>
+                </#list>
+            <#else>
+                <div class="titulomesa">
+                    No hay partidas disponibles todavía.
+                </div>
+            </#if>
 
-                        <form method="post" action="/logueado/partidas/${idLiga}/resultado" class="btns" style="margin-top:8px; display:flex; gap:8px;">
-                            <input type="hidden" name="mesaId" value="${mesaId}">
-                            <button type="submit" name="resultado" value="A" class="botonmesa1">Gana A</button>
-                            <button type="submit" name="resultado" value="E" class="botonmesa2">Empate</button>
-                            <button type="submit" name="resultado" value="B" class="botonmesa3">Gana B</button>
-                        </form>
-                    </div>
-                </#if>
-            </#list>
-        <#else>
-            <div class="titulomesa">
-                No hay partidas disponibles todavía.
-            </div>
-        </#if>
+        </div>
 
-    </div>
-
-    <div class="botones">
-        <form method="post" action="/logueado/partidas/${idLiga}/siguiente">
+        <div class="botones">
             <button type="submit" class="btn-aplicar">Siguiente ronda</button>
-        </form>
-    </div>
+        </div>
+    </form>
 
 </div>
 <#include "/templates/inc/navbarbtn1red.ftl"/>
+
+<script>
+    document.querySelectorAll('.winner-radio').forEach((radio) => {
+        radio.addEventListener('change', () => {
+            const mesa = radio.name;
+            document.querySelectorAll('input[name="' + mesa + '"]').forEach((option) => {
+                option.closest('.tarjetamesa').classList.toggle('morado', option.checked);
+            });
+        });
+    });
+</script>
 </body>
 </html>
