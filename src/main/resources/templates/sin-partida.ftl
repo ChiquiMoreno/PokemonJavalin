@@ -21,7 +21,7 @@
                 <div class="campo">
                     No hay una liga en curso<br>¿Desea iniciar una liga?
                 
-                    <form action="/logueado/crearliga" method="get">
+                    <form action="/logueado/torneos" method="get">
                         <div class="botones">
                             <button class="btn-aplicar amarillo" type="submit">Iniciar</button>
                     </form>

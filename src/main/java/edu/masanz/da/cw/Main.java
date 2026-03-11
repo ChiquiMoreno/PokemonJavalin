@@ -58,6 +58,8 @@ public class Main {
 
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
+        app.get("/logueado/partida-en-curso", LigaController::redirigirPartidaEnCurso);
+        //app.get("/logueado/partidas", LigaController::mostrarPartida);
 
         app.get("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
         app.post("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);

@@ -32,6 +32,29 @@ public class LigaLogicService {
         return  dao.getLiga(idLiga);
     }
 
+
+    public static Optional<Integer> getLigaEnCursoId() {
+        return LigaDaoDb.getLigaEnCursoId();
+    }
+
+    public static boolean puedeIniciarLiga(int idLiga) {
+        return !LigaDaoDb.existeLigaEnCursoExcluyendo(idLiga);
+    }
+
+    public static boolean iniciarLiga(int idLiga) {
+        if (!puedeIniciarLiga(idLiga)) {
+            return false;
+        }
+        return LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.EN_CURSO);
+    }
+
+    public static boolean finalizarLiga(int idLiga) {
+        return LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.FINALIZADO);
+    }
+
+    public static void marcarLigaComoPendiente(int idLiga) {
+        LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.INCIAR);
+    }
     // TODO
     public static void comprobarCantidadLiga(int idLiga) {
 

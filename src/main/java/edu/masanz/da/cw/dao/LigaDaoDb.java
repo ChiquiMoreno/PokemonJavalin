@@ -86,6 +86,33 @@ public class LigaDaoDb {
         liga.setIdLiga((int) ConnectionManager.ejecutarInsertSQL(sql, params));
     }
 
+    public static Optional<Integer> getLigaEnCursoId() {
+        String sql = "select id from liga where estado = ? order by id asc limit 1;";
+        Object[] params = {Liga.EN_CURSO};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
+        if (resultado == null || resultado.length == 0) {
+            return Optional.empty();
+        }
+        return Optional.of((int) resultado[0][0]);
+    }
+
+    public static boolean existeLigaEnCursoExcluyendo(int idLiga) {
+        String sql = "select count(*) from liga where estado = ? and id <> ?;";
+        Object[] params = {Liga.EN_CURSO, idLiga};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
+        if (resultado == null || resultado.length == 0) {
+            return false;
+        }
+        return ((Number) resultado[0][0]).intValue() > 0;
+    }
+
+    public static boolean actualizarEstadoLiga(int idLiga, int nuevoEstado) {
+        String sql = "update liga set estado = ? where id = ?;";
+        Object[] params = {nuevoEstado, idLiga};
+        int filasAfectadas = ConnectionManager.ejecutarUpdateSQL(sql, params);
+        return filasAfectadas > 0;
+    }
+
     public static List<Jugador> obtenerJugadoresLiga(int idliga){
         //TODO: implementar
         List<Jugador> jugadores = new ArrayList<>();
@@ -97,19 +124,17 @@ public class LigaDaoDb {
     }
 
     public static void updateEstadoLiga(int id){
-        if(LigaDaoDb.getEstadoEnCurso() == 0){
-            String sql = "update liga set estado = estado + 1 where = ?;";
-            Object[] params = {id};
-            ConnectionManager.ejecutarSelectSQL(sql,params);
-        }
+        actualizarEstadoLiga(id, Liga.EN_CURSO);
     }
 
     public static int getEstadoEnCurso(){
         String sql = "select count(*) from liga where estado = ?;";
-        Object[] params = {1};
-        ConnectionManager.ejecutarSelectSQL(sql,params);
-        Object resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
-        return (int) resultado;
+        Object[] params = {Liga.EN_CURSO};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        if (resultado == null || resultado.length == 0) {
+            return 0;
+        }
+        return ((Number) resultado[0][0]).intValue();
     }
 
 
