@@ -10,6 +10,18 @@
     src: url("../fonts/flexo-regular.ttf");
 }
 
+.flexrow{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flexcolumn{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 body {
     background-color: #e3282a;
 }
@@ -22,9 +34,9 @@ body {
 
 /*configuracion de la navbar, separacion de la imagen...*/
 .navbar {
+    display: flex;
     position: fixed;
     bottom: 0vw;
-    display: flex;
     width: 100%;
     justify-content: space-evenly;
     border-top: red 3px solid; 
@@ -45,31 +57,26 @@ body {
     margin: 0 auto;
     height: 15vw;
     background-color: #e3282a;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
+}
+
+.horizontal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .horizontal h2 {color: white;}
 
-.encabezado1 .logo-playpokemon {width: 8vw;}
-
-.horizontal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Titulo pag encabezado1 */
-.encabezado1 h1 {
-    text-transform: uppercase;
-    color: white;
-    padding: 5px;
+.encabezado1 .logo-playpokemon {
+    width: 8vw;
+     right: 0;
+    position: absolute;
 }
 
 .encabezado1 .logo-playpokemon {
     right: 0;
+    top: 0;
     position: absolute;
 }
 
@@ -106,7 +113,9 @@ body {
     border-radius: 30px 30px 0px 0px;
     background-color: #f4f4f6;
     position: relative;
-    height: 70vh;
+    height: auto;
+    margin-bottom:50px;
+    margin-top: -9vw
 }
 
 .menutorneos {
@@ -116,14 +125,10 @@ body {
     justify-content: flex-start;
 }
 
-.desptorneo {
-    margin-left: 8px;
-}
+.desptorneo {margin-left: 8px;}
 
 /* ocultar boton checkbox */
-.desptorneo input {
-    display: none;
-}
+.desptorneo input {display: none;}
 
 /* botones menu torneos a cambiar */
 .desptorneo label {
@@ -237,7 +242,6 @@ body.reg {
     display: flex;
     flex-direction: column;
     background-color: black;
-    justify-content: center;
     align-content: space-between;
     gap: 3vh;
     position: relative;
@@ -299,20 +303,12 @@ body.reg {
     padding: 1vh;
     width: 80vw;
 }
-.reg_submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2vh;
-    gap: 10vw;
-    width: 80vw;
-    
-}
 
 .reg_submit input {
     border: none;
     outline: none;
     border-radius: 30px;
+    background-color:#9ea1a3;
     color: white;
     width: 30vw;
     padding: 3vw;
@@ -335,12 +331,12 @@ body.reg {
 }
 
 /* ERROR */
-.error {
+div.error {
     position: absolute;
     width: 80vw;
     height: 15vh;
     background-color: rgba(255, 255, 255, 0.7);
-    top: 8vh;
+    top: 27vh;
     left: 10vw;
     border-radius: 14px;
     display: flex;
@@ -350,13 +346,13 @@ body.reg {
     padding: 2vh;
 }
 /* error texto*/
-.error p {
+div.error p {
     text-align: center;
     color: #962B2B;
 
 }
 /* error imagen*/
-.error img {width: 6vh;}
+div.error img {width: 6vh;}
 
 /*p32*/
 .encabezado2{
@@ -377,7 +373,6 @@ body.reg {
     font-weight: 900;
 }
 
-/*header aitor amigot se puede reutilizar*/
 /* titulo con subrayado rojo*/
  .titulo {
     position: absolute;
@@ -392,20 +387,6 @@ body.reg {
     text-align: center;
 }
 
-/*intento de minificación*/
-.encabezado2, .maestrosapuntados, .tarjeta {
-    display: flex;
-    flex-direction: row;
-}
-
-.encabezado2, .maestrosapuntados, .botones , .tarjeta {
-    display:flex;
-    flex-direction:row;
-    align-items: center;
-}
-
-/*Configuracion contenedor tarjetas y botones dentro de la tarjeta*/
-
 
 /*Configuracion maestros apuntados*/
 .contenedortarjetas .maestrosapuntados {
@@ -416,10 +397,8 @@ body.reg {
     height:25vw;
 }
 
-/*Configuracion cosas para que no tengan scroll vertical*/
+/*Configuracion cosas para que no tengan scroll*/
 .maestrosapuntados, .btn1, .btn, .encabezado2, .tarjeta, .pic {overflow: hidden;}
-
-/*Configuración circulo maestros apuntados (6)*/
 
 /* Configuracion maestros apuntados boton + boton editar (...) y boton borrar*/
 .btn, .btn1, .btn2, .botoneditar, .btn2morado, .exitbtn, .editbtn{
@@ -435,18 +414,6 @@ body.reg {
     font-size: 6vw;
 }
 
-/*Contenedor botones Guardar/Cancelar*/
- .botones {
-    justify-content: space-evenly;
-    width:100%;
-    bottom: 2vh;
-}
-
-/*Configuracion boton guardar*/
-.botones .btn-aplicar {background-color: #e22829;}
-/*Configuración boton cancelar*/
- .botones .btn-cancelar {background-color: #b0b0b0;}
-
 /*Icono +*/
 .btn {
     background-color: #046fb1;
@@ -459,10 +426,10 @@ body.reg {
     border-radius: 7.5vw 7.5vw 0vw 0vw;
     top: 20vw;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #f0eded;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 10vh; 
@@ -568,7 +535,7 @@ body.reg {
 
 div.maestros .tarjeta {height: 13vh;}
 
-div.maestros .tarjeta .btns, .btn1, .btn2 {
+div.maestros .tarjeta .btns{
     height: 10vh;
     width: 5vh;
 }
@@ -749,7 +716,8 @@ div.maestros .tarjeta .btns, .btn1, .btn2 {
 
 .envoltorio {
     position: relative;
-    width: 95%;  
+    width: 95%;
+    margin: 3vw auto 0;
 }
 
 .tarjetasmesas {
@@ -771,6 +739,43 @@ div.maestros .tarjeta .btns, .btn1, .btn2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.titulomesa {
+    margin: 3vw 0 1vw;
+    font-size: 4vw;
+}
+
+.selectable {
+    position: relative;
+    cursor: pointer;
+    padding: 3vw;
+}
+
+.winner-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.winner-crown {
+    width: 8.5vw;
+    height: 8.5vw;
+    border-radius: 50%;
+    background-color: #6631d7;
+    border: solid 0.5vw #361086;
+    background-image: url("../imgs/copagris.png");
+    background-size: 78%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.winner-radio:checked ~ .winner-crown {
+    background-image: url("../imgs/copamarilla.png");
+}
+
+.form-ronda .botones {
+    margin-top: 4vw;
 }
 
 .tarjetasmesas .morado {background-color: #c0baf2;}
@@ -884,10 +889,15 @@ div.maestros .tarjeta .btns, .btn1, .btn2 {
 
 div.panelMaestros {
     display: flex;
+    position:relative;
     flex-direction: column;
     gap: 1vh;
     justify-content: center;
     align-items: center;
+    margin-top:-9vw;
+    background-color: #e7e7e7;
+    padding: 3vh;
+    border-radius: 32px;
 }
 
 .barra-busqueda {
@@ -898,12 +908,6 @@ div.panelMaestros {
     border: 1px solid grey;
 }
 
-.panelMaestros {
-    background-color: #e7e7e7;
-    padding: 3vh;
-    border-radius: 32px;
-}
-
 .panelMaestros .enlace {
     width: 80vw;
     height: 6vh;
@@ -912,7 +916,6 @@ div.panelMaestros {
 }
 
 .panelMaestros .enlace a {
-    
     text-decoration: none;
     background-color: #e3282a;
     padding: 1vw 1.5vw;
@@ -966,16 +969,6 @@ div.panelMaestros {
 
 /*sin registro*/
 
-.sin-partidabtns .amarillo {  /*boton iniciar en pantalla sin-partida */
-    position: absolute;
-    background-color: #f3d30c;
-    text-transform: uppercase;
-    font-weight: 600;
-    border: .475vw #cac8bf solid;
-    width: 40vw;
-    font-size: 4.5vw;
-}
-
 .sin-partida {
     display: flex;
     justify-content: center;
@@ -1011,13 +1004,14 @@ div.panelMaestros {
     border: none;
 }
 
-.btn-cancelar2 {background-color: #b0b0b0;}
+.btn-cancelar2 {
+    background-color: #b0b0b0;
+    grid-area: btn-cancelar2;
+}
 
 .btn-aplicar2 {grid-area: btn-aplicar2;}
 
 .btn-aplicar2:last-child {grid-column: 1 / 3;}
-
-.btn-cancelar2 {grid-area: btn-cancelar2;}
 
 .btn-aplicar3 {
     grid-area: btn-aplicar3;
@@ -1029,4 +1023,34 @@ div.panelMaestros {
     align-content: center;
     color: #e7e7e7;
     grid-column: 1 / 3; 
+    border:none;
+}
+
+.sin-partida{text-transform: uppercase;}
+
+a.editar {
+    text-decoration: none;
+    background-color: #e3282a;
+    width: 20vw;
+    padding: 4px 0;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+
+}
+
+.edit-profpic{
+    width: 40vw;
+    position: absolute;
+    top: 17vh;
+    left: 30vw;
+}
+.edit-profpic img{
+    width: 100%;
+}
+
+div.opciones-user{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6vh;
 }

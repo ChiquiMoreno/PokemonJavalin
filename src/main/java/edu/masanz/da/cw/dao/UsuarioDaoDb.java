@@ -86,4 +86,27 @@ public class UsuarioDaoDb {
         }
         return usuarios;
     }
+
+    public void editarUsuario(String nuevoNombre, String nuevoApellido, String alias) {
+        String sql = "update usuario set nombre = ?  where alias = ?";
+        Object [] params = {nuevoNombre,alias};
+        ConnectionManager.ejecutarUpdateSQL(sql,params);
+        String sql2 = "update usuario set apellido = ? where alias = ?";
+        params = new Object[]{nuevoApellido, alias};
+        ConnectionManager.ejecutarUpdateSQL(sql2,params);
+    }
+
+    public boolean usuarioEsAdmin(String alias) {
+        String sql = "select rol from usuario where alias= ?";
+        Object [] params = {alias};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        if ((int)(resultado[0][0])==0){return true;}
+        return false;
+    }
+
+    public void eliminarUsuario(String alias) {
+        String sql = "delete from usuario where alias = ?";
+        Object [] params = {alias};
+        ConnectionManager.ejecutarUpdateSQL(sql,params);
+    }
 }

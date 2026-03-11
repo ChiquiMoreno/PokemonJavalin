@@ -16,7 +16,14 @@
 <div class="contenedortarjetas podioliga">
 
     <div class="titulomesa">
-        <i>Nombre y apellido</i><br>${nombreApellido}<br><br><i>Alias</i><br>${alias}<br><br><i>CAMPEONATOS</i><br><br>
+
+        <i>Nombre y apellido</i><br>${nombreApellido}<br><br><i>Alias</i><br>${alias}<br><br>
+        <div class="opciones-user">
+            <a href="./editar-perfil" class="editar"> Editar</a>
+            <a href="/logout" class="editar"> Logout</a>
+        </div>
+
+        <i>CAMPEONATOS</i><br><br>
 
         <div class="tarjeta blanco">
 

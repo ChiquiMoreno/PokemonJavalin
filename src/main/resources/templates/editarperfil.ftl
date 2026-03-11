@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Modificar perfil</title>
 </head>
 <body class="reg">
@@ -14,10 +14,16 @@
         <div class="botoneditar"></div>
         </div>
     </div>
-    
+
+    <#if error??> <#-- si error existe mostrar el error-->
+        <div class="error">
+            <img src="/imgs/caratriste.png" alt="caratriste.png">
+            <p>Ups... la contraseña es incorrecta</p>
+        </div>
+        </#if>
     <div class="regPanel">
         
-        <form action="index.html">
+        <form action="./editar-perfil" method="post">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" required>
             <label for="apellido">Apellido</label>

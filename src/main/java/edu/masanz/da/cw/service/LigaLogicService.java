@@ -3,6 +3,7 @@ package edu.masanz.da.cw.service;
 import edu.masanz.da.cw.dao.LigaDaoDb;
 import edu.masanz.da.cw.model.Jugador;
 import edu.masanz.da.cw.model.Liga;
+import edu.masanz.da.cw.model.Partida;
 import edu.masanz.da.cw.model.Usuario;
 
 import java.util.*;
@@ -25,19 +26,49 @@ public class LigaLogicService {
     public void nuevaLiga(Liga nuevaLiga){
         LigaDaoDb.nuevaLiga(nuevaLiga);
     }
-    // TODO
 
     public static Liga getLiga(int idLiga) {
         return  dao.getLiga(idLiga);
     }
 
-    // TODO
-    public static void comprobarCantidadLiga(int idLiga) {
 
+    public static Optional<Integer> getLigaEnCursoId() {
+        return LigaDaoDb.getLigaEnCursoId();
+    }
+
+    public static boolean puedeIniciarLiga(int idLiga) {
+        return !LigaDaoDb.existeLigaEnCursoExcluyendo(idLiga);
+    }
+
+    public static boolean iniciarLiga(int idLiga) {
+        if (!puedeIniciarLiga(idLiga)) {
+            return false;
+        }
+        return LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.EN_CURSO);
+    }
+
+    public static boolean finalizarLiga(int idLiga) {
+        return LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.FINALIZADO);
+    }
+
+    public static void marcarLigaComoPendiente(int idLiga) {
+        LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.INCIAR);
     }
 
     public ArrayList<Liga> getAllLigas(){
-        return dao.getAllLigas();
+        return (ArrayList<Liga>) ordenarLigas(dao.getAllLigas());
+    }
+
+    public List<Liga> ordenarLigas(List<Liga> liga){
+        for (int i = 0; i < liga.size(); i++) {
+            for (int j = i + 1; j < liga.size(); j++) {
+                if(liga.get(i).getEstado() > liga.get(j).getEstado()){
+                    Collections.swap(liga, i, j);
+                }
+            }
+        }
+
+        return liga;
     }
 
     //Verificado :)
@@ -80,12 +111,12 @@ public class LigaLogicService {
     }
 
 
-    public void runLiga(List<Jugador> jugadoresApuntados){
-        Liga liga = new Liga();
-        for (int i = 0; i < jugadoresApuntados.size(); i++) {
-            liga.agregarJugador(jugadoresApuntados.get(i));
 
-        }
+    public void runLiga(int idliga) {
+        //TODO: hacer update pasar liga en curso
+        List<Jugador> jugadoresApuntados = LigaDaoDb.obtenerJugadoresLiga(idliga);
+        //iniciarPartida(jugadoresApuntados)
+
     }
 
 //    //region Pruebas
@@ -169,4 +200,13 @@ public class LigaLogicService {
     public Collection<Usuario> listarUsuarios() {
         return productos.values();
     }
+
+    public static int getNumMesa(Partida partida){
+        return partida.getCantidadMesa();
+    }
+
+    public void eliminarLiga(String liga) {
+        dao.eliminarLiga(liga);
+    }
+
 }
