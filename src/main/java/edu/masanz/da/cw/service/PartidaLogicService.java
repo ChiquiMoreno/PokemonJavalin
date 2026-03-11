@@ -79,9 +79,6 @@ public  class PartidaLogicService {
 
     }
 
-    public void runPartida(Partida partida){
-
-    }
 
     public void asignarJugadoresAMesa(Jugador jugadorA, Jugador jugadorB, Mesa mesa){
         if(jugadorA.getPuntaje() > jugadorB.getPuntaje()){
@@ -133,10 +130,6 @@ public  class PartidaLogicService {
         }
 
         return jugadores;
-    }
-
-    public static void main(String[] args) {
-
     }
 
 
