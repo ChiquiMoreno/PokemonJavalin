@@ -3,6 +3,7 @@ CREATE TABLE pokemon_db.usuario (
              passwd varchar(60) DEFAULT NULL,
              nombre varchar(60) DEFAULT NULL,
              apellido varchar(60) DEFAULT NULL,
+             rol int default 1,
 
              PRIMARY KEY (alias)
 

@@ -79,6 +79,9 @@ public  class PartidaLogicService {
 
     }
 
+    public void runPartida(Partida partida){
+
+    }
 
     public void asignarJugadoresAMesa(Jugador jugadorA, Jugador jugadorB, Mesa mesa){
         if(jugadorA.getPuntaje() > jugadorB.getPuntaje()){
@@ -121,8 +124,8 @@ public  class PartidaLogicService {
 
     // Verificado :)
     public List<Jugador> ordenarJugadores(List<Jugador> jugadores){
-        for (int i = 0; i < jugadores.size(); i++) {
-            for (int j = i + 1; j < jugadores.size(); j++) {
+        for (int i = 0; i < jugadores.size() -1; i++) {
+            for (int j = i + 1; j < jugadores.size() -1; j++) {
                 if(jugadores.get(i).getPuntaje() < jugadores.get(j).getPuntaje()){
                     Collections.swap(jugadores, i, j);
                 }
@@ -130,6 +133,10 @@ public  class PartidaLogicService {
         }
 
         return jugadores;
+    }
+
+    public static void main(String[] args) {
+
     }
 
 

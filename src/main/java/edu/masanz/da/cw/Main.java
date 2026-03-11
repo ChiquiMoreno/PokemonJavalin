@@ -38,7 +38,10 @@ public class Main {
 
     private static void setJavalinAppRoutes(Javalin app) {
 
-        //app.before("/logueado/*", UsuarioController::validateLogin);
+        app.before("/logueado/*", UsuarioController::validateLogin);
+        app.before("/logueado/adm/*", UsuarioController::validateAdmin);
+
+
 
 
         app.get("/", AuthController::login);
@@ -48,26 +51,31 @@ public class Main {
         app.get("/logueado/torneos", LigaController::torneos);
         app.get("/logueado/torneos/{idLiga}", LigaController::mostrarTorneo);
 
-        app.get("logueado/editar-perfil", UsuarioController::mostrarEditarPerfil);
-        app.post("logueado/editar-perfil", UsuarioController::editarPerfil);
+        app.get("/logueado/editar-perfil", UsuarioController::mostrarEditarPerfil);
+        app.post("/logueado/editar-perfil", UsuarioController::editarPerfil);
+        app.get("/logueado/eliminar-perfil/{alias}", UsuarioController::eliminarUsuario);
         app.get("/logueado/maestros", UsuarioController::maestros);
         app.get("/logueado/perfil", UsuarioController::perfil);
 
         app.get("/logueado/crearliga", LigaController::servirCrearLiga);
         app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
-
+        app.get("/logueado/eliminar-liga/{idLiga}", LigaController::eliminarLiga);
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
-        app.get("/logueado/partida-en-curso", LigaController::redirigirPartidaEnCurso);
-        //app.get("/logueado/partidas", LigaController::mostrarPartida);
+        app.get("/logueado/partidas", LigaController::mostrarPartida);
 
-        app.get("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
-        app.post("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
-        app.post("/logueado/partidas/{idLiga}/resultado", LigaController::guardarResultadoMesa);
-        app.post("/logueado/partidas/{idLiga}/siguiente", LigaController::siguienteRonda);
 
         app.get("/registro", UsuarioController::mostrarRegistro);
         app.post("/registro", UsuarioController::registro);
+
+
+//        app.get("/add/{id}", CarritoController::agregarProducto);
+//        app.get("/cart", CarritoController::verCarrito);
+//        app.get("/clear", CarritoController::vaciarCarrito);
+//
+//        app.get("/cart/increment/{id}", CarritoController::incrementarProducto);
+//        app.get("/cart/decrement/{id}", CarritoController::disminuirProducto);
+//        app.get("/cart/remove/{id}", CarritoController::eliminarProducto);
 
     }
 

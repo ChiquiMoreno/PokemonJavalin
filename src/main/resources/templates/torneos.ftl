@@ -81,12 +81,12 @@
                     <#if liga.estado == 1>               
                             <div class="tarjeta-torneo">
                                     <h3>${liga.tipo}</h3>
-                                    <a href="/logueado/partidas/${liga.idLiga}" class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</a>
+                                    <a href="/partida" class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</a>
                                 <div class="tarjeta-torneo-detalle">
                                     <p>${liga.fecha}</p>
                                     <p>${liga.lugar}</p>
                                 </div>
-                                <a class="tarjeta-torneo-link" href="/logueado/torneos/${liga.idLiga}">Más información</a>
+                                <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
                                 <div class="tarjeta-torneo-acciones">
                                         <#--  ya no se pueden agregar participantes a los torneos, por lo que se ha comentado el botón de agregar -->
                                         <#--  <button type="button" class="button-agregar">
@@ -108,12 +108,7 @@
                             <div class="tarjeta-torneo">
                                     <h3>${liga.tipo}</h3>
                                     <#if liga.estado == 0>
-                                    <form action="/logueado/partidas/${liga.idLiga}" method="post">
-                                        <button type="submit" class="tarjeta-torneo-estado iniciar" <#if ligaEnCursoId??>disabled</#if>>${liga.estadoStr}</button>
-                                    </form>
-                                    <#if ligaEnCursoId??>
-                                        <small>Ya hay una liga en curso.</small>
-                                    </#if>
+                                    <span class="tarjeta-torneo-estado iniciar">${liga.estadoStr}</span>
                                     <#else>
                                     <span class="tarjeta-torneo-estado finalizado">${liga.estadoStr}</span>
                                     </#if>
@@ -122,7 +117,7 @@
                                     <p>${liga.fecha}</p>
                                     <p>${liga.lugar}</p>
                                 </div>
-                                <a class="tarjeta-torneo-link" href="/logueado/torneos/${liga.idLiga}">Más información</a>
+                                <a class="tarjeta-torneo-link" href="/torneos/${liga.idLiga}">Más información</a>
                                 <div class="tarjeta-torneo-acciones">
                                         <#--  ya no se pueden agregar participantes a los torneos, por lo que se ha comentado el botón de agregar -->
                                         <#--  <button type="button" class="button-agregar">
