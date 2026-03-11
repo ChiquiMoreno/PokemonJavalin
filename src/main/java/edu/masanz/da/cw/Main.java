@@ -58,7 +58,6 @@ public class Main {
 
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
-        //app.get("/logueado/partidas", LigaController::mostrarPartida);
 
         app.get("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
         app.post("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
@@ -67,15 +66,6 @@ public class Main {
 
         app.get("/registro", UsuarioController::mostrarRegistro);
         app.post("/registro", UsuarioController::registro);
-
-
-//        app.get("/add/{id}", CarritoController::agregarProducto);
-//        app.get("/cart", CarritoController::verCarrito);
-//        app.get("/clear", CarritoController::vaciarCarrito);
-//
-//        app.get("/cart/increment/{id}", CarritoController::incrementarProducto);
-//        app.get("/cart/decrement/{id}", CarritoController::disminuirProducto);
-//        app.get("/cart/remove/{id}", CarritoController::eliminarProducto);
 
     }
 
