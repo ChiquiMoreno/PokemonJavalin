@@ -24,15 +24,9 @@ public class LigaController {
     }
 
     public static void torneos(@NotNull Context ctx) {
-        String alias = ctx.sessionAttribute("alias");
-        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
-        String nombreApellido = usuario.getNombre() + " " + usuario.getApellido();
-        String titulo = "Torneos";
-        Map<String, Object> model = new HashMap<>();
-        model.put("titulo", titulo);
-        model.put("nombreApellido", nombreApellido);
+        Map<String, Object> model = crearModeloBase(ctx);
+        model.put("titulo", "Torneos");
         model.put("listaLigas", ligaLogicService.getAllLigas());
-
         ctx.render("/templates/torneos.ftl", model);
     }
 
@@ -42,7 +36,8 @@ public class LigaController {
     }
 
     public static void servirCrearLiga(@NotNull Context ctx) {
-        ctx.render("/templates/crearliga.ftl");
+        Map<String, Object> model = crearModeloBase(ctx);
+        ctx.render("/templates/crearliga.ftl", model);
     }
 
     public static void nuevaLiga(@NotNull Context ctx) {
@@ -66,19 +61,16 @@ public class LigaController {
         nuevaLiga.setRondas(ctx.formParam("rondas"));
 
         ligaLogicService.nuevaLiga(nuevaLiga);
-        Map<String, Object> model = new HashMap<>();
+        Map<String, Object> model = crearModeloBase(ctx);
         model.put("liga", nuevaLiga);
         ctx.render("/templates/inscripcion.ftl", model);
     }
 
     public static void mostrarTorneo(@NotNull Context context) {
         int idLiga = Integer.parseInt(context.pathParam("idLiga"));
-        Map<String, Object> model = new HashMap<>();
+        Map<String, Object> model = crearModeloBase(context);
         model.put("liga", LigaLogicService.getLiga(idLiga));
         model.put("jugadores", UsuarioService.getJugadoresTorneo(idLiga));
-        Usuario usuario = usuarioService.getUsuarioByAlias(context.sessionAttribute("alias"));
-        String nombreApellido = usuario.getNombre() + " " + usuario.getApellido();
-        model.put("nombreApellido", nombreApellido);
         context.render("templates/infotorneo.ftl", model);
     }
 
@@ -88,7 +80,17 @@ public class LigaController {
     }
 
     public static void mostrarSinPartida(@NotNull Context ctx) {
-        ctx.render("/templates/sin-partida.ftl");
+        Map<String, Object> model = crearModeloBase(ctx);
+        ctx.render("/templates/sin-partida.ftl", model);
+    }
+
+    public static void redirigirPartidaEnCurso(@NotNull Context ctx) {
+        Optional<Integer> ligaEnCursoId = LigaLogicService.getLigaEnCursoId();
+        if (ligaEnCursoId.isPresent()) {
+            ctx.redirect("/logueado/partidas/" + ligaEnCursoId.get());
+            return;
+        }
+        ctx.redirect("/logueado/sin-partida");
     }
 
     public static void mostrarPartidas(@NotNull Context ctx) {
@@ -175,6 +177,8 @@ public class LigaController {
         }
 
         if (estado.rondaActual >= estado.rondasTotales) {
+            LigaLogicService.finalizarLiga(idLiga);
+            partidasPorLiga.remove(idLiga);
             ctx.redirect("/logueado/torneos/" + idLiga);
             return;
         }
@@ -187,8 +191,13 @@ public class LigaController {
     }
 
     private static EstadoPartida inicializarEstadoPartida(int idLiga) {
+        if (!LigaLogicService.iniciarLiga(idLiga)) {
+            return null;
+        }
+
         List<Jugador> jugadores = UsuarioService.getJugadoresTorneo(idLiga);
         if (jugadores == null || jugadores.size() < 2 || jugadores.size() % 2 == 1) {
+            LigaLogicService.marcarLigaComoPendiente(idLiga);
             return null;
         }
 
@@ -196,6 +205,7 @@ public class LigaController {
         liga.setJugadoresApuntados(jugadores);
         boolean ok = ligaLogicService.calculoPartidas(liga);
         if (!ok) {
+            LigaLogicService.marcarLigaComoPendiente(idLiga);
             return null;
         }
 
@@ -208,12 +218,16 @@ public class LigaController {
     }
 
     private static Map<String, Object> crearModeloPartida(Context ctx, EstadoPartida estado, int idLiga) {
-        Map<String, Object> model = new HashMap<>();
+        Map<String, Object> model = crearModeloBase(ctx);
         model.put("partida", estado.partida);
         model.put("numRondaActual", estado.rondaActual);
         model.put("numRondasTotales", estado.rondasTotales);
         model.put("idLiga", idLiga);
+        return model;
+    }
 
+    private static Map<String, Object> crearModeloBase(Context ctx) {
+        Map<String, Object> model = new HashMap<>();
         String alias = ctx.sessionAttribute("alias");
         if (alias != null) {
             Usuario usuario = usuarioService.getUsuarioByAlias(alias);
@@ -221,6 +235,7 @@ public class LigaController {
                 model.put("nombreApellido", usuario.getNombre() + " " + usuario.getApellido());
             }
         }
+        model.put("ligaEnCursoId", LigaLogicService.getLigaEnCursoId().orElse(null));
         return model;
     }
 }
