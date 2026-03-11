@@ -26,7 +26,6 @@ public class LigaLogicService {
     public void nuevaLiga(Liga nuevaLiga){
         LigaDaoDb.nuevaLiga(nuevaLiga);
     }
-    // TODO
 
     public static Liga getLiga(int idLiga) {
         return  dao.getLiga(idLiga);
@@ -55,13 +54,21 @@ public class LigaLogicService {
     public static void marcarLigaComoPendiente(int idLiga) {
         LigaDaoDb.actualizarEstadoLiga(idLiga, Liga.INCIAR);
     }
-    // TODO
-    public static void comprobarCantidadLiga(int idLiga) {
-
-    }
 
     public ArrayList<Liga> getAllLigas(){
-        return dao.getAllLigas();
+        return (ArrayList<Liga>) ordenarLigas(dao.getAllLigas());
+    }
+
+    public List<Liga> ordenarLigas(List<Liga> liga){
+        for (int i = 0; i < liga.size(); i++) {
+            for (int j = i + 1; j < liga.size(); j++) {
+                if(liga.get(i).getEstado() > liga.get(j).getEstado()){
+                    Collections.swap(liga, i, j);
+                }
+            }
+        }
+
+        return liga;
     }
 
     //Verificado :)

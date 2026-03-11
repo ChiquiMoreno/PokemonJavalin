@@ -115,7 +115,7 @@
                                         <small>Ya hay una liga en curso.</small>
                                     </#if>
                                     <#else>
-                                    <span class="tarjeta-torneo-estado finalizado">${liga.estadoStr}</span>
+                                    <a href="/logueado/torneos/${liga.idLiga}" class="tarjeta-torneo-estado finalizado">${liga.estadoStr}</a>
                                     </#if>
 
                                 <div class="tarjeta-torneo-detalle">

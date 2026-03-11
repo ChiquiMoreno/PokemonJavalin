@@ -30,11 +30,6 @@ public class LigaController {
         ctx.render("/templates/torneos.ftl", model);
     }
 
-    public static void procesarLiga(Context ctx) {
-        int idLiga = 0;
-        LigaLogicService.comprobarCantidadLiga(idLiga);
-    }
-
     public static void servirCrearLiga(@NotNull Context ctx) {
         Map<String, Object> model = crearModeloBase(ctx);
         ctx.render("/templates/crearliga.ftl", model);
