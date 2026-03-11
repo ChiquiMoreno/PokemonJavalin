@@ -75,8 +75,14 @@ public class LigaController {
     }
 
     public static void mostrarSinPartida(@NotNull Context ctx) {
-        Map<String, Object> model = crearModeloBase(ctx);
-        ctx.render("/templates/sin-partida.ftl", model);
+        String alias = ctx.sessionAttribute("alias");
+        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
+        String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
+        String titulo = "Liga activa";
+        Map<String,Object> model = new HashMap<>();
+        model.put("nombreApellido", nombreApellido);
+        model.put("titulo",titulo);
+        ctx.render("/templates/sin-partida.ftl",model);
     }
 
     public static void redirigirPartidaEnCurso(@NotNull Context ctx) {
@@ -232,5 +238,19 @@ public class LigaController {
         }
         model.put("ligaEnCursoId", LigaLogicService.getLigaEnCursoId().orElse(null));
         return model;
+    }
+
+    public static void eliminarLiga(@NotNull Context context) {//todo eliminar liga
+        String liga = context.pathParam("idLiga");
+        ligaLogicService.eliminarLiga(liga);
+        context.redirect("/logueado/torneos");
+    }
+
+    private static void cargarNombreUsuarioSesion(Context ctx, Map<String, Object> model) {
+        String alias = ctx.sessionAttribute("alias");
+        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
+        if (usuario != null) {
+            model.put("nombreApellido", usuario.getNombre() + " " + usuario.getApellido());
+        }
     }
 }

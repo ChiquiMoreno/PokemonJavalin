@@ -24,8 +24,13 @@
             </div>
             <div class="txt">${usuario.nombre} ${usuario.apellido}<br> ${usuario.alias}</div>
             <div class="btns">
-                <button class="btn1">···</button>
-                <button class="btn2"></button>
+                <form action="./perfil/${usuario.alias}">
+                    <button class="btn1" type="submit">···</button>
+                </form>
+                <form action="./eliminar-perfil/${usuario.alias}">
+                    <button class="btn2" href></button>
+                </form>
+                                
             </div>
         </div>
         </#list>

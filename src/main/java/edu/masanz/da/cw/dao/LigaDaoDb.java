@@ -138,4 +138,10 @@ public class LigaDaoDb {
     }
 
 
+    public void eliminarLiga(String liga) {
+        String sql = "delete from liga where id = ?";
+        Object[] params = {liga};
+        ConnectionManager.ejecutarUpdateSQL(sql,params);
+    }
+
 }

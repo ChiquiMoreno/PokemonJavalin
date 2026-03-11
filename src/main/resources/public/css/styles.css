@@ -10,6 +10,18 @@
     src: url("../fonts/flexo-regular.ttf");
 }
 
+.flexrow{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.flexcolumn{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 body {
     background-color: #e3282a;
 }
@@ -22,9 +34,9 @@ body {
 
 /*configuracion de la navbar, separacion de la imagen...*/
 .navbar {
+    display: flex;
     position: fixed;
     bottom: 0vw;
-    display: flex;
     width: 100%;
     justify-content: space-evenly;
     border-top: red 3px solid; 
@@ -45,31 +57,26 @@ body {
     margin: 0 auto;
     height: 15vw;
     background-color: #e3282a;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
+}
+
+.horizontal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .horizontal h2 {color: white;}
 
-.encabezado1 .logo-playpokemon {width: 8vw;}
-
-.horizontal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Titulo pag encabezado1 */
-.encabezado1 h1 {
-    text-transform: uppercase;
-    color: white;
-    padding: 5px;
+.encabezado1 .logo-playpokemon {
+    width: 8vw;
+     right: 0;
+    position: absolute;
 }
 
 .encabezado1 .logo-playpokemon {
     right: 0;
+    top: 0;
     position: absolute;
 }
 
@@ -235,7 +242,6 @@ body.reg {
     display: flex;
     flex-direction: column;
     background-color: black;
-    justify-content: center;
     align-content: space-between;
     gap: 3vh;
     position: relative;
@@ -298,20 +304,11 @@ body.reg {
     width: 80vw;
 }
 
-.reg_submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2vh;
-    gap: 10vw;
-    width: 80vw;
-    
-}
-
 .reg_submit input {
     border: none;
     outline: none;
     border-radius: 30px;
+    background-color:#9ea1a3;
     color: white;
     width: 30vw;
     padding: 3vw;
@@ -334,12 +331,12 @@ body.reg {
 }
 
 /* ERROR */
-.error {
+div.error {
     position: absolute;
     width: 80vw;
     height: 15vh;
     background-color: rgba(255, 255, 255, 0.7);
-    top: 8vh;
+    top: 27vh;
     left: 10vw;
     border-radius: 14px;
     display: flex;
@@ -349,13 +346,13 @@ body.reg {
     padding: 2vh;
 }
 /* error texto*/
-.error p {
+div.error p {
     text-align: center;
     color: #962B2B;
 
 }
 /* error imagen*/
-.error img {width: 6vh;}
+div.error img {width: 6vh;}
 
 /*p32*/
 .encabezado2{
@@ -376,7 +373,6 @@ body.reg {
     font-weight: 900;
 }
 
-/*header aitor amigot se puede reutilizar*/
 /* titulo con subrayado rojo*/
  .titulo {
     position: absolute;
@@ -390,20 +386,6 @@ body.reg {
     width: 100%;
     text-align: center;
 }
-
-/*intento de minificación*/
-.encabezado2, .maestrosapuntados, .tarjeta {
-    display: flex;
-    flex-direction: row;
-}
-
-.encabezado2, .maestrosapuntados, .botones , .tarjeta {
-    display:flex;
-    flex-direction:row;
-    align-items: center;
-}
-
-/*Configuracion contenedor tarjetas y botones dentro de la tarjeta*/
 
 
 /*Configuracion maestros apuntados*/
@@ -1045,3 +1027,30 @@ div.panelMaestros {
 }
 
 .sin-partida{text-transform: uppercase;}
+
+a.editar {
+    text-decoration: none;
+    background-color: #e3282a;
+    width: 20vw;
+    padding: 4px 0;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+
+}
+
+.edit-profpic{
+    width: 40vw;
+    position: absolute;
+    top: 17vh;
+    left: 30vw;
+}
+.edit-profpic img{
+    width: 100%;
+}
+
+div.opciones-user{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6vh;
+}

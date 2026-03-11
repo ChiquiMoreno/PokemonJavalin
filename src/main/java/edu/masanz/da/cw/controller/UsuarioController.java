@@ -3,7 +3,6 @@ package edu.masanz.da.cw.controller;
 import edu.masanz.da.cw.model.Usuario;
 import edu.masanz.da.cw.service.UsuarioService;
 import io.javalin.http.Context;
-import io.javalin.http.Handler;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -38,6 +37,7 @@ public class UsuarioController {
         if (alias == null){
             context.redirect("/");
             System.out.println("Validacion fallida");
+            System.out.println("Usuario no logueado");
         }
         System.out.println("Validado");
     }
@@ -76,7 +76,7 @@ public class UsuarioController {
     }
 
     public static void mostrarEditarPerfil(@NotNull Context context) { //TODO  mostrar editar perfil
-    context.render("/templates/editarperfil.ftl");
+        context.render("/templates/editarperfil.ftl");
     }
 
     public static void editarPerfil(@NotNull Context context) {//TODO ditar perfil
@@ -86,9 +86,10 @@ public class UsuarioController {
         String nuevoApellido= context.formParam("apellido");
         String password= context.formParam("password");
         String opcion = context.formParam("opcion");
-
+        if (!opcion.equalsIgnoreCase("Modificar")){context.redirect("./perfil");};
         if (usuarioService.autenticar(alias,password)!=null){
             usuarioService.editarPerfil(nuevoNombre,nuevoApellido,alias);
+            context.redirect("./perfil");
         }else {
             String error = "error, contraseña invalida";
             model.put("eror",error);
@@ -96,4 +97,20 @@ public class UsuarioController {
         }
 
     }
+
+    public static void eliminarUsuario(@NotNull Context context) {//todo eliminar usuario
+        String alias = context.pathParam("alias");
+        usuarioService.eliminarUsuario(alias);
+        context.redirect("/logueado/maestros");
+    }
+
+    public static void validateAdmin(@NotNull Context context) {
+
+        String alias = context.sessionAttribute("alias");
+
+        if (!usuarioService.usuarioEsAdmin(alias)){
+            context.redirect("/logueado/torneos");
+        }
+    }
 }
+

@@ -111,10 +111,12 @@ public class LigaLogicService {
     }
 
 
-    public void runLiga(int idliga){
+
+    public void runLiga(int idliga) {
         //TODO: hacer update pasar liga en curso
         List<Jugador> jugadoresApuntados = LigaDaoDb.obtenerJugadoresLiga(idliga);
         //iniciarPartida(jugadoresApuntados)
+
     }
 
 //    //region Pruebas
@@ -203,5 +205,8 @@ public class LigaLogicService {
         return partida.getCantidadMesa();
     }
 
+    public void eliminarLiga(String liga) {
+        dao.eliminarLiga(liga);
+    }
 
 }

@@ -36,14 +36,6 @@ div.imgLogin{width: 60%;}
     background-color: #F0EDED;
 }
 
-.contenedorImg {
-    height: 50vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .loginPanel form {
     width: 100%;
     height: 100%;
@@ -74,7 +66,8 @@ a {
     color: #e3282a;
 }
 
-.error {
+
+div.error {
     position: absolute;
     width: 80vw;
     height: 15vh;
@@ -89,11 +82,11 @@ a {
     padding: 2vh;
 }
 
-.error p {
+div.error p {
     text-align: center;
     color: #962B2B;
 }
-
+/* error imagen*/
 .error img {
     width: 6vh;
     height: auto;

@@ -36,4 +36,12 @@ public class UsuarioService {
     public void editarPerfil(String nuevoNombre, String nuevoApellido, String alias) {
         dao.editarUsuario(nuevoNombre,nuevoApellido,alias);
     }
+
+    public boolean usuarioEsAdmin(String alias) {
+        return dao.usuarioEsAdmin(alias);
+    }
+
+    public void eliminarUsuario(String alias) {
+        dao.eliminarUsuario(alias);
+    }
 }
