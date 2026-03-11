@@ -23,6 +23,18 @@ public class LigaController {
         private Partida partida;
     }
 
+    public static void inscripcionLiga(@NotNull Context ctx) {
+        String alias = ctx.sessionAttribute("alias");
+        String titulo = "Maestros";
+        Map<String,Object> model = new HashMap<>();
+        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
+        String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
+        model.put("usuarios", usuarioService.getAllUsuarios());
+        model.put("titulo", titulo);
+        model.put("nombreApellido", nombreApellido);
+        ctx.render("/templates/maestros.ftl",model);
+    }
+
     public static void torneos(@NotNull Context ctx) {
         Map<String, Object> model = crearModeloBase(ctx);
         model.put("titulo", "Torneos");

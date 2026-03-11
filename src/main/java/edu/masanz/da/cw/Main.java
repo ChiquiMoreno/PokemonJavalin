@@ -58,6 +58,7 @@ public class Main {
         app.get("/logueado/crearliga", LigaController::servirCrearLiga);
         app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
         app.get("/logueado/eliminar-liga/{idLiga}", LigaController::eliminarLiga);
+        app.get("/logueado/inscripcionliga", LigaController::inscripcionLiga);
 
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
