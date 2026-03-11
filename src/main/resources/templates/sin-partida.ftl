@@ -8,20 +8,13 @@
 </head>
 <body> 
     <header>
-        <div class="encabezado1">
-            <h1>Torneos</h1>
-            <img src="/imgs/logo2.png" alt="Insignia de torneo" class="logo-playpokemon">   
-        </div>
-        <div class="horizontal">
-            <h2>Aitor Amigot PROV</h2>
-            <img src="/imgs/pikachu.png" alt="pikachu" class="encabezado1-pikachu">
-        </div>
+        <#include "/templates/inc/encabezado1.ftl"/>
     </header>
             <div class="amonestacion-formulario sin-partida" action="" method="post">
                 <div class="campo">
                     No hay una liga en curso<br>¿Desea iniciar una liga?
                 
-                    <form action="/logueado/torneos" method="get">
+                    <form action="/logueado/crearliga" method="get">
                         <div class="botones">
                             <button class="btn-aplicar amarillo" type="submit">Iniciar</button>
                     </form>

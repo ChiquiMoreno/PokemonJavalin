@@ -17,69 +17,55 @@
 
     <div class="flex-tituloliga">
         <div class="tituloliga">Partidas</div>
-        <div class="puntuacionpartida">${numRondaActual}/${numRondasTotales}</div>
+        <div class="puntuacionpartida">${partidaActual}/${liga.numPartidas}</div>
     </div>
 
-    <form method="post" action="/logueado/partidas/${idLiga}/siguiente" class="form-ronda">
-        <div class="envoltorio">
-            <#assign hayPartida = partida?? && partida.partida??>
+    <div class="envoltorio">
 
-            <#if hayPartida>
-            <#assign totalMesas = partida.partida?size>
-            <#list 1..totalMesas as mesaId>
-                    <#assign mesa = partida.getMesaById(mesaId)>
-                    <#if mesa??>
-                        <#assign jugadorA = mesa.jugadorA!>
-                        <#assign jugadorB = mesa.jugadorB!>
-                        <div class="titulomesa">Mesa ${mesaId}</div>
-                        <div class="tarjetasmesas">
-                            <label class="tarjetamesa selectable <#if mesa.ganadorMesa?? && jugadorA?? && mesa.ganadorMesa == jugadorA.aliasJugador>morado</#if>">
-                                <input type="radio" name="resultadoMesa_${mesaId}" value="A" class="winner-radio" <#if mesa.ganadorMesa?? && jugadorA?? && mesa.ganadorMesa == jugadorA.aliasJugador>checked</#if>>
-                                <div class="txt">
-                                    ${(jugadorA.nombreJugador)!'-'}<br>
-                                    ${(jugadorA.apellidosJugador)!''}<br><br>
-                                    Puntos: ${(jugadorA.puntaje)!0}
-                                </div>
-                                <span class="winner-crown" aria-hidden="true"></span>
-                            </label>
-
-                            <label class="tarjetamesa selectable <#if mesa.ganadorMesa?? && jugadorB?? && mesa.ganadorMesa == jugadorB.aliasJugador>morado</#if>">
-                                <input type="radio" name="resultadoMesa_${mesaId}" value="B" class="winner-radio" <#if mesa.ganadorMesa?? && jugadorB?? && mesa.ganadorMesa == jugadorB.aliasJugador>checked</#if>>
-                                <div class="txt">
-                                    ${(jugadorB.nombreJugador)!'-'}<br>
-                                    ${(jugadorB.apellidosJugador)!''}<br><br>
-                                    Puntos: ${(jugadorB.puntaje)!0}
-                                </div>
-                                <span class="winner-crown" aria-hidden="true"></span>
-                            </label>
-                        </div>
-                    </#if>
-                </#list>
-            <#else>
-                <div class="titulomesa">
-                    No hay partidas disponibles todavía.
+        <div class="titulomesa">
+        <div class="titulomesa">Mesa </div>
+            
+            <div class="tarjetasmesas">
+                <div class="tarjetamesa">
+                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
+                    <div class="btns">
+                        <div class="botonmesa1"></div>
+                    </div>
                 </div>
-            </#if>
+                <div class="tarjetamesa">
+                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
+                    <div class="btns">
+                        <div class="botonmesa1"></div>
+                    </div>
+                </div>
+            </div>
+            Mesa 1
 
+            <div class="tarjetasmesas">
+                <div class="tarjetamesa">
+                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
+                    <div class="btns">
+                        <div class="botonmesa1"></div>
+                    </div>
+                </div>
+                <div class="tarjetamesa">
+                    <div class="txt">Urko<br>Martinez<br><br>Puntos: 0</div>
+                    <div class="btns">
+                        <div class="botonmesa1"></div>
+                        <div class="botonmesa2"></div>
+                        <div class="botonmesa3"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="botones">
-            <button type="submit" class="btn-aplicar">Siguiente ronda</button>
-        </div>
-    </form>
+    </div>
+
+    <div class="botones">
+        <div class="btn-aplicar">Siguiente</div>
+    </div>
 
 </div>
 <#include "/templates/inc/navbarbtn1red.ftl"/>
-
-<script>
-    document.querySelectorAll('.winner-radio').forEach((radio) => {
-        radio.addEventListener('change', () => {
-            const mesa = radio.name;
-            document.querySelectorAll('input[name="' + mesa + '"]').forEach((option) => {
-                option.closest('.tarjetamesa').classList.toggle('morado', option.checked);
-            });
-        });
-    });
-</script>
 </body>
 </html>

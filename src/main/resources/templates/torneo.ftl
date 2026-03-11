@@ -49,7 +49,7 @@
         </div>
         
     </div>
-<#include "/templates/inc/navbar.ftl"/>
+<#include "/templates/inc/navbarbtn2red.ftl"/>
 
     
 </body>
