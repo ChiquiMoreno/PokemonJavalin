@@ -63,79 +63,104 @@ INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("urko", 
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("chiqui", "1234","Chiqui","Moreno");
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("alvaro", "1234","Álvaro","Marturet");
 
-INSERT into pokemon_db.liga (lugar, rondas, fecha, descripcion, tipo) values ("Comics Pamplona", "BO3" , "11/02/2026 16:30", "Formato estándar V6G no expandido de batallas PVP equilibrados con rotación de expansiones.", "Competitivo estandar");
-INSERT into pokemon_db.liga (lugar, rondas, fecha, descripcion, tipo) values ("Itaroa", "BO5" , "16/04/2026 17:30", "Formato estándar V6G no expandido de batallas PVP equilibrados con rotación de expansiones.", "Amistoso");
-INSERT into pokemon_db.liga (lugar, rondas, fecha, descripcion, tipo) values ("Comics Pamplona", "BO3" , "28/02/2026 18:00", "Formato estándar V6G no expandido de batallas PVP equilibrados con rotación de expansiones.", "Competitivo estandar");
-INSERT into pokemon_db.liga (lugar, rondas, fecha, descripcion, tipo) values ("Morea", "BO3" , "30/03/2026 17:00", "Formato estándar V6G no expandido de batallas PVP equilibrados con rotación de expansiones.", "Competitivo estandar");
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('wednesday', '1234', 'Wednesday', 'Addams');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('eleven', '1234', 'Eleven', 'Ives');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('mike', '1234', 'Mike', 'Wheeler');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('max', '1234', 'Max', 'Mayfield');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('hopper', '1234', 'Jim', 'Hopper');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('din', '1234', 'Din', 'Djarin');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('grogu', '1234', 'Grogu', 'Mandaloriano');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('ahsoka', '1234', 'Ahsoka', 'Tano');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('cassian', '1234', 'Cassian', 'Andor');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('joel', '1234', 'Joel', 'Miller');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('ellie', '1234', 'Ellie', 'Williams');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('loki', '1234', 'Loki', 'Odinson');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('wanda', '1234', 'Wanda', 'Maximoff');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('geralt', '1234', 'Geralt', 'De Rivia');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('yennefer', '1234', 'Yennefer', 'De Vengerberg');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('ciri', '1234', 'Cirilla', 'Fiona');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('rhaenyra', '1234', 'Rhaenyra', 'Targaryen');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('daemon', '1234', 'Daemon', 'Targaryen');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('homelander', '1234', 'John', 'Gillman');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('starlight', '1234', 'Annie', 'January');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('vi', '1234', 'Violet', 'Arcane');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('jinx', '1234', 'Powder', 'Arcane');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('tanjiro', '1234', 'Tanjiro', 'Kamado');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('nezuko', '1234', 'Nezuko', 'Kamado');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('gojo', '1234', 'Satoru', 'Gojo');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('yuji', '1234', 'Yuji', 'Itadori');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('makima', '1234', 'Makima', 'Publica');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('denji', '1234', 'Denji', 'Chainsaw');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('luffy', '1234', 'Monkey D.', 'Luffy');
+INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('nami', '1234', 'Nami', 'Cat Burglar');
 
-update liga set estado = 0 where id = 1;
-update liga set estado = 1 where id = 3;
-update liga set estado = 2 where id = 2;
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO3', '01/03/2027 16:30', 'Liga Demo 01 - Competitivo estandar', 'Competitivo estándar', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO5', '02/03/2027 16:30', 'Liga Demo 02 - Expandido', 'Expandido', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO3', '03/03/2027 16:30', 'Liga Demo 03 - Competitivo estandar', 'Competitivo estándar', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO5', '04/03/2027 16:30', 'Liga Demo 04 - Expandido', 'Expandido', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO3', '05/03/2027 16:30', 'Liga Demo 05 - Competitivo estandar', 'Competitivo estándar', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO5', '06/03/2027 16:30', 'Liga Demo 06 - Expandido', 'Expandido', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO3', '07/03/2027 16:30', 'Liga Demo 07 - Competitivo estandar', 'Competitivo estándar', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO5', '08/03/2027 16:30', 'Liga Demo 08 - Expandido', 'Expandido', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO3', '09/03/2027 16:30', 'Liga Demo 09 - Competitivo estandar', 'Competitivo estándar', 0);
+INSERT INTO liga (lugar, rondas, fecha, descripcion, tipo, estado) VALUES ('Comics Pamplona', 'BO5', '10/03/2027 16:30', 'Liga Demo 10 - Expandido', 'Expandido', 0);
 
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('wednesday','eleven','mike','max','hopper','din','grogu','ahsoka','cassian','joel')
+WHERE l.descripcion = 'Liga Demo 01 - Competitivo estandar';
 
--- 20 usuarios
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador01", "1234", "Entrenador", "01");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador02", "1234", "Entrenador", "02");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador03", "1234", "Entrenador", "03");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador04", "1234", "Entrenador", "04");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador05", "1234", "Entrenador", "05");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador06", "1234", "Entrenador", "06");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador07", "1234", "Entrenador", "07");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador08", "1234", "Entrenador", "08");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador09", "1234", "Entrenador", "09");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador10", "1234", "Entrenador", "10");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador11", "1234", "Entrenador", "11");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador12", "1234", "Entrenador", "12");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador13", "1234", "Entrenador", "13");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador14", "1234", "Entrenador", "14");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador15", "1234", "Entrenador", "15");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador16", "1234", "Entrenador", "16");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador17", "1234", "Entrenador", "17");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador18", "1234", "Entrenador", "18");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador19", "1234", "Entrenador", "19");
-INSERT IGNORE INTO pokemon_db.usuario (alias, passwd, nombre, apellido) VALUES ("entrenador20", "1234", "Entrenador", "20");
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('ellie','loki','wanda','geralt','yennefer','ciri','rhaenyra','daemon','homelander','starlight')
+WHERE l.descripcion = 'Liga Demo 02 - Expandido';
 
--- 6 ligas (ids fijos para poder referenciar en jugador)
-INSERT IGNORE INTO pokemon_db.liga (id, lugar, rondas, fecha, descripcion, tipo, estado) VALUES (101, "Pamplona Centro", "BO3", "10/01/2027 17:00", "Liga regional de invierno", "Competitiva", 0);
-INSERT IGNORE INTO pokemon_db.liga (id, lugar, rondas, fecha, descripcion, tipo, estado) VALUES (102, "Burlada", "BO3", "17/01/2027 17:00", "Liga regional de invierno", "Competitiva", 0);
-INSERT IGNORE INTO pokemon_db.liga (id, lugar, rondas, fecha, descripcion, tipo, estado) VALUES (103, "Noain", "BO5", "24/01/2027 17:00", "Liga de preparación de temporada", "Amistosa", 0);
-INSERT IGNORE INTO pokemon_db.liga (id, lugar, rondas, fecha, descripcion, tipo, estado) VALUES (104, "Itaroa", "BO3", "31/01/2027 17:00", "Liga de preparación de temporada", "Competitiva", 0);
-INSERT IGNORE INTO pokemon_db.liga (id, lugar, rondas, fecha, descripcion, tipo, estado) VALUES (105, "Morea", "BO5", "07/02/2027 17:00", "Liga clasificatoria", "Competitiva", 0);
-INSERT IGNORE INTO pokemon_db.liga (id, lugar, rondas, fecha, descripcion, tipo, estado) VALUES (106, "Sarriguren", "BO3", "14/02/2027 17:00", "Liga mixta con jugadores repetidos", "Mixta", 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('vi','jinx','tanjiro','nezuko','gojo','yuji','makima','denji','luffy','nami')
+WHERE l.descripcion = 'Liga Demo 03 - Competitivo estandar';
 
--- 24 inscripciones (4 por liga = número par)
--- Liga 101
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (101, "entrenador01", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (101, "entrenador02", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (101, "entrenador03", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (101, "entrenador04", 0, 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('wednesday','eleven','mike','max','ellie','loki','wanda','gojo','yuji','makima')
+WHERE l.descripcion = 'Liga Demo 04 - Expandido';
 
--- Liga 102
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (102, "entrenador05", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (102, "entrenador06", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (102, "entrenador07", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (102, "entrenador08", 0, 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('din','grogu','ahsoka','cassian','joel','geralt','yennefer','ciri','luffy','nami')
+WHERE l.descripcion = 'Liga Demo 05 - Competitivo estandar';
 
--- Liga 103
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (103, "entrenador09", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (103, "entrenador10", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (103, "entrenador11", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (103, "entrenador12", 0, 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('rhaenyra','daemon','homelander','starlight','vi','jinx','tanjiro','nezuko','denji','makima')
+WHERE l.descripcion = 'Liga Demo 06 - Expandido';
 
--- Liga 104
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (104, "entrenador13", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (104, "entrenador14", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (104, "entrenador15", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (104, "entrenador16", 0, 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('wednesday','joel','ellie','din','grogu','ahsoka','cassian','vi','jinx','loki')
+WHERE l.descripcion = 'Liga Demo 07 - Competitivo estandar';
 
--- Liga 105
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (105, "entrenador17", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (105, "entrenador18", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (105, "entrenador19", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (105, "entrenador20", 0, 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('wanda','geralt','yennefer','ciri','rhaenyra','daemon','homelander','starlight','gojo','yuji')
+WHERE l.descripcion = 'Liga Demo 08 - Expandido';
 
--- Liga 106 (repetidos de otras ligas)
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (106, "entrenador03", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (106, "entrenador08", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (106, "entrenador12", 0, 0);
-INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (106, "entrenador17", 0, 0);
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('tanjiro','nezuko','makima','denji','luffy','nami','mike','max','hopper','eleven')
+WHERE l.descripcion = 'Liga Demo 09 - Competitivo estandar';
+
+INSERT INTO jugador (idLiga, aliasUsuario, puntaje, posicion)
+SELECT l.id, u.alias, 0, 0
+FROM liga l
+JOIN usuario u ON u.alias IN ('wednesday','ellie','joel','loki','wanda','gojo','yuji','luffy','nami','vi')
+WHERE l.descripcion = 'Liga Demo 10 - Expandido';
