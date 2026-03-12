@@ -57,6 +57,7 @@ public class Main {
 
         app.get("/logueado/crearliga", LigaController::servirCrearLiga);
         app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
+        app.post("/logueado/nuevaligaJugadores", LigaController::nuevaLigaJugadores);
         app.get("/logueado/eliminar-liga/{idLiga}", LigaController::eliminarLiga);
         app.get("/logueado/inscripcionliga", LigaController::inscripcionLiga);
 

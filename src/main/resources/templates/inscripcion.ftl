@@ -7,36 +7,38 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
     <header>
-    <#include "/templates/inc/encabezado1.ftl"/>
+    <#include "/templates/inc/header_nombre_apellidos.ftl"/>
     </header>
+    <form action="/logueado/nuevaligaJugadores" method="post">
+    <input type="hidden" name="ligaId" value="${ligaId}">
+    <#if error??>
+        <div class="mensaje-error">
+            ${error}
+        </div>
+    </#if>
     <div class="contenedortarjetas">
-        <input class="busqueda" placeholder="Buscar"></input>
+        <input class="busqueda" placeholder="Buscar" />
         <div class="maestrosapuntados">
         </div>
-        <div class="tarjeta">
+        <#list usuarioList as usuario>
+        <div class="tarjeta <#if usuario?index % 2 == 1>morado</#if>">
+            <input 
+                    type="checkbox" 
+                    name="usuariosSeleccionados" 
+                    value="${usuario.alias}"
+                    <#if usuariosSeleccionados?? && usuariosSeleccionados?seq_contains(usuario.alias?string)>checked</#if>
+                />
             <div class="pic">
-            <img src="/imgs/fotoperfil2.png" alt="fotoperfil"></img>
+            <img src="/imgs/fotoperfil2.png" alt="fotoperfil" />
             </div>
-            <div class="txt">Álvaro Marturet<br> ID: 213121EF</div>
-            <div class="btns">
-                <button class="btn"></button>
-                <button class="btn2"></button>
-            </div>
+            <div class="txt">${usuario.nombre!""}<br>${usuario.alias!""}</div>
         </div>
-        <div class="tarjeta morado">
-            <div class="pic">
-                <img src="/imgs/fotoperfil1.png" alt="fotoperfil">
-            </div>
-            <div class="txt">Álvaro Marturet<br> ID: 213121EF</div>
-            <div class="btns">
-                <button class="btn2 btn2morado"></button>
-                <button class="btn1">···</button>
-            </div>
-        </div>
+        </#list>
          <div class="botones">
-        <div class="btn-aplicar">Aplicar</div>
+        <button class="btn-aplicar" type="submit">Aplicar</button>
         <div class="btn-cancelar">Cancelar</div>
     </div>
     </div>
+    </form>
 </body>
 </html>

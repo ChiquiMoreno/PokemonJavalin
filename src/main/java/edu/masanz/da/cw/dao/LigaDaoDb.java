@@ -144,4 +144,22 @@ public class LigaDaoDb {
         ConnectionManager.ejecutarUpdateSQL(sql,params);
     }
 
+    /**
+     * Asociar usuarios a ligas, esto crea jugadores
+     * @param idLiga
+     * @param usuarios lista de alias de usuarios
+     */
+    public static boolean crearJugadores(String idLiga, List<String> usuarios){
+        String sql = "INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (?, ?, 0, 0);";
+        try {
+            for (String usuario : usuarios) {
+                Object[] params = {idLiga, usuario};
+                ConnectionManager.ejecutarInsertSQL(sql, params);
+            }
+        }catch (Exception ex){
+            return false;
+        }
+        return true;
+    }
+
 }
