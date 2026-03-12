@@ -71,6 +71,16 @@ public class LigaLogicService {
         return liga;
     }
 
+    public boolean crearJugadoresEnLiga(String idLiga, List<String> usuarios){
+        //Crear alos jugadores
+        if(LigaDaoDb.crearJugadores(idLiga, usuarios)){
+            //Cambiar el estado de la liga
+            LigaDaoDb.actualizarEstadoLiga(Integer.parseInt(idLiga), 0);
+            return true;
+        }
+        return false;
+    }
+
     //Verificado :)
     public boolean calculoPartidas(Liga liga) {
         try {

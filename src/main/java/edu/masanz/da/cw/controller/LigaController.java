@@ -66,11 +66,58 @@ public class LigaController {
         nuevaLiga.setFecha(ctx.formParam("dia") + " " + ctx.formParam("hora"));
         nuevaLiga.setLugar(ctx.formParam("lugar"));
         nuevaLiga.setRondas(ctx.formParam("rondas"));
-
+        nuevaLiga.setDescripcion("");
         ligaLogicService.nuevaLiga(nuevaLiga);
         Map<String, Object> model = crearModeloBase(ctx);
-        model.put("liga", nuevaLiga);
-        ctx.render("/templates/inscripcion.ftl", model);
+        model.put("ligaId", nuevaLiga.getIdLiga());
+        model.put("usuarioList", usuarioService.getAllUsuarios());
+        ctx.render("templates/inscripcion.ftl", model);
+    }
+    public static void nuevaLigaJugadores(@NotNull Context ctx) {
+        //Obtener los datos de la liga:
+        String ligaId = ctx.formParam("ligaId");
+        //Obtener los jugadores seleccioandos
+        List<String> usuariosSeleccionados = ctx.formParams("usuariosSeleccionados");
+        //Reglas de negocio => validar
+        if (usuariosSeleccionados == null) {
+            usuariosSeleccionados = new ArrayList<>();
+        }
+        int cantidad = usuariosSeleccionados.size();
+        //Si fallo = regresar a seleccionar usuarios
+        if (cantidad < 2) {
+            volverAPantallaUsuarios(ctx, ligaId, usuariosSeleccionados,"Debes seleccionar al menos 2 usuarios.");
+            return;
+        }
+        if (cantidad > 20) {
+            volverAPantallaUsuarios(ctx, ligaId, usuariosSeleccionados,"No puedes seleccionar más de 20 usuarios.");
+            return;
+        }
+        if (cantidad % 2 != 0) {
+            volverAPantallaUsuarios(ctx, ligaId, usuariosSeleccionados,"Debes seleccionar un número par de usuarios.");
+            return;
+        }
+        // Aquí ya se asocian los usuarios a la liga
+        ligaLogicService.crearJugadoresEnLiga(ligaId, usuariosSeleccionados);
+        //Bien => regresar a torneos
+        Map<String, Object> model = crearModeloBase(ctx);
+        model.put("titulo", "Torneos");
+        model.put("listaLigas", ligaLogicService.getAllLigas());
+        ctx.render("/templates/torneos.ftl", model);
+    }
+    //Vuelve a la pantalla de seleccioanr usuaurio para una liga
+    private static void volverAPantallaUsuarios(Context ctx,
+                                                String ligaId,
+                                                List<String> usuariosSeleccionados,
+                                                String error) {
+
+        List<Usuario> usuarioList = usuarioService.getAllUsuarios();
+
+        Map<String, Object> model = crearModeloBase(ctx);
+        model.put("ligaId", ligaId);
+        model.put("usuarioList", usuarioList);
+        model.put("usuariosSeleccionados", usuariosSeleccionados);
+        model.put("error", error);
+        ctx.render("templates/inscripcion.ftl", model);
     }
 
     public static void mostrarTorneo(@NotNull Context context) {
