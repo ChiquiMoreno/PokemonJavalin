@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/css/loginStyle.css">
+    <#include "/templates/inc/head.ftl"/>
 </head>
 <body class="login">
     <#if error??> <#-- si el usuario es incorrecto y existe el error mostrarlo-->

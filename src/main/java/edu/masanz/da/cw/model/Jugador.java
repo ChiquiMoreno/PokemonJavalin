@@ -6,6 +6,7 @@ public class Jugador {
     private int idLiga;
     private String aliasJugador;
     private String nombreJugador;
+    private String apellidoJugador;
 
     private int ganadas;
     private int empates;
@@ -15,7 +16,16 @@ public class Jugador {
         this.puntaje = 0;
         this.aliasJugador = usuario.getAlias();
         this.nombreJugador = usuario.getNombre();
+        this.apellidoJugador= usuario.getApellido();
         this.idLiga = idLiga;
+    }
+
+    public String getApellidoJugador() {
+        return apellidoJugador;
+    }
+
+    public void setApellidoJugador(String apellidoJugador) {
+        this.apellidoJugador = apellidoJugador;
     }
 
     public int getIdLiga() {
@@ -81,8 +91,13 @@ public class Jugador {
     @Override
     public String toString() {
         return "Jugador{" +
-                "jugador=" + aliasJugador +
-                ", puntaje=" + puntaje +
+                "puntaje=" + puntaje +
+                ", idLiga=" + idLiga +
+                ", aliasJugador='" + aliasJugador + '\'' +
+                ", nombreJugador='" + nombreJugador + '\'' +
+                ", ganadas=" + ganadas +
+                ", empates=" + empates +
+                ", perdidas=" + perdidas +
                 '}';
     }
 }

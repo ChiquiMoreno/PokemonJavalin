@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla 31</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <#include "/templates/inc/head.ftl"/>
 </head>
 
 <header>
@@ -52,9 +53,11 @@
                 <option value="20" >20</option >
             </select></label>  -->
             <#--  <div class="btn-aplicar">Siguiente</div>  -->
-                <div clases="botones">
-                <button class="btn-aplicar" type ="submit">Siguiente</button>
-                <div class="btn-cancelar">Cancelar</div>
+                <div class="botones-crear-liga">
+                    <div class="btn-cancelar">
+                        <a href="./torneos">Cancelar</a>
+                    </div>
+                    <button class="btn-aplicar btn-base" type ="submit">Siguiente</button>
                 </div>
   
         </form>             

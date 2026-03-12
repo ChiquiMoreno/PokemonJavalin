@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <header>
-    <div class="encabezado2">
+    <div class="encabezado2 flexrow">
         <div class="texto">Aitor Amigot</div>
-        <img class="imagen" src="imgs/logo2.png" alt="logo"></img>
+        <img class="imagen" src="../public/imgs/logo2.png" alt="logo"></img>
     </div>
 </header>
 <body class="overflow">
@@ -22,8 +22,13 @@
                     <option value="E" >Expandido</option >
                     <option value="3" >Comics Pamplona</option >
                 </select></label>
-                <div class="inputsmedianos"><label>Día*<br> <input class="mediano" required placeholder="09/01/2025"></label>
-                     <label>Hora*<br> <input class="mediano" required placeholder="16:30"></label>
+                <div class="inputsmedianos">
+                    <label>Día*<br> 
+                        <input class="mediano" type="date" required placeholder="09/01/2025">
+                    </label>
+                    <label>Hora*<br>
+                        <input class="mediano"  required placeholder="16:30">
+                    </label>
                 </div>
                 <label>Lugar*<br> <select>
                       <option value="" selected disabled hidden>- - -</option >
@@ -43,8 +48,8 @@
                 </select></label>
 
                   <div class="botones">
-            <button type="submit" class="btn-aplicar2">Siguiente</button>
-            <button type="submit" class="btn-cancelar2">Cancelar</button>
+            <button type="submit" class="btn-aplicar btn-base">Siguiente</button>
+            <button type="submit" class="btn-cancelar btn-base">Cancelar</button>
             </form>
         </div>    
         </div>

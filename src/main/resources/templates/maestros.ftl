@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <#include "/templates/inc/head.ftl"/>
     <title>Document</title>
 </head>
 <body>
@@ -18,19 +19,19 @@
         </form>
         <div class="enlace"><a href="./perfil">Mi cuenta</a></div>
         <#list usuarios as usuario>
-        <div class="tarjeta">
+        <div class="tarjeta flexrow">
             <div class="pic">
             <img src="/imgs/fotoperfil2.png" alt="fotoperfil"></img>
             </div>
             <div class="txt">${usuario.nombre} ${usuario.apellido}<br> ${usuario.alias}</div>
             <div class="btns">
-                <form action="./perfil/${usuario.alias}">
-                    <button class="btn1" type="submit">···</button>
+                <form action="./perfil/${usuario.alias}" method="get">
+                    <button class="btn1">···</button>
                 </form>
-                <form action="./eliminar-perfil/${usuario.alias}">
-                    <button class="btn2" href></button>
+                <form action="./adm/eliminar-perfil/${usuario.alias}" method="get">
+                    <button class="btn2"></button>
                 </form>
-                                
+
             </div>
         </div>
         </#list>

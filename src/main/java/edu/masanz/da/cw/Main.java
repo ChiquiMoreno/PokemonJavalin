@@ -47,19 +47,22 @@ public class Main {
         app.get("/logout", AuthController::logout);
 
         app.get("/logueado/torneos", LigaController::torneos);
+        app.post("/logueado/torneos-filtrado", LigaController::torneosFiltrado);
         app.get("/logueado/torneos/{idLiga}", LigaController::mostrarTorneo);
 
         app.get("/logueado/editar-perfil", UsuarioController::mostrarEditarPerfil);
         app.post("/logueado/editar-perfil", UsuarioController::editarPerfil);
-        app.get("/logueado/eliminar-perfil/{alias}", UsuarioController::eliminarUsuario);
+        app.get("/logueado/adm/eliminar-perfil/{alias}", UsuarioController::eliminarUsuario);
         app.get("/logueado/maestros", UsuarioController::maestros);
         app.get("/logueado/perfil", UsuarioController::perfil);
+        app.get("/logueado/perfil/{alias}", UsuarioController::verPerfilConcreto);
+
 
         app.get("/logueado/crearliga", LigaController::servirCrearLiga);
         app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
         app.post("/logueado/nuevaligaJugadores", LigaController::nuevaLigaJugadores);
         app.get("/logueado/eliminar-liga/{idLiga}", LigaController::eliminarLiga);
-        app.get("/logueado/inscripcionliga", LigaController::inscripcionLiga);
+//        app.get("/lgit ogueado/inscripcionliga", LigaController::inscripcionLiga);
 
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
@@ -73,6 +76,9 @@ public class Main {
 
         app.get("/registro", UsuarioController::mostrarRegistro);
         app.post("/registro", UsuarioController::registro);
+
+        app.get("/logueado/podio/{idLiga}", LigaController::mostrarPodio);
+
 
     }
 

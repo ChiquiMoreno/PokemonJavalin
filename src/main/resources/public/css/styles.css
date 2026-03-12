@@ -1,6 +1,6 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
     box-sizing: border-box;
     font-family: "FlexoRegular";
 }
@@ -10,19 +10,10 @@
     src: url("../fonts/flexo-regular.ttf");
 }
 
-
-:root {
-    --color-primary-red: #e3282a;
-    --color-primary-blue: #046fb1;
-    --color-light-panel: #F0EDED;
-    --color-neutral-mid: #b0b0b0;
-    --color-danger-dark: #8c0707;
-    --color-purple: #6631d7;
-}
+body {background-color: #e3282a;}
 
 .flexrow{
     display:flex;
-    flex-direction: row;
     align-items: center;
 }
 
@@ -32,45 +23,34 @@
     align-items: center;
 }
 
-body {
-    background-color: var(--color-primary-red);
-}
+/*### Encabezados ###*/
 
-/*Configuración para que quede justamente abajo de la pantalla*/
-.alinear {
-    min-height: 80vh;
-    max-height: 100vh;
-}
-
-/*configuracion de la navbar, separacion de la imagen...*/
-.navbar {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    justify-content: space-evenly;
-    border-top: 3px solid red;
-    background-color: white;
-}
-
-/*tamaño imagenes*/
-.navbar img {
-    width: 10vw;
-    margin: 5px 0;
-}
-/* navbar */
-
-/* TORNEOS */
-/* encabezado de las pantallas principales*/
+/* encabezado grande */
 .encabezado1 {
     width: 90%;
     margin: 0 auto;
     height: 15vw;
-    background-color: var(--color-primary-red);
+    background-color: #e3282a;
     justify-content: center;
+    background: #e3282a;
     position: relative;
     text-align: center;
 }
+
+.encabezado1 .logo-playpokemon {
+    width: 8vw;
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+.encabezado1 h1 {
+    text-transform: uppercase;
+    color: white;
+    padding: 5px;
+}
+
+.encabezado1-pikachu {width: 160px;}
 
 .horizontal {
     display: flex;
@@ -80,40 +60,235 @@ body {
 
 .horizontal h2 {color: white;}
 
-.encabezado1 .logo-playpokemon {
-    width: 8vw;
-    right: 0;
-    top: 0;
-    position: absolute;
+/* enbezado grande */
+
+/* Encabezado pequeño */
+.encabezado2{
+    display: flex;
+    width: 95%;
+    height: 20vw;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.encabezado2 .texto {
+    color: white;
+    font-style: italic;
+    font-size: 4vw;
+    font-weight: 900;
+}
+/* Encabezado pequeño */
+
+/*### Encabezados ###*/
+
+/*### Navbar ###*/
+.navbar {
+    display: flex;
+    position: fixed;
+    bottom: 0vw;
+    width: 100%;
+    left:0;
+    justify-content: space-evenly;
+    border-top: red 3px solid; 
+    background-color: white;
+}
+/* imagenes de navbar */
+.navbar img {
+    width: 10vw;
+    margin: 5px 0px 5px 0px;
+}
+
+/* imagen persona más pequeña */
+.btn-mas-peque img {
+    width: 7vw;
+}
+
+/*### Navbar ###*/
+
+/*### Botones genericos ###*/
+.botones-crear-liga{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap:5px;
+    padding-bottom: 20px;
+}
+
+.botones {
+    display: grid;
+    grid-template-areas:
+    "btn-aplicar3 btn-aplicar3"
+    "btn-aplicar2 btn-cancelar2";
+    justify-items: center;
+    align-content: center; 
+    gap: 10vw;
+    bottom: -5vh;
+    font-size:4vw;
+}
+
+.btn-base {
+    background-color: #e22829;
+    height: 10vw;
+    width: 30vw;
+    border-radius: 22.5vw;
+    text-align: center;
+    align-content: center;
+    color: #e7e7e7;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-cancelar a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #e0e0e0; /* gris claro */
+    color: #333;
+    text-decoration: none;
+    border-radius: 20px; /* redondeado */
+    font-size: 14px;    
+    height: 10vw;
+    text-align: center;
+    align-content: center;
+    width: 30vw;
+}
+
+.btn-cancelar a:hover {
+    background-color: #d5d5d5;
+}
+
+.btn-aplicar {grid-area: btn-aplicar2;}
+
+.btn-aplicar:last-child {grid-column: 1 / 3;}
+
+.btn-grande {
+    grid-area: btn-aplicar3;
+    width: 40vw;
+    grid-column: 1 / 3; 
+}
+
+.maestrosapuntados, .btn1, .btn, .encabezado2, .tarjeta, .pic {overflow: hidden;}
+
+.btn, .btn1, .btn2, .botoneditar, .btn2morado, .exitbtn, .editbtn, .btn-def{
+    width:10vw;
+    height:10vw;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 6vw;
+}
+
+.botonmesa1, .botonmesa2, .botonmesa3 {
+    width: 8vw;
+    height: 8vw;
+}
+
+.btn {
+    background-color: #046fb1;
+    border: solid 0.5vw #003e62;
+    background-image: url("../imgs/iconomas.png");
+    background-size: 80%;
+}
+
+.logout img{
+   width: 6vw;
+}
+/*Icono misceláneo (...)*/
+.btn1 {
+    background-color: #b0b0b0;
+    border:solid 0.5vw #7a7171;
+}
+
+.logout {
+    margin: 2vw;
+    float: left;
+    padding: 2vw;
+    background-color: #e3282a;
+    width: 10vw;
+    right: 10vw;
+    border-radius: 50%;
+}
+.editarperfil img{
+    width: 6vw;
+}
+
+.editarperfil {
+    margin: 2vw;
+    float: right;
+    padding: 2vw;
+    background-color: #B0B0B0;
+    width: 10vw;
+    right: 10vw;
+    border-radius: 50%;
+}
+
+/*Icono borrar (papelera)*/
+.btn2 {
+    background-color: #e22829;
+    border: solid 0.5vw #b31818;
+    background-image: url("../imgs/papelera.png");
+}
+
+/*### Botones genericos ###*/
+
+/*### DIV ERROR ###*/
+div.error {
+    position: absolute;
+    width: 80vw;
+    height: 15vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 27vh;
+    left: 10vw;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh;
+}
+/* Ajuste texto error */
+div.error p {
+    text-align: center;
+    color: #962B2B;
+
+}
+/* Ajuste imagen error */
+div.error img {width: 6vh;}
+
+/*### DIV ERROR ###*/
+
+/* TORNEOS */
 
 /* desplegables */
 .despAnios, .despCalendario, .despTipo {
-    position: absolute;
+    position:relative;
     border: 1px solid #333;
     border-radius: 10px;
     background: #fff;
     padding: 8px;
     display: none;
     z-index: 50;
-    top: 10vw;
-    height: 6.5vh;
-    width: auto;
+    position:absolute;
+    top:10vw;
+    height:6.5vh;
+    width:auto;
 }
 
 /* fondo principal */
 .pantalla-torneos {min-height: 100vh;}
 
-.encabezado1-pikachu {width: 160px;}
-
 /* principal cuerpo torneos */
 .torneos {
     padding: 16px;
-    border-radius: 30px 30px 0 0;
+    border-radius: 30px 30px 0px 0px;
     background-color: #f4f4f6;
     position: relative;
     height: auto;
-    margin-bottom: 50px;
+    padding-bottom:70px;
     margin-top: -9vw;
 }
 
@@ -126,7 +301,7 @@ body {
 
 .desptorneo {margin-left: 8px;}
 
-/* ocultar boton checkbox */
+/* ocultar radiobuttons */
 .desptorneo input {display: none;}
 
 /* botones menu torneos a cambiar */
@@ -138,7 +313,7 @@ body {
 }
 
 .boton-anadir {
-    background-color: var(--color-primary-blue);
+    background-color: #046fb1;
     border: none;
     border-radius: 50%;
     width: 32px;
@@ -185,14 +360,18 @@ body {
     position: absolute;
     top: -10px;
     right: 20px;
-    /*z-index: auto;*/
+    text-decoration: none;
 }
 
-.finalizado {background-color: var(--color-primary-red);}
+.finalizado {background-color: #e3282a;}
 
-.en-curso { background-color: var(--color-primary-blue);}
+.en-curso { background-color: #046fb1;}
 
-.iniciar {background-color: #f3d30c;}
+.iniciar {
+    background-color: #f3d30c;
+    border: none;
+    
+    }
 
 /* Texto descriptivo tarjetas */
 
@@ -200,7 +379,7 @@ body {
 
 /* estilo hipervinculo */
 .tarjeta-torneo-link {
-    color: var(--color-primary-red);
+    color: #e3282a;
     font-weight: 700;
     font-size: 13px;
 }
@@ -226,10 +405,10 @@ body {
 }
 
 /* color azul boton agregar */
-.button-agregar {background-color: var(--color-primary-blue);}
+.button-agregar {background-color: #046fb1;}
 
 /* color rojo boton eliminar */
-.button-eliminar {background-color: var(--color-primary-red);}
+.button-eliminar {background-color: #e3282a;}
 
 /* tamaño items botones*/
 .tarjeta-torneo-acciones img {width: 16px;}
@@ -247,6 +426,7 @@ body.reg {
     height: 92vh;
 }
 
+/*Ajuste formulario pantalla registro */
 .regPanel form {
     display: flex;
     flex-direction: column;
@@ -255,6 +435,7 @@ body.reg {
     align-items: center;
     gap: 1vh;
 }
+
 .regPanel form label {
     width: 80vw;
     text-align: start;
@@ -263,14 +444,14 @@ body.reg {
 }
 
 .regPanel {
-    background-color: var(--color-light-panel);
+    background-color: #F0EDED;
     border-radius: 20px 20px 0 0;
     height: 62vh;
 }
 
 .regSup {
     height: 30vh;
-    background-color: var(--color-primary-red);
+    background-color: #e3282a;
     border-radius: 0 0 20px 20px;
 }
 
@@ -283,11 +464,15 @@ body.reg {
     height: auto;
 }
 
+.regPanel form inputk- {
+    margin-bottom: 1vh;
+    width: 80vw;   
+}
 
 .regPanel a.a-id {
     width: 80vw;
     text-align: end;
-    color: var(--color-primary-red);
+    color: #e3282a;
     font-size: small;
 }
 
@@ -299,18 +484,19 @@ body.reg {
     width: 80vw;
 }
 
-.reg_submit input {
+.reg_submit input, a.cancelar {
     border: none;
     outline: none;
     border-radius: 30px;
-    background-color:#9ea1a3;
     color: white;
+    background-color:#9ea1a3;
     width: 30vw;
     padding: 3vw;
     font-size: 4vw;
+    text-decoration: none;
 }
 
-.reg_submit input.crear {background-color: var(--color-primary-red);}
+.reg_submit input.crear {background-color: #e3282a;}
 
 .registroCan {
     background-color: #B0B0B0;
@@ -324,55 +510,13 @@ body.reg {
     text-align: center;
     text-decoration: none;
 }
-
-/* ERROR */
-div.error {
-    position: absolute;
-    width: 80vw;
-    height: 15vh;
-    background-color: rgba(255, 255, 255, 0.7);
-    top: 27vh;
-    left: 10vw;
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2vh;
-}
-/* error texto*/
-div.error p {
-    text-align: center;
-    color: #962B2B;
-
-}
-/* error imagen*/
-div.error img {width: 6vh;}
-
-/*p32*/
-.encabezado2{
-    width: 95%;
-    height: 20vw;
-    margin: 0 auto;
-    justify-content: space-between;
-    background-image: url(../imgs/fondorojo.png);
-    background-size: 121%;
-}
-
-.encabezado2 .imagen {width: 12vw;}
-
-.encabezado2 .texto {
-    color: white;
-    font-style: italic;
-    font-size: 4vw;
-    font-weight: 900;
-}
+/*Registro*/
 
 /* titulo con subrayado rojo*/
  .titulo {
     position: absolute;
     top: 25vw;
-    color: var(--color-danger-dark);
+    color: #8c0707;
     font-weight: 900;
     font-style: italic;
     font-size: 6vw;
@@ -381,74 +525,53 @@ div.error img {width: 6vh;}
     width: 100%;
     text-align: center;
 }
-
+.maestrosapuntados {
+    justify-content: space-evenly;
+}
 
 /*Configuracion maestros apuntados*/
 .contenedortarjetas .maestrosapuntados {
-    justify-content: space-evenly;
+    
     width: 100%;
-    height: 25vw;
+    height: 50vw;
+    width:100%;
+    height:25vw;
 }
 
-/*Configuracion cosas para que no tengan scroll*/
-.maestrosapuntados, .btn1, .btn, .encabezado2, .tarjeta, .pic {overflow: hidden;}
-
-/* Configuracion maestros apuntados boton + boton editar (...) y boton borrar*/
-.btn, .btn1, .btn2, .botoneditar, .btn2morado, .exitbtn, .editbtn{
-    width:10vw;
-    height:10vw;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: 6vw;
-}
-
-/*Icono +*/
-.btn {
-    background-color: var(--color-primary-blue);
-    border: solid 0.5vw #003e62;
-    background-image: url("../imgs/iconomas.png");
-    background-size: 80%;
-}
-/*Contiene tarjetas con fondo rojo*/
+/* buscarmaestros, crearliga, infousuario, inscripción, partidas*/
 .contenedortarjetas {
-    border-radius: 7.5vw 7.5vw 0 0;
+    border-radius: 7.5vw 7.5vw 0vw 0vw;
     top: 20vw;
     width: 100%;
-    /* height: 100vh; */
+    min-height:100vh;
+    height:auto;
     background-color: #f0eded;
     display: flex;
-    /* align-items: center; */
     flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 10vh;
+    gap: 0.5vh;
 }
 
 /*Tarjetas maestros reutilizable*/
 .tarjeta {
     background-color: #ff6464;
     border: 0.5vw solid rgb(51,51,51);
-    width: 90%;
+    width: 100%;
     height: 25vw;
     border-radius: 3vw;
 }
 
 /*Foto perfil en tarjeta*/
 .pic {
-    width: 28vw;
-    margin-left: 2vw;
+    display: flex;
+    justify-content: center;
 }
 
 /*Configuración foto perfil*/
-.pic img {width: 14vw;}
+.pic img {width: 12vw;}
 
 /*Información maestro (tarjeta)*/
 .txt {
-    margin-left: 1.5vw;
+    margin-left: 2vw;
     color: rgb(51, 51, 51);
     font-size: 5vw;
     width: 100%;
@@ -464,32 +587,19 @@ div.error img {width: 6vh;}
     margin-right: 3vw;
 }
 
+/* buscarmaestros, crearliga, infousuario, inscripción, partidas*/
 
-/*Icono editar (...)*/
-.btn1 {
-    background-color: var(--color-neutral-mid);
-    border:solid 0.5vw #7a7171;
-}
-
-/*Icono borrar (papelera)*/
-.btn2,
-.exitbtn {background-color: #e22829;}
-
-.btn2 {
-    border: solid 0.5vw #b31818;
-    background-image: url("../imgs/papelera.png");
-}
-
-/*Plantilla Torneo*/
+/* Torneo 1-6 */
 .torneo{
     height: 100vh;
     display: flex;
     flex-direction: column;
 }
 .torneo div.panel {
-    background-color: var(--color-light-panel);
+    background-color: #F0EDED;
     border-radius: 30px 30px 0 0;
     padding: 30px;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -499,16 +609,16 @@ div.error img {width: 6vh;}
 .torneo div.panel div.panel-datos {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 5px
 }
 
 .torneo div.maestros {
-    background-color: var(--color-light-panel);
+    background-color: #F0EDED;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    height: 80vh;
+    justify-content: space-between;    
+    gap: 10px
 }
 
 .torneo div.maestros h4 {
@@ -518,7 +628,7 @@ div.error img {width: 6vh;}
 }
 
 .torneo div.maestros a {
-    background-color: var(--color-primary-red);
+    background-color: #e3282a;
     padding: 7px 0;
     width: 30vw;
     border-radius: 20px;
@@ -527,15 +637,18 @@ div.error img {width: 6vh;}
     text-align: center;
 }
 
-
-div.maestros .tarjeta {height: 13vh;}
+div.maestros .tarjeta {
+    height: 8vh;
+}
 
 div.maestros .tarjeta .btns{
     height: 10vh;
     width: 5vh;
 }
 
-/* p50 */
+/* Torneo 1-6 */
+
+/* Buscar maestros */
 .busqueda {
     border: 2px solid gray;
     width: 70vw;
@@ -553,24 +666,25 @@ div.maestros .tarjeta .btns{
     text-align: center;
     line-height: 8vw;
     border-radius: 3.5vw;
-    margin: 2vw 0 0 -47vw;
+    margin: 2vw 0vw 0vw -47vw;
 }
-/* p50 */
+/* Buscar maestros */
 
-/* p31 */
+/* Crear liga */
 
 .formulario {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding-left: 20px;
 }
 
 .overflow .botones {position: absolute;}
 
 .formulario input, .formulario select {
     border: none;
-    background-color: var(--color-neutral-mid);
+    background-color: #d3d3d3;
     width: 85vw;
     height: 10vw;
     border-radius: 50vw;
@@ -599,7 +713,7 @@ div.maestros .tarjeta .btns{
 
 .overflow {overflow-y: hidden;}
 
-/*p31*/
+/* Crear liga*/
 
 /* AMONESTACION */
 
@@ -650,6 +764,7 @@ div.maestros .tarjeta .btns{
     padding: 18px 16px 20px;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
     margin: 4vh;
+    align-content: center;
 }
 
 .amonestacion-formulario .campo {
@@ -683,9 +798,9 @@ div.maestros .tarjeta .btns{
     margin-top: 6px;
 }
 
-/*p51*
+/* AMONESTACION */
 
-/*p53 / p50*/
+/* Partidas */
  .flex-tituloliga {
     position: relative;
     top: 1vw;
@@ -717,11 +832,11 @@ div.maestros .tarjeta .btns{
 
 .tarjetasmesas {
     width: 100%;
-    height: 32.5vw;
+    height:32.5vw;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    gap:10px
 }
 
 .tarjetamesa {
@@ -737,8 +852,11 @@ div.maestros .tarjeta .btns{
 }
 
 .titulomesa {
+    display: flex;
+    flex-direction: column;
     margin: 3vw 0 1vw;
     font-size: 4vw;
+    gap: 1vh;
 }
 
 .selectable {
@@ -757,7 +875,7 @@ div.maestros .tarjeta .btns{
     width: 8.5vw;
     height: 8.5vw;
     border-radius: 50%;
-    background-color: var(--color-purple);
+    background-color: #6631d7;
     border: solid 0.5vw #361086;
     background-image: url("../imgs/copagris.png");
     background-size: 78%;
@@ -770,23 +888,10 @@ div.maestros .tarjeta .btns{
 }
 
 .form-ronda .botones {
-    margin-top: 4vw;
+    padding-bottom: 80px;
 }
 
 .tarjetasmesas .morado {background-color: #c0baf2;}
-
-.botonmesa1, .botonmesa2, .botonmesa3 {
-    width: 8vw;
-    height: 8vw;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center;
-    font-size: 6vw;
-}
 
 .btns .gris {
     background-size: 70%;
@@ -794,33 +899,32 @@ div.maestros .tarjeta .btns{
 }
 
 .botonmesa1 {
-    background-color: var(--color-purple);
+    background-color: #6631d7;
     border: solid 0.5vw #361086;
     background-size: 110%;
     background-image: url("../imgs/copamarilla.png");
 }
 
 .botonmesa2 {
-    background-color: var(--color-neutral-mid);
+    background-color: #b0b0b0;
     border: solid 0.5vw #595959;
     background-image: url("../imgs/llave.png");
 }
 
 .botonmesa3 {
     background-color: #e22829;
-    border: solid 0.5vw var(--color-danger-dark);
-    background-size: 25%;
+    border: solid 0.5vw #8c0707;
+    background-size:25%;
     background-image: url("../imgs/exclamación.png");
 }
 
-/*p53 / p50*/
+/* Partidas */ 
 
-/*p52*/
-
+/* Inscripción */
 .titulomesa .tarjeta {width: 100%;}
 
 .contenedortarjetas .blanco {
-    background-color: var(--color-light-panel);
+    background-color: #F0EDED;
     border: solid 0.5vw #c6c6c6;
 }
 
@@ -829,9 +933,10 @@ div.maestros .tarjeta .btns{
     border: solid 0.5vw #b6abee;
 }
 
-.btn2morado {background-image: url("../imgs/iconoequis.png");}
+.btn2morado {background-image: url("../imgs/iconoequis.png")}
+/* Inscripción */
 
-/* p41 */
+/* EditarPerfil, registro */
 
 .regSup .btns {
     position:relative;
@@ -845,41 +950,20 @@ div.maestros .tarjeta .btns{
 }
 
 .editbtn {
-    background-color: var(--color-neutral-mid);
+    background-color: #b0b0b0;
     border: solid 0.5vw #595959;
-    background-image: url("../imgs/llave.png");
+    background-image: url("../imgs/llave.png")
 }
 
 .exitbtn {
-    border: solid 0.5vw var(--color-danger-dark);
+    background-color: #e22829;
+    border: solid 0.5vw #8c0707;
     background-image: url("../imgs/salir.png");
-}
-
-
-/* p63 */
-.podioliga .titulomesa {
-    position: relative;
-    top: 20vw;
-    font-size: 5vw;
-}
-
-.podioliga .blanco {
-    background-color: #e7e7e7;
-    width: 80vw;
-}
-
-.blanco .btns .ligapokemon {
-    width: 15vw;
-    height: 15vw;
-    background-image: url("../imgs/ligapokemon.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 /*p63*/
 
-/* Maestros */
+/* Maestros, inscripcionLiga */
 
 div.panelMaestros {
     display: flex;
@@ -892,6 +976,7 @@ div.panelMaestros {
     background-color: #e7e7e7;
     padding: 3vh;
     border-radius: 32px;
+    padding-bottom:70px;
 }
 
 .barra-busqueda {
@@ -911,11 +996,12 @@ div.panelMaestros {
 
 .panelMaestros .enlace a {
     text-decoration: none;
-    background-color: var(--color-primary-red);
+    background-color: #e3282a;
     padding: 1vw 1.5vw;
     border-radius: 20px;
     color: white;
 }
+/* Maestros, inscripcionLiga */
 
 /* Perfil (info-usuario)*/
 
@@ -927,21 +1013,50 @@ div.panelMaestros {
     position: relative;
 }
 
+
+.podioliga .titulomesa {
+    font-size: 5vw;
+    margin: 5vw 2vw;
+}
+
+/* .podioliga .blanco {
+    background-color: #e7e7e7;
+    width:80vw;
+} */
+
+.blanco .btns .ligapokemon {
+    width: 15vw;
+    height: 15vw;
+    background-image: url("../imgs/ligapokemon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .usuarioSup {
     height: 30vh;
-    background-color: var(--color-primary-red);
+    background-color: #e3282a;
 }
 
-.img-perfil img {width: 100%;}
+
+.img-perfil img, .img-logo-perfil img {width: 100%;}
 
 .img-perfil {
-    width: 50vw;
+    width: 40vw;
     position: absolute;
     top: 20vh;
-    left: 25vw;
+    left: 30vw;
 }
 
-.img-logo-perfil img {width: 100%;}
+a.editar {
+    text-decoration: none;
+    background-color: #e3282a;
+    width: 20vw;
+    padding: 4px 0;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+}
 
 .img-logo-perfil {
     position: absolute;
@@ -950,101 +1065,217 @@ div.panelMaestros {
     width: 10vw;
 }
 
-.desplegable:checked ~ div {display:block;}
-
-.cerrar:checked ~ div {display:none;} /*aun no funciona*/
-
-.desptorneo {
+div.opciones-user {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 6vh;
 }
+
+/* Perfil (info-usuario)*/
+
+/* torneos */
+.tipo{
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    padding: 2px;
+    outline: none;
+}
+.tiposubmit{
+    font-size: 20px;
+}
+
+/* torneos */
 
 /*sin registro*/
 
+/* Pantalla sin partida */
 .sin-partida {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     color: #9ea1a3;
     font-weight: 600;
-    height: 40vh;
     text-align: center;
+    text-transform:uppercase;
 }
 
-.botones {
-    display: grid;
-    grid-template-areas:
-    "btn-aplicar3 btn-aplicar3"
-    "btn-aplicar2 btn-cancelar2";
-    justify-items: center;
-    align-content: center; 
-    row-gap: 10vw;
-    column-gap: 10vw;
-    bottom: -5vh;
-    font-size:4vw;
-}
-
-.btn-aplicar2, .btn-cancelar2 {
-    background-color: #e22829;
+/* boton iniciar de sin-partida */
+.btn-iniciar {
+    background-color: #f3d30c;
     height: 10vw;
-    width: 30vw;
+    width: 35vw;
     border-radius: 22.5vw;
     text-align: center;
     align-content: center;
-    color: #e7e7e7;
+    color: #FFFFFF;
     text-decoration: none;
     border: none;
 }
 
-.btn-cancelar2 {
-    background-color: var(--color-neutral-mid);
-    grid-area: btn-cancelar2;
-}
-
-.btn-aplicar2 {grid-area: btn-aplicar2;}
-
-.btn-aplicar2:last-child {grid-column: 1 / 3;}
-
-.btn-aplicar3 {
-    grid-area: btn-aplicar3;
-    background-color: #e22829;;
-    height: 10vw;
-    width: 40vw;
-    border-radius: 20vw;
-    text-align: center;
-    align-content: center;
-    color: #e7e7e7;
-    grid-column: 1 / 3; 
-    border:none;
-}
-
-.sin-partida{text-transform: uppercase;}
-
-a.editar {
-    text-decoration: none;
-    background-color: var(--color-primary-red);
-    width: 20vw;
-    padding: 4px 0;
-    text-align: center;
-    border-radius: 20px;
-    color: white;
-
-}
-
-.edit-profpic{
+/* editarperfil */
+.edit-profpic {
     width: 40vw;
     position: absolute;
     top: 17vh;
     left: 30vw;
 }
-.edit-profpic img{
+
+/* editarperfil, registro */
+.regPanel form p {
+    width: 80vw;
+    text-align: start;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+/* editarperfil.ftl */
+.aliasperfil {
+    border-radius: 7px;
+    padding: 1vh;
+    width: 80vw;
+    background-color: white;
+}
+
+.edit-profpic img {width: 100%;}
+/* editarperfil */
+
+
+div.tarjeta{
+    display: flex;
+    align-items: center
+}
+
+div.ligasUser{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    margin: 0 1.5vw;
     width: 100%;
 }
 
-div.opciones-user{
+.botones-sin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; 
+    font-size:4vw;
+    height: 20vw;
+}
+
+.lista-agregar-usuarios{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.lista-agregar-usuarios .tarjeta {
+    width: 100%;
+}
+
+.label-usuarios {
+    display: block;
+    width: 100%;
+}
+
+.user-check-container{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6vh;
+    align-items: center; 
+    width: 100%;
+}
+
+.user-check-container .primer-contenedor{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    width: 60%;
+}
+
+.pic {
+    flex-shrink: 0;
+}
+
+.pic img{
+    width: 12vw;
+    height: 12vw;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.label-usuarios .txt{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.tarjeta:has(input[type="checkbox"]:checked) {
+    background: #c0baf2;
+}
+
+
+.envoltorioPodio{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #e7e7e7;
+    padding: 3vh;
+    border-radius: 32px;
+    padding-bottom:70px;
+}
+.envoltorioPodio a{
+    text-decoration: none;
+    padding: 8px 46px;
+    color: white;
+    background-color: #E2182A;
+    border-radius: 20px;
+}
+
+.tarjeta-podio{
+    width: 80vw;
+}
+.tarjeta-podio .tarjeta{
+    height: 12vh;
+    padding: 10px ;
+    background-color: #dedede;
+    border: 1px solid #b0b0b0;
+}
+
+.tarjeta-podio p{
+    margin: 4px;
+    font-size: x-large;
+}
+
+.check-box-usuarios {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.check-box-usuario-icon{
+    flex-shrink: 0; 
+    width: 8.5vw;
+    height: 8.5vw;
+    border-radius: 50%;
+    background-color: #046fb1;
+    background-image: url("../imgs/iconomas.png");
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+.check-box-usuario-icon:has(input[type="checkbox"]:checked) {
+    background-color: #e3282a;
+    background-image: url("../imgs/iconoequis.png");
+}
+
+.check-box-usuario-icon img {
+    width: 10px;
 }

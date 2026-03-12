@@ -17,6 +17,10 @@ public class LigaLogicService {
 
     private static LigaDaoDb dao = new LigaDaoDb();
 
+    public static List<Liga> getLigasAlias(String alias) {
+    return dao.getLigasAlia(alias);
+    }
+
 
     /**
      * Nueva liga
@@ -219,4 +223,12 @@ public class LigaLogicService {
         dao.eliminarLiga(liga);
     }
 
+    public boolean ligaNoEnCurso(String liga) {
+        return dao.ligaNoEnCurso(liga);
+    }
+
+    public List<Liga> getAllLigasFiltrado(String filtro) {
+
+        return dao.getAllLigasFiltrado(filtro);
+    }
 }

@@ -1,36 +1,37 @@
-* {
-    margin: 0;
-    padding: 0;
+*{
+    margin:0;
+    padding:0;
     box-sizing: border-box;
 }
 
 body.login {
-    background-color: #046fb1;
+    background-color: #046fb1 ;  
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between ;
     align-items: center;
     width: 100vw;
-    height: 92vh;
+    height: 92vh; 
     position: relative;
 }
 
-.contenedor,
-.loginPanel {
+.contenedor {
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.contenedor {height: 50vh;}
+img{width: 100%;}
 
-img {width: 100%;}
-
-div.imgLogin {width: 60%;}
+div.imgLogin{width: 60%;}
 
 .loginPanel {
     height: 50vh;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 30px 30px 0 0;
     background-color: #F0EDED;
 }
@@ -40,7 +41,7 @@ div.imgLogin {width: 60%;}
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
     justify-content: space-evenly;
 }
 
@@ -65,6 +66,7 @@ a {
     color: #e3282a;
 }
 
+
 div.error {
     position: absolute;
     width: 80vw;
@@ -84,7 +86,7 @@ div.error p {
     text-align: center;
     color: #962B2B;
 }
-
+/* error imagen*/
 .error img {
     width: 6vh;
     height: auto;

@@ -16,6 +16,15 @@ public class LigaController {
 
     private static final Map<Integer, EstadoPartida> partidasPorLiga = new HashMap<>();
 
+    public static void torneosFiltrado(@NotNull Context ctx) {
+        Map<String, Object> model = crearModeloBase(ctx);
+        String filtro = ctx.formParam("tipo");
+        model.put("titulo", "Torneos");
+        model.put("listaLigas", ligaLogicService.getAllLigasFiltrado(filtro));
+        ctx.render("/templates/torneos.ftl", model);
+    }
+
+
     private static class EstadoPartida {
         private int rondaActual;
         private int rondasTotales;
@@ -29,7 +38,7 @@ public class LigaController {
         Map<String,Object> model = new HashMap<>();
         Usuario usuario = usuarioService.getUsuarioByAlias(alias);
         String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
-        model.put("usuarios", usuarioService.getAllUsuarios());
+        model.put("usuarios", usuarioService.getAllUsuarios(usuario.getAlias()));
         model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         ctx.render("/templates/maestros.ftl",model);
@@ -70,20 +79,18 @@ public class LigaController {
         ligaLogicService.nuevaLiga(nuevaLiga);
         Map<String, Object> model = crearModeloBase(ctx);
         model.put("ligaId", nuevaLiga.getIdLiga());
-        model.put("usuarioList", usuarioService.getAllUsuarios());
+        model.put("usuarioList", usuarioService.getTodosUsuarios());
         ctx.render("templates/inscripcion.ftl", model);
     }
+
     public static void nuevaLigaJugadores(@NotNull Context ctx) {
-        //Obtener los datos de la liga:
         String ligaId = ctx.formParam("ligaId");
-        //Obtener los jugadores seleccioandos
         List<String> usuariosSeleccionados = ctx.formParams("usuariosSeleccionados");
-        //Reglas de negocio => validar
+        //Validacion
         if (usuariosSeleccionados == null) {
             usuariosSeleccionados = new ArrayList<>();
         }
         int cantidad = usuariosSeleccionados.size();
-        //Si fallo = regresar a seleccionar usuarios
         if (cantidad < 2) {
             volverAPantallaUsuarios(ctx, ligaId, usuariosSeleccionados,"Debes seleccionar al menos 2 usuarios.");
             return;
@@ -98,19 +105,19 @@ public class LigaController {
         }
         // Aquí ya se asocian los usuarios a la liga
         ligaLogicService.crearJugadoresEnLiga(ligaId, usuariosSeleccionados);
-        //Bien => regresar a torneos
+
         Map<String, Object> model = crearModeloBase(ctx);
         model.put("titulo", "Torneos");
         model.put("listaLigas", ligaLogicService.getAllLigas());
         ctx.render("/templates/torneos.ftl", model);
     }
-    //Vuelve a la pantalla de seleccioanr usuaurio para una liga
+
     private static void volverAPantallaUsuarios(Context ctx,
                                                 String ligaId,
                                                 List<String> usuariosSeleccionados,
                                                 String error) {
 
-        List<Usuario> usuarioList = usuarioService.getAllUsuarios();
+        List<Usuario> usuarioList = usuarioService.getTodosUsuarios();
 
         Map<String, Object> model = crearModeloBase(ctx);
         model.put("ligaId", ligaId);
@@ -124,8 +131,9 @@ public class LigaController {
         int idLiga = Integer.parseInt(context.pathParam("idLiga"));
         Map<String, Object> model = crearModeloBase(context);
         model.put("liga", LigaLogicService.getLiga(idLiga));
-        model.put("jugadores", UsuarioService.getJugadoresTorneo(idLiga));
-        context.render("templates/infotorneo.ftl", model);
+        List<Jugador> jugadores = UsuarioService.getJugadoresTorneo(idLiga);
+        model.put("jugadores", jugadores );
+        context.render("templates/torneo.ftl", model);
     }
 
     public static String obtenerLiga(Context ctx) {
@@ -239,7 +247,9 @@ public class LigaController {
         if (estado.rondaActual >= estado.rondasTotales) {
             LigaLogicService.finalizarLiga(idLiga);
             partidasPorLiga.remove(idLiga);
-            ctx.redirect("/logueado/torneos/" + idLiga);
+            Map<String, Object> model = new HashMap<>();
+            model.put("listaPodio",estado.jugadores);
+            ctx.render("/templates/podio.ftl",model);
             return;
         }
 
@@ -301,8 +311,17 @@ public class LigaController {
 
     public static void eliminarLiga(@NotNull Context context) {//todo eliminar liga
         String liga = context.pathParam("idLiga");
-        ligaLogicService.eliminarLiga(liga);
-        context.redirect("/logueado/torneos");
+        if (ligaLogicService.ligaNoEnCurso(liga)){
+            ligaLogicService.eliminarLiga(liga);
+            context.redirect("/logueado/torneos");
+
+        }else{
+            Map<String,Object> model = new HashMap<>();
+            model.put("error","error");
+            context.render("/templates/torneos.ftl",
+                    Map.of("error", "Credenciales inválidas"));
+
+        }
     }
 
     private static void cargarNombreUsuarioSesion(Context ctx, Map<String, Object> model) {
@@ -311,5 +330,9 @@ public class LigaController {
         if (usuario != null) {
             model.put("nombreApellido", usuario.getNombre() + " " + usuario.getApellido());
         }
+    }
+
+    public static void mostrarPodio(@NotNull Context context){
+        context.render("/templates/podio.ftl");
     }
 }

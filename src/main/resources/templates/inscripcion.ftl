@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla 63</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <#include "/templates/inc/head.ftl"/>
 </head>
     <header>
     <#include "/templates/inc/header_nombre_apellidos.ftl"/>
@@ -17,27 +18,39 @@
         </div>
     </#if>
     <div class="contenedortarjetas">
-        <input class="busqueda" placeholder="Buscar" />
-        <div class="maestrosapuntados">
-        </div>
-        <#list usuarioList as usuario>
-        <div class="tarjeta <#if usuario?index % 2 == 1>morado</#if>">
-            <input 
-                    type="checkbox" 
-                    name="usuariosSeleccionados" 
-                    value="${usuario.alias}"
-                    <#if usuariosSeleccionados?? && usuariosSeleccionados?seq_contains(usuario.alias?string)>checked</#if>
-                />
-            <div class="pic">
-            <img src="/imgs/fotoperfil2.png" alt="fotoperfil" />
+        <#--  <input class="busqueda" placeholder="Buscar" />  -->
+        <div class="titulo">Agregar usuarios</div>
+
+        <div class="lista-agregar-usuarios">
+            <#list usuarioList as usuario>
+            <div class="tarjeta">
+                
+            <label class="label-usuarios" for="${usuario.alias}">
+                <div class="user-check-container">
+                    <div class="primer-contenedor">
+                        <div class="pic">
+                            <img src="/imgs/fotoperfil2.png" alt="fotoperfil" />
+                        </div>
+
+                        <div class="txt">${usuario.nombre!""} ${usuario.apellido!""}</div>
+                    </div>
+                    <div>            
+                        <div class="check-box-usuario-icon">
+                            <input type="checkbox" class="check-box-usuarios" id="${usuario.alias}" name="usuariosSeleccionados" value="${usuario.alias}" <#if usuariosSeleccionados?? && usuariosSeleccionados?seq_contains(usuario.alias?string)>checked</#if>/>
+                        </div>
+                    </div>
+                </div>
+            </label>
             </div>
-            <div class="txt">${usuario.nombre!""}<br>${usuario.alias!""}</div>
+            </#list>
         </div>
-        </#list>
-         <div class="botones">
-        <button class="btn-aplicar" type="submit">Aplicar</button>
-        <div class="btn-cancelar">Cancelar</div>
-    </div>
+         <div class="botones-crear-liga">
+            <div class="btn-cancelar">
+                <a href="./torneos">Cancelar</a>
+            </div>
+            <button class="btn-aplicar btn-base" type="submit">Aplicar</button>
+        </div>
+
     </div>
     </form>
 </body>

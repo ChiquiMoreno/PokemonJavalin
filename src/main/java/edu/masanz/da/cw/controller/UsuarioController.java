@@ -1,6 +1,7 @@
 package edu.masanz.da.cw.controller;
 
 import edu.masanz.da.cw.model.Usuario;
+import edu.masanz.da.cw.service.LigaLogicService;
 import edu.masanz.da.cw.service.UsuarioService;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
@@ -29,17 +30,11 @@ public class UsuarioController {
     }
 
     public static void validateLogin(Context context) {
-        System.out.println("Validando");
 
         String alias = context.sessionAttribute("alias");
-        System.out.println("alias = " + alias);
-
         if (alias == null){
             context.redirect("/");
-            System.out.println("Validacion fallida");
-            System.out.println("Usuario no logueado");
         }
-        System.out.println("Validado");
     }
 
 
@@ -57,6 +52,7 @@ public class UsuarioController {
         model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         model.put("alias", alias);
+        model.put("ligas", LigaLogicService.getLigasAlias(alias));
         ctx.render("/templates/infousuario-competiciones.ftl",model);
     }
 
@@ -67,7 +63,7 @@ public class UsuarioController {
         Map<String,Object> model = new HashMap<>();
         Usuario usuario = usuarioService.getUsuarioByAlias(alias);
         String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
-        model.put("usuarios", usuarioService.getAllUsuarios());
+        model.put("usuarios", usuarioService.getAllUsuarios(alias));
         model.put("titulo", titulo);
         model.put("nombreApellido", nombreApellido);
         ctx.render("/templates/maestros.ftl",model);
@@ -76,7 +72,10 @@ public class UsuarioController {
     }
 
     public static void mostrarEditarPerfil(@NotNull Context context) { //TODO  mostrar editar perfil
-        context.render("/templates/editarperfil.ftl");
+        String alias = context.sessionAttribute("alias");
+        Map<String,Object> model = new HashMap<>();
+        model.put("alias",alias);
+        context.render("/templates/editarperfil.ftl",model);
     }
 
     public static void editarPerfil(@NotNull Context context) {//TODO ditar perfil
@@ -111,6 +110,20 @@ public class UsuarioController {
         if (!usuarioService.usuarioEsAdmin(alias)){
             context.redirect("/logueado/torneos");
         }
+
+    }
+
+    public static void verPerfilConcreto(@NotNull Context context) {
+        String alias = context.pathParam("alias");
+        Map<String,Object> model = new HashMap<>();
+        String titulo = "Perfil";
+        Usuario usuario = usuarioService.getUsuarioByAlias(alias);
+        String nombreApellido = usuario.getNombre()+" "+usuario.getApellido() ;
+        model.put("titulo", titulo);
+        model.put("nombreApellido", nombreApellido);
+        model.put("alias", alias);
+        model.put("ligas", LigaLogicService.getLigasAlias(alias));
+        context.render("/templates/usuario-concreto.ftl",model);
     }
 }
 

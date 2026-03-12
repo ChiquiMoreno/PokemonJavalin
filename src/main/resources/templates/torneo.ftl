@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <#include "/templates/inc/head.ftl"/>
     <title>Torneo</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -35,13 +36,10 @@
             <#list jugadores as jugador>
                 <div class="tarjeta">
                     <div class="pic">
-                    <img src="./imgs/fotoperfil2.png" alt="fotoperfil"> </img>
+                    <img src="/imgs/fotoperfil2.png" alt="fotoperfil"> </img>
                     </div>
-                    <div class="txt">${jugador.nombreJugador}<br> ${jugador.aliasJugador}</div>
-                    <div class="btns">
-                        <button class="btn1">···</button>
-                        <button class="btn2"></button>
-                    </div>
+                    <div class="txt">${jugador.nombreJugador} ${jugador.apellidoJugador}<br> ${jugador.aliasJugador}</div>
+
                 </div>
 
             </#list>
@@ -49,7 +47,8 @@
         </div>
         
     </div>
-<#include "/templates/inc/navbar.ftl"/>
+<#include "/templates/inc/navbarbtn1red.ftl"/>
+
 
     
 </body>

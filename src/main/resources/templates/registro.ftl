@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
+    <#include "/templates/inc/head.ftl"/>
     <title>Registro</title>
 </head>
 <body class="reg">
@@ -22,7 +23,7 @@
 
 
             <div class="reg_submit">
-                <a href="index.html" class="registroCan">Cancelar</a>
+                <a href="/" class="registroCan">Cancelar</a>
                 <input type="submit" value="Crear" class="crear">
             
             </div>

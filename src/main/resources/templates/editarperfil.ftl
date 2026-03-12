@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <title>Modificar perfil</title>
+    <#include "/templates/inc/head.ftl"/>
 </head>
 <body class="reg">
     
@@ -24,6 +25,8 @@
     <div class="regPanel">
         
         <form action="./editar-perfil" method="post">
+            <p>Alias</p>
+            <p class="aliasperfil">${alias}</p>
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" id="nombre" required>
             <label for="apellido">Apellido</label>
@@ -31,7 +34,7 @@
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password" required>
             <div class="reg_submit">
-                <input type="submit" name="opcion" value="Cancelar" class="cancelar">
+                <a href="./perfil" class="cancelar">Cancelar</a>
                 <input type="submit" name="opcion" value="Modificar" class="crear">
             
             </div>

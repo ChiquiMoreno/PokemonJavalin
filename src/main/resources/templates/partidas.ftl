@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla 50</title>
+    <#include "/templates/inc/head.ftl"/>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="alinear">
 
 <header>
-<#--  <#include "/templates/inc/header_nombre_apellidos.ftl"/>  -->
+<#include "/templates/inc/header_nombre_apellidos.ftl"/>
 </header>
 
 <div class="contenedortarjetas">
@@ -64,22 +65,13 @@
         </div>
 
         <div class="botones">
-            <button type="submit" class="btn-aplicar">Siguiente ronda</button>
+            <button type="submit" class="btn-aplicar btn-base">Siguiente ronda</button>
         </div>
     </form>
 
 </div>
 <#include "/templates/inc/navbarbtn1red.ftl"/>
 
-<script>
-    document.querySelectorAll('.winner-radio').forEach((radio) => {
-        radio.addEventListener('change', () => {
-            const mesa = radio.name;
-            document.querySelectorAll('input[name="' + mesa + '"]').forEach((option) => {
-                option.closest('.tarjetamesa').classList.toggle('morado', option.checked);
-            });
-        });
-    });
-</script>
+
 </body>
 </html>

@@ -29,8 +29,12 @@ public class UsuarioService {
     }
 
 
-    public List<Usuario> getAllUsuarios() {
-        return dao.getAllUsuarios();
+    public List<Usuario> getAllUsuarios(String alias) {
+        return dao.getAllUsuarios(alias);
+    }
+
+    public List<Usuario> getTodosUsuarios() {
+        return dao.getTodosUsuarios();
     }
 
     public void editarPerfil(String nuevoNombre, String nuevoApellido, String alias) {

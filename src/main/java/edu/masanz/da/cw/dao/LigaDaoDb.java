@@ -48,13 +48,13 @@ public class LigaDaoDb {
             Liga liga = new Liga(id,tipo,fecha,lugar,rondas,descripcion, estado);
             listaLigas.add(liga);
         }
-        System.out.println(listaLigas.toString());
         return (ArrayList<Liga>) listaLigas;
     }
 
     public static void crearliga(@NotNull Context ctx) {
         ctx.render("/templates/crearliga.ftl");
     }
+
 
     public static int cantidadJugadores(int idLiga){
         String sql = "select count(*) from jugador where liga = ?;";
@@ -144,11 +144,35 @@ public class LigaDaoDb {
         ConnectionManager.ejecutarUpdateSQL(sql,params);
     }
 
-    /**
-     * Asociar usuarios a ligas, esto crea jugadores
-     * @param idLiga
-     * @param usuarios lista de alias de usuarios
-     */
+    public List<Liga> getLigasAlia(String alias) {
+        List<Liga> listaLigas = new ArrayList<>();
+        String sql ="select *  from liga where id in (select idLiga from jugador where aliasUsuario = ?);";
+        Object[] params = {alias};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
+        if (resultado!=null){
+            for (int i = 0; i < resultado.length ; i++) {
+                int id = (int) resultado[i][0];
+                String lugar = (String) resultado[i][1];
+                String rondas = (String) resultado[i][2];
+                String fecha = (String) resultado[i][3];
+                String descripcion = (String) resultado[i][4];
+                String tipo = (String) resultado[i][5];
+                int estado = (int) resultado[i][6];
+                Liga liga = new Liga(id,tipo,fecha,lugar,rondas,descripcion, estado);
+                listaLigas.add(liga);
+            }
+        }
+        return (ArrayList<Liga>) listaLigas;
+    }
+
+    public boolean ligaNoEnCurso(String liga) {
+        String sql = "select 1 from liga where id = ? and estado = 0";
+        Object[]params = {liga};
+        Object[][]resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        if (resultado!=null){return true;}
+        return false;
+    }
+
     public static boolean crearJugadores(String idLiga, List<String> usuarios){
         String sql = "INSERT IGNORE INTO pokemon_db.jugador (idLiga, aliasUsuario, puntaje, posicion) VALUES (?, ?, 0, 0);";
         try {
@@ -162,4 +186,22 @@ public class LigaDaoDb {
         return true;
     }
 
+    public List<Liga> getAllLigasFiltrado(String filtro) {
+        String sql = "select * from liga where tipo like ?";
+        Object[] params = {filtro};
+        Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        List<Liga> ligas= new ArrayList<>();
+        for (int i = 0; i < resultado.length; i++) {
+            int id = (int) resultado[i][0];
+            String lugar = (String) resultado[i][1];
+            String rondas = (String) resultado[i][2];
+            String fecha = (String) resultado[i][3];
+            String descripcion = (String) resultado[i][4];
+            int estado = (int) resultado[i][6];
+            Liga liga = new Liga(id,filtro,fecha,lugar,rondas,descripcion, estado);
+            ligas.add(liga);
+        }
+        
+        return ligas;
+    }
 }

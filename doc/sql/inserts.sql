@@ -104,3 +104,6 @@ FROM liga l
 JOIN usuario u ON u.alias IN ('wednesday','ellie','joel','loki','wanda','gojo','yuji','luffy','nami','vi')
 WHERE l.descripcion = 'Liga Demo 10 - Expandido';
 
+update liga set estado = 0 where id = 1;
+update liga set estado = 1 where id = 3;
+update liga set estado = 2 where id = 2;

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <#include "/templates/inc/head.ftl"/>
     <title>Torneo</title>
     <link rel="stylesheet" href="/css/styles.css">
     
@@ -14,10 +15,17 @@
 
         </header>
 
+        <#if error??> <#-- si la liga esta en curso lo muestra-->
+            <div class="error">
+                <img src="/imgs/caratriste.png" alt="caratriste.png">
+                <p>Ups... la liga ya esta en curso.</p>
+            </div>
+            </#if>
+
         <!-- Revisar si cambiamos checkbox por radio button -->
         <section class="torneos">
             <div class="menutorneos">
-                <div class="desptorneo">
+                <!-- <div class="desptorneo">
                     <input type="checkbox" id="anio">
                     <label for="anio">AÑO</label>
                     <div class="despAnios">
@@ -65,9 +73,18 @@
                             <option>Amistoso</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
+                <form action="/logueado/torneos-filtrado" method="post">
+                    <select name="tipo" id="tipo" class="tipo">
+                        <option value="Competitivo estándar">Competitivo estándar</option>
+                        <option value="Expandido">Expandido</option>
+                        <option value="Desafío lider de gimnasio">Desafío lider de gimnasio</option>
+                        <option value="Amistoso">Amistoso</option>
+                    </select>
+                    <input type="submit" value="🔍" class="tipo tiposubmit">
+                </form>
 
-                <form action="/logueado/crearliga" method="get">
+                <form action="/logueado/crearliga" method="post">
                     <button class="boton-anadir" type="submit">
                         <img src="/imgs/iconomas.png" alt="Añadir torneo">
                     </button>
@@ -92,9 +109,7 @@
                                         <#--  <button type="button" class="button-agregar">
                                             <img src="/imgs/persona.png" alt="Participantes">
                                         </button>  -->
-                                    <button type="button" class="button-eliminar">
-                                        <img src="/imgs/papelera.png" alt="Eliminar">
-                                    </button>
+
                                 </div>
                             </div>
                         </#if>
@@ -128,9 +143,11 @@
                                         <#--  <button type="button" class="button-agregar">
                                             <img src="/imgs/persona.png" alt="Participantes">
                                         </button>  -->
-                                    <button type="button" class="button-eliminar">
-                                        <img src="/imgs/papelera.png" alt="Eliminar">
-                                    </button>
+                                    <form action="./eliminar-liga/${liga.idLiga}" method="get">
+                                        <button type="submit" class="button-eliminar">
+                                            <img src="/imgs/papelera.png" alt="Eliminar">
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                     </#if>

@@ -5,7 +5,7 @@
     <a href="/logueado/torneos">
         <img src="/imgs/pokeball.png" alt="pokeball">
     </a>
-    <a href="/logueado/maestros">
-        <img src="/imgs/personared.png" alt="persona">
+    <a href="/logueado/maestros" class="btn-mas-peque">
+        <img src="/imgs/persona2red.png" alt="persona">
     </a>
 </footer>

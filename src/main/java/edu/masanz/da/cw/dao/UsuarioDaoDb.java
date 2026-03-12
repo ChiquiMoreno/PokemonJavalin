@@ -70,7 +70,24 @@ public class UsuarioDaoDb {
         return jugadores;
     }
 
-    public List<Usuario> getAllUsuarios() {
+    public List<Usuario> getAllUsuarios(String alias) {
+        String sql = "select * from usuario where alias!=?";
+        Object [] params = {alias};
+        Object [][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);
+        List<Usuario> usuarios = new ArrayList<>();
+        for (int i = 0; i < resultado.length; i++) {
+            String aliasUser = (String) resultado[i][0];
+            String passwd = (String) resultado[i][1];
+            String nombre = (String) resultado[i][2];
+            String apellido = (String) resultado[i][3];
+
+            Usuario usuario = new Usuario(aliasUser,passwd,nombre,apellido);
+            usuarios.add(usuario);
+        }
+        return usuarios;
+    }
+
+    public List<Usuario> getTodosUsuarios() {
         String sql = "select * from usuario";
         Object [] params = new Object[0];
         Object [][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);

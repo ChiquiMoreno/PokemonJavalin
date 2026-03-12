@@ -36,7 +36,7 @@ CREATE TABLE jugador (
             aliasUsuario varchar(60),
             posicion int not null default 0,
 
-            CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id),
+            CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id) ON DELETE CASCADE,
             CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias),
             PRIMARY KEY (idLiga,aliasUsuario)
 );

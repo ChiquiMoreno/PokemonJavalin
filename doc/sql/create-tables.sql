@@ -3,6 +3,7 @@ CREATE TABLE pokemon_db.usuario (
              passwd varchar(60) DEFAULT NULL,
              nombre varchar(60) DEFAULT NULL,
              apellido varchar(60) DEFAULT NULL,
+             rol int default 1,
 
              PRIMARY KEY (alias)
 
@@ -26,7 +27,7 @@ CREATE TABLE jugador (
             aliasUsuario varchar(60),
             posicion int not null default 0,
 
-            CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id),
+            CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id) ON DELETE CASCADE,
             CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias),
             PRIMARY KEY (idLiga,aliasUsuario)
 );

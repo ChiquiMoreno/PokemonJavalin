@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla 41</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <#include "/templates/inc/head.ftl"/>
 </head>
 
 <body class="perfil">
@@ -14,23 +15,33 @@
 
 
 <div class="contenedortarjetas podioliga">
+        <a href="/logout" class="logout"><img src="/imgs/salir.png" alt="Logout"></a>
+        <a href="./editar-perfil" class="editarperfil" ><img src="/imgs/llave.png" alt="Editar perfil"></a>
 
     <div class="titulomesa">
 
-        <i>Nombre y apellido</i><br>${nombreApellido}<br><br><i>Alias</i><br>${alias}<br><br>
-        <div class="opciones-user">
-            <a href="./editar-perfil" class="editar"> Editar</a>
-            <a href="/logout" class="editar"> Logout</a>
+        <div class="usuario-nombre">
+            <p class="italica">Nombre y apellido</p>
+            <p>${nombreApellido}</p>
+        </div>
+        <div class="usuario-apellido">
+            <p class="italica">Alias</p>
+            <p>${alias}</p>
         </div>
 
-        <i>CAMPEONATOS</i><br><br>
+        </div>
 
-        <div class="tarjeta blanco">
-
-            <div class="txt">Competitivo estándar<br>11/01/2026<br>Comics Pamplona</div>
-            <div class="btns">
-                <div class="ligapokemon"></div>
-            </div>
+        <p class="italica">CAMPEONATOS</p>
+        
+        <div class="ligasUser">
+            <#list ligas as liga>
+                <div class="tarjeta blanco">
+                    <div class="txt">${liga.tipo}<br>${liga.fecha}<br>${liga.lugar}</div>
+                    <div class="btns">
+                        <div class="ligapokemon"></div>
+                    </div>
+                </div>
+            </#list>
         </div>
     </div>
 </div>

@@ -12,27 +12,27 @@
     <div class="edit-profpic">
         <img src="../public/imgs/fotoperfil1.png">
         <div class="botoneditar"></div>
-    </div>
-</div>
-
-<div class="regPanel">
-
-    <form action="index.html">
-        <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" id="nombre" required>
-        <label for="apellido">Apellido</label>
-        <input type="text" name="apellido" id="apellido" required>
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password" required>
-        <div class="reg_submit">
-            <input type="submit" name="opcion" value="Cancelar" class="cancelar">
-            <input type="submit" name="opcion" value="Modificar" class="crear">
-
         </div>
-
-    </form>
-</div>
-
-
+    </div>
+    
+    <div class="regPanel">
+        
+        <form action="index.html">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required>
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" required>
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password" required>
+            <div class="reg_submit">
+                <a href="./perfil/${alias}" class="cancelar">Cancelar</a>
+                <input type="submit" name="opcion" value="Modificar" class="crear">
+            
+            </div>
+            
+        </form>
+    </div>
+    
+   
 </body>
 </html>

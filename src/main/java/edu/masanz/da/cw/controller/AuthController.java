@@ -5,7 +5,6 @@ import edu.masanz.da.cw.service.UsuarioService;
 import io.javalin.http.Context;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class AuthController {
