@@ -21,7 +21,7 @@
         <div class="puntuacionpartida">${numRondaActual}/${numRondasTotales}</div>
     </div>
 
-    <form method="post" action="/logueado/partidas/${idLiga}/siguiente" class="form-ronda">
+    <form method="post" action="/logueado/adm/partidas/${idLiga}/siguiente" class="form-ronda">
         <div class="envoltorio">
             <#assign hayPartida = partida?? && partida.partida??>
 

@@ -10,11 +10,12 @@
     <header>
     <#include "/templates/inc/header_nombre_apellidos.ftl"/>
     </header>
-    <form action="/logueado/nuevaligaJugadores" method="post">
+    <form action="/logueado/adm/nuevaligaJugadores" method="post">
     <input type="hidden" name="ligaId" value="${ligaId}">
     <#if error??>
-        <div class="mensaje-error">
-            ${error}
+        <div class="error-loguearse">
+            <img src="/imgs/caratriste.png" alt="caratriste.png">
+            <p>${error}</p>
         </div>
     </#if>
     <div class="contenedortarjetas">

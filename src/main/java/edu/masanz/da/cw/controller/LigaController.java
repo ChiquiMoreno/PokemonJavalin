@@ -20,7 +20,7 @@ public class LigaController {
         Map<String, Object> model = crearModeloBase(ctx);
         String filtro = ctx.formParam("tipo");
         model.put("titulo", "Torneos");
-        model.put("listaLigas", ligaLogicService.getAllLigasFiltrado(filtro));
+        model.put("listaLigas", ligaLogicService.ordenarLigas(ligaLogicService.getAllLigasFiltrado(filtro)));
         ctx.render("/templates/torneos.ftl", model);
     }
 
@@ -209,7 +209,7 @@ public class LigaController {
         int idLiga = Integer.parseInt(ctx.pathParam("idLiga"));
         EstadoPartida estado = partidasPorLiga.get(idLiga);
         if (estado == null || estado.partida == null) {
-            ctx.redirect("/logueado/partidas/" + idLiga);
+            ctx.redirect("/logueado/adm/partidas/" + idLiga);
             return;
         }
 
@@ -247,7 +247,7 @@ public class LigaController {
         if (estado.rondaActual >= estado.rondasTotales) {
             LigaLogicService.finalizarLiga(idLiga);
             partidasPorLiga.remove(idLiga);
-            Map<String, Object> model = new HashMap<>();
+            Map<String, Object> model = crearModeloBase(ctx);
             model.put("listaPodio",estado.jugadores);
             ctx.render("/templates/podio.ftl",model);
             return;
@@ -257,7 +257,7 @@ public class LigaController {
         estado.partida = partidaLogicService.iniciarPartida(estado.jugadores);
         estado.rondaActual++;
 
-        ctx.redirect("/logueado/partidas/" + idLiga);
+        ctx.redirect("/logueado/adm/partidas/" + idLiga);
     }
 
     private static EstadoPartida inicializarEstadoPartida(int idLiga) {

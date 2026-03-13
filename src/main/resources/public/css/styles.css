@@ -259,6 +259,29 @@ div.error p {
 /* Ajuste imagen error */
 div.error img {width: 6vh;}
 
+div.error-loguearse img {width: 6vh;}
+
+div.error-loguearse p {
+    text-align: center;
+    color: #962B2B;
+
+}
+
+div.error-loguearse {
+    position: absolute;
+    width: 80vw;
+    height: 13vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    top: 1vh;
+    left: 10vw;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh;
+}
+
 /*### DIV ERROR ###*/
 
 /* TORNEOS */
@@ -363,14 +386,16 @@ div.error img {width: 6vh;}
     text-decoration: none;
 }
 
+/* Tarjeta partido finalizado */
 .finalizado {background-color: #e3282a;}
 
+/* Tarjeta partido en curso */
 .en-curso { background-color: #046fb1;}
 
+/* Tarjeta partido iniciado */
 .iniciar {
     background-color: #f3d30c;
-    border: none;
-    
+    border: none; 
     }
 
 /* Texto descriptivo tarjetas */
@@ -543,12 +568,25 @@ body.reg {
     border-radius: 7.5vw 7.5vw 0vw 0vw;
     top: 20vw;
     width: 100%;
-    min-height:100vh;
+    min-height: 53vh;
     height:auto;
     background-color: #f0eded;
     display: flex;
     flex-direction: column;
     gap: 0.5vh;
+    padding:40px 20px;
+}
+
+.torneo div.panel {
+    background-color: #F0EDED;
+    border-radius: 30px 30px 0 0;
+    padding: 30px;
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200vh;
+    gap: 20px;
 }
 
 /*Tarjetas maestros reutilizable*/
@@ -556,7 +594,7 @@ body.reg {
     background-color: #ff6464;
     border: 0.5vw solid rgb(51,51,51);
     width: 100%;
-    height: 25vw;
+    /* height: 25vw; */
     border-radius: 3vw;
 }
 
@@ -575,6 +613,7 @@ body.reg {
     color: rgb(51, 51, 51);
     font-size: 5vw;
     width: 100%;
+    padding: 5px;
 }
 
 /*Container botones y botones*/
@@ -849,6 +888,17 @@ div.maestros .tarjeta .btns{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.2s ease;
+}
+
+.tarjetamesa:has(input:checked) {
+    background: #c0baf2;
+    border-color: #7b3fe4;
+    color: white;
+}
+
+.winner-radio{
+    display:none;
 }
 
 .titulomesa {
@@ -864,6 +914,7 @@ div.maestros .tarjeta .btns{
     cursor: pointer;
     padding: 3vw;
 }
+
 
 .winner-radio {
     position: absolute;
@@ -1009,8 +1060,9 @@ div.panelMaestros {
     display: flex;
     flex-direction: column;
     background-color: black;
-    gap: 8vh;
+    justify-content: space-between;
     position: relative;
+
 }
 
 
@@ -1019,10 +1071,6 @@ div.panelMaestros {
     margin: 5vw 2vw;
 }
 
-/* .podioliga .blanco {
-    background-color: #e7e7e7;
-    width:80vw;
-} */
 
 .blanco .btns .ligapokemon {
     width: 15vw;
@@ -1080,9 +1128,16 @@ div.opciones-user {
     font-size: 16px;
     padding: 2px;
     outline: none;
+    background-color: #ededed;
+    box-shadow: 0 2px 0 #d8d8d8;
 }
 .tiposubmit{
-    font-size: 20px;
+    font-size: 16px;
+    background-color: #ededed;
+    box-shadow: 0 2px 0 #d8d8d8;
+    padding: 4px;
+    
+
 }
 
 /* torneos */
@@ -1147,7 +1202,6 @@ div.ligasUser{
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    margin: 0 1.5vw;
     width: 100%;
 }
 
@@ -1217,7 +1271,6 @@ div.ligasUser{
     background: #c0baf2;
 }
 
-
 .envoltorioPodio{
     display: flex;
     flex-direction: column;
@@ -1278,4 +1331,18 @@ div.ligasUser{
 
 .check-box-usuario-icon img {
     width: 10px;
+}
+
+
+.botonesPerfil{
+    display: flex;
+    justify-content: space-between;
+}
+
+.barranegra{
+    height: 8vh;
+}
+
+.crearliga .contenedortarjetas{
+    min-height:100vh;
 }

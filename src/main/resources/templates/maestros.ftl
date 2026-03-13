@@ -14,9 +14,7 @@
     </header>
 
     <div class="panelMaestros">
-        <form action="">
-            <input type="text" placeholder="🔍 Buscar" class="barra-busqueda">
-        </form>
+    
         <div class="enlace"><a href="./perfil">Mi cuenta</a></div>
         <#list usuarios as usuario>
         <div class="tarjeta flexrow">

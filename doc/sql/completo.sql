@@ -13,6 +13,7 @@ CREATE TABLE pokemon_db.usuario (
              passwd varchar(60) DEFAULT NULL,
              nombre varchar(60) DEFAULT NULL,
              apellido varchar(60) DEFAULT NULL,
+             rol int default 1,
 
              PRIMARY KEY (alias)
 
@@ -37,7 +38,7 @@ CREATE TABLE jugador (
             posicion int not null default 0,
 
             CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id) ON DELETE CASCADE,
-            CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias),
+            CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias) ON DELETE CASCADE,
             PRIMARY KEY (idLiga,aliasUsuario)
 );
 
@@ -47,9 +48,9 @@ create table if not exists mesa(
 	aliasJugadorA varchar(60),
     aliasJugadorB varchar(60),
     aliasGanador varchar(60),
-    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA, idliga) REFERENCES jugador(aliasUsuario, idliga),
-    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB, idliga) REFERENCES jugador(aliasUsuario, idliga),
-    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador, idliga) REFERENCES jugador(aliasUsuario, idliga)
+    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA, idliga) REFERENCES jugador(aliasUsuario, idliga) ON DELETE CASCADE,
+    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB, idliga) REFERENCES jugador(aliasUsuario, idliga) ON DELETE CASCADE,
+    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador, idliga) REFERENCES jugador(aliasUsuario, idliga) ON DELETE CASCADE
 );
 
 create table if not exists Partida(
@@ -62,6 +63,9 @@ create table if not exists Partida(
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("urko", "1234","Urko","Martinez");
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("chiqui", "1234","Chiqui","Moreno");
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("alvaro", "1234","Álvaro","Marturet");
+INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("aitor", "1234","Aitor","Etxabarren");
+INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido, rol) values ("admin", "1234","Admin","admin", 0);
+
 
 INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('wednesday', '1234', 'Wednesday', 'Addams');
 INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('eleven', '1234', 'Eleven', 'Ives');
@@ -164,3 +168,4 @@ SELECT l.id, u.alias, 0, 0
 FROM liga l
 JOIN usuario u ON u.alias IN ('wednesday','ellie','joel','loki','wanda','gojo','yuji','luffy','nami','vi')
 WHERE l.descripcion = 'Liga Demo 10 - Expandido';
+

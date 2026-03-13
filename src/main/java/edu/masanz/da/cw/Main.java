@@ -58,21 +58,19 @@ public class Main {
         app.get("/logueado/perfil/{alias}", UsuarioController::verPerfilConcreto);
 
 
-        app.get("/logueado/crearliga", LigaController::servirCrearLiga);
-        app.post("/logueado/nuevaliga", LigaController::nuevaLiga);
-        app.post("/logueado/nuevaligaJugadores", LigaController::nuevaLigaJugadores);
-        app.get("/logueado/eliminar-liga/{idLiga}", LigaController::eliminarLiga);
-//        app.get("/lgit ogueado/inscripcionliga", LigaController::inscripcionLiga);
+        app.post("/logueado/adm/crearliga", LigaController::servirCrearLiga);
+        app.post("/logueado/adm/nuevaliga", LigaController::nuevaLiga);
+        app.post("/logueado/adm/nuevaligaJugadores", LigaController::nuevaLigaJugadores);
+        app.get("/logueado/adm/eliminar-liga/{idLiga}", LigaController::eliminarLiga);
 
 
         app.get("/logueado/sin-partida", LigaController::mostrarSinPartida);
         app.get("/logueado/partida-en-curso", LigaController::redirigirPartidaEnCurso);
-        //app.get("/logueado/partidas", LigaController::mostrarPartida);
 
-        app.get("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
-        app.post("/logueado/partidas/{idLiga}", LigaController::mostrarPartidas);
+        app.get("/logueado/adm/partidas/{idLiga}", LigaController::mostrarPartidas);
+        app.post("/logueado/adm/partidas/{idLiga}", LigaController::mostrarPartidas);
         app.post("/logueado/partidas/{idLiga}/resultado", LigaController::guardarResultadoMesa);
-        app.post("/logueado/partidas/{idLiga}/siguiente", LigaController::siguienteRonda);
+        app.post("/logueado/adm/partidas/{idLiga}/siguiente", LigaController::siguienteRonda);
 
         app.get("/registro", UsuarioController::mostrarRegistro);
         app.post("/registro", UsuarioController::registro);

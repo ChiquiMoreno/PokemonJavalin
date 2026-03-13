@@ -12,11 +12,13 @@
 
 
 <div class="usuarioSup"></div>
-
+<div class= "barranegra"> </div>
 
 <div class="contenedortarjetas podioliga">
-        <a href="/logout" class="logout"><img src="/imgs/salir.png" alt="Logout"></a>
-        <a href="./editar-perfil" class="editarperfil" ><img src="/imgs/llave.png" alt="Editar perfil"></a>
+        <div class="botones-perfil">
+            <a href="/logout" class="logout"><img src="/imgs/salir.png" alt="Logout"></a>
+            <a href="./editar-perfil" class="editarperfil" ><img src="/imgs/llave.png" alt="Editar perfil"></a>
+        </div>
 
     <div class="titulomesa">
 
@@ -35,8 +37,10 @@
         
         <div class="ligasUser">
             <#list ligas as liga>
-                <div class="tarjeta blanco">
-                    <div class="txt">${liga.tipo}<br>${liga.fecha}<br>${liga.lugar}</div>
+                <div class="tarjeta blanco" >
+                    <div class="txt">${liga.tipo}<br>${liga.fecha}<br>${liga.lugar}<br>
+                    <a class="tarjeta-torneo-link" href="/logueado/torneos/${liga.idLiga}">Más información</a>
+                    </div>
                     <div class="btns">
                         <div class="ligapokemon"></div>
                     </div>

@@ -11,10 +11,10 @@
 <header>
 <#include "/templates/inc/header_nombre_apellidos.ftl"/>
 </header>
-<body class="overflow">
+<body class="overflow crearliga">
     <div class="contenedortarjetas">
         <div class="titulo">Crear liga</div>
-        <form class="formulario" action="/logueado/nuevaliga" method="post">
+        <form class="formulario" action="/logueado/adm/nuevaliga" method="post">
             <label>Tipo*<br> <select required name="tipo">
                 <option value="" selected disabled hidden>- - -</option >
                 <option value="1" >Competitivo estándar</option >

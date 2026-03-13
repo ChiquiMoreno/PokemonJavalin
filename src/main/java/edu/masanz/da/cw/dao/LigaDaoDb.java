@@ -187,6 +187,9 @@ public class LigaDaoDb {
     }
 
     public List<Liga> getAllLigasFiltrado(String filtro) {
+        if (filtro.equalsIgnoreCase("N/A")){
+            return getAllLigas();
+        }
         String sql = "select * from liga where tipo like ?";
         Object[] params = {filtro};
         Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql,params);

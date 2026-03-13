@@ -1,6 +1,9 @@
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("urko", "1234","Urko","Martinez");
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("chiqui", "1234","Chiqui","Moreno");
 INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("alvaro", "1234","Álvaro","Marturet");
+INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido) values ("aitor", "1234","Aitor","Etxabarren");
+INSERT into pokemon_db.usuario (alias,passwd, nombre, apellido, rol) values ("admin", "1234","Admin","admin", 0);
+
 
 INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('wednesday', '1234', 'Wednesday', 'Addams');
 INSERT INTO usuario (alias, passwd, nombre, apellido) VALUES ('eleven', '1234', 'Eleven', 'Ives');

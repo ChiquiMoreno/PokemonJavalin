@@ -20,71 +20,23 @@
                 <img src="/imgs/caratriste.png" alt="caratriste.png">
                 <p>Ups... la liga ya esta en curso.</p>
             </div>
-            </#if>
+        </#if>
 
         <!-- Revisar si cambiamos checkbox por radio button -->
         <section class="torneos">
             <div class="menutorneos">
-                <!-- <div class="desptorneo">
-                    <input type="checkbox" id="anio">
-                    <label for="anio">AÑO</label>
-                    <div class="despAnios">
-                        <select>
-                            <option>2026</option>
-                            <option>2025</option>
-                            <option>2024</option>
-                            <option>2023</option>
-                            <option>2022</option>
-                            <option>2021</option>
-                            <option>2020</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="desptorneo">
-                    <input type="checkbox" id="mes">
-                    <label for="mes">MES</label>
-                    <div class="despCalendario">
-                        <select>
-                            <option>Enero</option>
-                            <option>Febrero</option>
-                            <option>Marzo</option>
-                            <option>Abril</option>
-                            <option>Mayo</option>
-                            <option>Junio</option>
-                            <option>Julio</option>
-                            <option>Agosto</option>
-                            <option>Septiembre</option>
-                            <option>Octubre</option>
-                            <option>Noviembre</option>
-                            <option>Diciembre</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="desptorneo">
-                    <input type="checkbox" id="tipo">
-                    <label for="tipo">TIPO</label>
-                    <div class="despTipo">
-                        <select>
-                            <option>Competitivo estándar</option>
-                            <option>Expandido</option>
-                            <option>Desafío lider de gimnasio</option>
-                            <option>Amistoso</option>
-                        </select>
-                    </div>
-                </div> -->
                 <form action="/logueado/torneos-filtrado" method="post">
                     <select name="tipo" id="tipo" class="tipo">
+                        <option value="N/A" selected>Sin filtro</option>
                         <option value="Competitivo estándar">Competitivo estándar</option>
                         <option value="Expandido">Expandido</option>
                         <option value="Desafío lider de gimnasio">Desafío lider de gimnasio</option>
                         <option value="Amistoso">Amistoso</option>
                     </select>
-                    <input type="submit" value="🔍" class="tipo tiposubmit">
+                    <input type="submit" value="🔎" class="tipo tiposubmit">
                 </form>
 
-                <form action="/logueado/crearliga" method="post">
+                <form action="/logueado/adm/crearliga" method="post">
                     <button class="boton-anadir" type="submit">
                         <img src="/imgs/iconomas.png" alt="Añadir torneo">
                     </button>
@@ -98,7 +50,7 @@
                     <#if liga.estado == 1>               
                             <div class="tarjeta-torneo">
                                     <h3>${liga.tipo}</h3>
-                                    <a href="/logueado/partidas/${liga.idLiga}" class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</a>
+                                    <a href="/logueado/adm/partidas/${liga.idLiga}" class="tarjeta-torneo-estado en-curso">${liga.estadoStr}</a>
                                 <div class="tarjeta-torneo-detalle">
                                     <p>${liga.fecha}</p>
                                     <p>${liga.lugar}</p>
@@ -123,7 +75,7 @@
                             <div class="tarjeta-torneo">
                                     <h3>${liga.tipo}</h3>
                                     <#if liga.estado == 0>
-                                    <form action="/logueado/partidas/${liga.idLiga}" method="post">
+                                    <form action="/logueado/adm/partidas/${liga.idLiga}" method="post">
                                         <button type="submit" class="tarjeta-torneo-estado iniciar" <#if ligaEnCursoId??>disabled</#if>>${liga.estadoStr}</button>
                                     </form>
                                     <#if ligaEnCursoId??>
@@ -143,7 +95,7 @@
                                         <#--  <button type="button" class="button-agregar">
                                             <img src="/imgs/persona.png" alt="Participantes">
                                         </button>  -->
-                                    <form action="./eliminar-liga/${liga.idLiga}" method="get">
+                                    <form action="/logueado/adm/eliminar-liga/${liga.idLiga}" method="get">
                                         <button type="submit" class="button-eliminar">
                                             <img src="/imgs/papelera.png" alt="Eliminar">
                                         </button>

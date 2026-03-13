@@ -28,7 +28,7 @@ CREATE TABLE jugador (
             posicion int not null default 0,
 
             CONSTRAINT fkTorneo FOREIGN KEY (idLiga) REFERENCES liga(id) ON DELETE CASCADE,
-            CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias),
+            CONSTRAINT fkUsuario FOREIGN KEY (aliasUsuario) REFERENCES usuario(alias) ON DELETE CASCADE,
             PRIMARY KEY (idLiga,aliasUsuario)
 );
 
@@ -38,9 +38,9 @@ create table if not exists mesa(
 	aliasJugadorA varchar(60),
     aliasJugadorB varchar(60),
     aliasGanador varchar(60),
-    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA, idliga) REFERENCES jugador(aliasUsuario, idliga),
-    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB, idliga) REFERENCES jugador(aliasUsuario, idliga),
-    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador, idliga) REFERENCES jugador(aliasUsuario, idliga)
+    CONSTRAINT fkJugadorA FOREIGN KEY (aliasJugadorA, idliga) REFERENCES jugador(aliasUsuario, idliga) ON DELETE CASCADE,
+    CONSTRAINT fkJugadorB FOREIGN KEY (aliasJugadorB, idliga) REFERENCES jugador(aliasUsuario, idliga) ON DELETE CASCADE,
+    CONSTRAINT fkGanador FOREIGN KEY (aliasGanador, idliga) REFERENCES jugador(aliasUsuario, idliga) ON DELETE CASCADE
 );
 
 create table if not exists Partida(
